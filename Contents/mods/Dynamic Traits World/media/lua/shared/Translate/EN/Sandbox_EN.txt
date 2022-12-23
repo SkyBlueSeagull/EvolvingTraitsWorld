@@ -1,0 +1,66 @@
+Sandbox_EN = {
+	Sandbox_DynamicTraitsWorld = "Dynamic Traits World",
+	
+	Sandbox_DynamicTraitsWorld_AVClub = "AV Club Member",
+	Sandbox_DynamicTraitsWorld_AVClubSkill = "AV Club Member Electrical Skill Requirement",
+
+	Sandbox_DynamicTraitsWorld_AxeThrower = "Axe Thrower",
+	Sandbox_DynamicTraitsWorld_AxeThrowerSkill = "Axe Thrower Axe Skill requirement",
+	Sandbox_DynamicTraitsWorld_AxeThrowerKills = "Axe Thrower Kills with Axes requirement",
+
+	Sandbox_DynamicTraitsWorld_Bloodlust = "Bloodlust",
+	Sandbox_DynamicTraitsWorld_BloodlustMeterFillMultiplier = "Bloodlust Meter Fill Multiplier",
+	Sandbox_DynamicTraitsWorld_BloodlustMeterFillMultiplier_tooltip = "You earn bloodlust by filling you bloodlust meter and keeping it high. It's soft-capped at 36h and by default, every 2 (multiplier of 0.5) zombie kills within 1 tile distance will fill it by 1h.<br>Precise formula is math.min(1 / distance, 1) * multiplier.<br>Every hour, counter is reduced by 1h. Every hour that your bloodlust meter is above half, you gain 10% of it as progress towards gaining bloodlust perk.",
+	Sandbox_DynamicTraitsWorld_BloodlustProgress = "Bloodlust Progress",
+	Sandbox_DynamicTraitsWorld_BloodlustProgress_tooltip = "How much total bloodlust progress you need to get trait. Keeping your bloodlust meter full would earn you 3.6 points in 1h. Be aware, that you also loose bloodlust if this meter ever falls below 50%. So if you set it low, it's going to be easy to earn but also easy to lose the perk.",
+
+	Sandbox_DynamicTraitsWorld_BodyworkEnthusiast = "Bodywork Enthusiast",
+	Sandbox_DynamicTraitsWorld_BodyworkEnthusiastSkill = "Bodywork Enthusiast Skill requirement",
+	Sandbox_DynamicTraitsWorld_BodyworkEnthusiastSkill_tooltip = "Metalworking + Mechanics",
+	Sandbox_DynamicTraitsWorld_BodyworkEnthusiastRepairs = "Repairs requirement",
+	Sandbox_DynamicTraitsWorld_BodyworkEnthusiastRepairs_tooltip = "How much % of car condition you have to repair to qualify for perk. Works on every part of a car, saved between all cars.",
+
+	Sandbox_DynamicTraitsWorld_FurnitureAssembler = "Furniture Assembler",
+	Sandbox_DynamicTraitsWorld_FurnitureAssemblerSkill = "Furniture Assembler Carpentry Skill requirement",
+
+	Sandbox_DynamicTraitsWorld_GunEnthusiast = "Gun Enthusiast",
+	Sandbox_DynamicTraitsWorld_GunEnthusiastSkill = "Gun Enthusiast Skill requirement",
+	Sandbox_DynamicTraitsWorld_GunEnthusiastSkill_tooltip = "Aiming + Reloading",
+	Sandbox_DynamicTraitsWorld_GunEnthusiastKills = "Gun Enthusiast Firearm Kills requirement",
+
+	Sandbox_DynamicTraitsWorld_GymRat = "Gym Rat",
+	Sandbox_DynamicTraitsWorld_GymRatSkill = "Gym Rat Skill requirement",
+	Sandbox_DynamicTraitsWorld_GymRatSkill_tooltip = "Strength + Fitness",
+
+	Sandbox_DynamicTraitsWorld_Hoarder = "Hoarder",
+	Sandbox_DynamicTraitsWorld_HoarderSkill = "Hoarder Strength Skill requirement",
+	Sandbox_DynamicTraitsWorld_HoarderWeight = "Bonus weight per point of Strength",
+
+	Sandbox_DynamicTraitsWorld_HomeCook = "Home Cook",
+	Sandbox_DynamicTraitsWorld_HomeCookSkill = "Home Cook Skill requirement",
+
+	Sandbox_DynamicTraitsWorld_Kenshi = "Kenshi",
+	Sandbox_DynamicTraitsWorld_KenshiSkill = "Kenshi Long Blade Skill requirement",
+	Sandbox_DynamicTraitsWorld_KenshiKills = "Kenshi Long Blade Kills requirement",
+
+	Sandbox_DynamicTraitsWorld_KnifeFighter = "Knife Fighter",
+	Sandbox_DynamicTraitsWorld_KnifeFighterSkill = "Knife Fighter Short Blade Skill requirement",
+	Sandbox_DynamicTraitsWorld_KnifeFighterKills = "Knife Fighter Short Blade Kills requirement",
+
+	Sandbox_DynamicTraitsWorld_LightStep = "Light Step",
+	Sandbox_DynamicTraitsWorld_LightStepSkill = "Light Step Lightfooted Skill requirement",
+
+	Sandbox_DynamicTraitsWorld_RestorationExpert = "Restoration Expert",
+	Sandbox_DynamicTraitsWorld_RestorationExpertSkill = "Restoration Expert Maintenance Skill requirement",
+
+	Sandbox_DynamicTraitsWorld_LowProfile = "Low Profile",
+	Sandbox_DynamicTraitsWorld_LowProfileSkill = "Low Profile Skill requirement",
+
+	Sandbox_DynamicTraitsWorld_Sojutsu = "Sojutsu Martial Artist",
+	Sandbox_DynamicTraitsWorld_SojutsuSkill = "Sojutsu Martial Artist Spear Skill requirement",
+	Sandbox_DynamicTraitsWorld_SojutsuKills = "Sojutsu Martial Artist Spear Kills requirement",
+
+	Sandbox_DynamicTraitsWorld_StickFighter = "Stick Fighter",
+	Sandbox_DynamicTraitsWorld_StickFighterSkill = "Stick Fighter Short Blunt Skill requirement",
+	Sandbox_DynamicTraitsWorld_StickFighterKills = "Stick Fighter Short Blunt Kills requirement",
+}

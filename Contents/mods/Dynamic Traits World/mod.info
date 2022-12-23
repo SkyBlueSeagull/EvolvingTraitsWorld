@@ -1,0 +1,6 @@
+name=Dynamic Traits World
+poster=poster.png
+require=MoodleFramework,KillCount
+id=DynamicTraitsWorld
+versionMin=41.78
+description=Adds a lot of traits, making all of them (optionally) dynamic, meaning you can earn them as you play.
