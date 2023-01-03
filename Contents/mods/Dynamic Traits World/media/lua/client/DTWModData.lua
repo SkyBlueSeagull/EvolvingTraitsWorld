@@ -1,15 +1,78 @@
+local function checkStartingTrait(startingTraits, player, trait)
+	if trait == "HeartyAppitite" then
+		if startingTraits.HeartyAppetite == nil then
+			startingTraits.HeartyAppetite = player:HasTrait(trait);
+		end
+	elseif trait == "Thinskinned" then
+		if startingTraits.ThinSkinned == nil then
+			startingTraits.ThinSkinned = player:HasTrait(trait);
+		end
+	elseif startingTraits[trait] == nil then
+		startingTraits[trait] = player:HasTrait(trait);
+	end
+end
+
 local function createModData(playerIndex, player)
 	player:getModData().DynamicTraitsWorld = player:getModData().DynamicTraitsWorld or {};
 	local modData = player:getModData().DynamicTraitsWorld
+	local SBvars = SandboxVars.DynamicTraitsWorld;
 
 	modData.VehiclePartRepairs = modData.VehiclePartRepairs or 0;
-	
-	modData.Bloodlust = modData.Bloodlust or {};
-	modData.Bloodlust.BloodlustMeter = modData.Bloodlust.BloodlustMeter or 0;
-	if modData.Bloodlust.BloodlustProgress and player:HasTrait("bloodlust") then
-		modData.Bloodlust.BloodlustProgress = SandboxVars.DynamicTraitsWorld.BloodlustProgress;
+	modData.EagleEyedKills = modData.EagleEyedKills or 0;
+	modData.OutdoorsmanCounter = modData.OutdoorsmanCounter or 0;
+	modData.RainCounter = modData.RainCounter or 0;
+	modData.CatEyesCounter = modData.CatEyesCounter or 0;
+	modData.LocationFearCounter = modData.LocationFearCounter or 0;
+	modData.FoodSicknessWeathered = modData.FoodSicknessWeathered or 0;
+	modData.HerbsPickedUp = modData.HerbsPickedUp or 0;
+
+	modData.StartingTraits = modData.StartingTraits or {};
+	local startingTraits = modData.StartingTraits;
+	checkStartingTrait(startingTraits, player, "HeartyAppitite");
+	checkStartingTrait(startingTraits, player, "LightEater");
+	checkStartingTrait(startingTraits, player, "HighThirst");
+	checkStartingTrait(startingTraits, player, "LowThirst");
+	checkStartingTrait(startingTraits, player, "SlowHealer");
+	checkStartingTrait(startingTraits, player, "FastHealer");
+	checkStartingTrait(startingTraits, player, "Thinskinned");
+	checkStartingTrait(startingTraits, player, "ThickSkinned");
+
+	modData.SleepSystem = modData.SleepSystem or {};
+	local sleepSystem = modData.SleepSystem;
+	if sleepSystem.CurrentlySleeping == nil then
+		sleepSystem.CurrentlySleeping = false;
+	end
+	sleepSystem.WentToSleepAt = sleepSystem.WentToSleepAt or 0;
+	sleepSystem.HoursSinceLastSleep = sleepSystem.HoursSinceLastSleep or 0;
+	sleepSystem.Last100PreferredHour = sleepSystem.Last100PreferredHour or {28};
+	if sleepSystem.SleepHealthinessBar == nil and player:HasTrait("NeedsLessSleep") then
+		sleepSystem.SleepHealthinessBar = 200;
+	elseif sleepSystem.SleepHealthinessBar == nil and player:HasTrait("NeedsMoreSleep") then
+		sleepSystem.SleepHealthinessBar = sleepSystem.SleepHealthinessBar or -200;
 	else
-		modData.Bloodlust.BloodlustProgress = modData.Bloodlust.BloodlustProgress or 0;
+		sleepSystem.SleepHealthinessBar = sleepSystem.SleepHealthinessBar or 0;
+	end
+
+	modData.ColdSystem = modData.ColdSystem or {};
+	local coldSystem = modData.ColdSystem;
+	if coldSystem.CurrentlySick == nil then
+		coldSystem.CurrentlySick = false;
+	end
+	coldSystem.ColdsWeathered = coldSystem.ColdsWeathered or 0;
+	coldSystem.CurrentColdCounterContribution = coldSystem.CurrentColdCounterContribution or 0;
+
+	modData.TransferSystem = modData.TransferSystem or {};
+	local transferSystem = modData.TransferSystem;
+	transferSystem.ItemsTransferred = transferSystem.ItemsTransferred or 0;
+	transferSystem.WeightTransferred = transferSystem.WeightTransferred or 0;
+
+	modData.BloodlustSystem = modData.BloodlustSystem or {};
+	local bloodlustSystem = modData.BloodlustSystem;
+	bloodlustSystem.BloodlustMeter = bloodlustSystem.BloodlustMeter or 0;
+	if bloodlustSystem.BloodlustProgress == nil and player:HasTrait("Bloodlust") then
+		bloodlustSystem.BloodlustProgress = SBvars.BloodlustProgress;
+	else
+		bloodlustSystem.BloodlustProgress = bloodlustSystem.BloodlustProgress or 0;
 	end
 
 	player:getModData().KillCount = player:getModData().KillCount or {};
@@ -22,6 +85,10 @@ local function createModData(playerIndex, player)
 	killCount["SmallBlade"] = killCount["SmallBlade"] or {count = 0, WeaponType = {}};
 	killCount["Spear"] = killCount["Spear"] or {count = 0, WeaponType = {}};
 	killCount["Firearm"] = killCount["Firearm"] or {count = 0, WeaponType = {}};
+	killCount["Fire"] = killCount["Fire"] or {count = 0, WeaponType = {}};
+	killCount["Vehicles"] = killCount["Vehicles"] or {count = 0, WeaponType = {}};
+	killCount["Unarmed"] = killCount["Unarmed"] or {count = 0, WeaponType = {}};
+	killCount["Explosives"] = killCount["Explosives"] or {count = 0, WeaponType = {}};
 end
 
 Events.OnCreatePlayer.Add(createModData)

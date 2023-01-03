@@ -1,6 +1,6 @@
 name=Dynamic Traits World - Mark Dynamic Traits
-poster=poster.png
 require=DynamicTraitsWorld
 id=DynamicTraitsWorldMarkDynamicTraits
 versionMin=41.78
 description=Marks traits that can be lost/earned with (D)
+authors=MusicManiac
