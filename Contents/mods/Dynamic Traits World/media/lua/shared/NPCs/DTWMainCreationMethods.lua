@@ -54,8 +54,8 @@ if getActivatedMods():contains('DynamicTraitsWorldMarkDynamicTraits') then
 	altNames.WeakStomach = getTextOrNull('UI_trait_WeakStomachMarked');
 	altNames.Hiker = getTextOrNull('UI_trait_HikerMarked');
 	altNames.Herbalist = getTextOrNull('UI_trait_HerbalistMarked');
-	altNames.NeedsMoreSleep = getTextOrNull('UI_trait_WakefulMarked');
-	altNames.NeedsLessSleep = getTextOrNull('UI_trait_SleepyheadMarked');
+	altNames.NeedsMoreSleep = getTextOrNull('UI_trait_SleepyheadMarked');
+	altNames.NeedsLessSleep = getTextOrNull('UI_trait_WakefulMarked');
 	altNames.Stout = getTextOrNull('UI_trait_StoutMarked');
 	altNames.Strong = getTextOrNull('UI_trait_StrongMarked');
 	altNames.Feeble = getTextOrNull('UI_trait_FeebleMarked');
@@ -262,6 +262,7 @@ local function addTraits()
 	TraitFactory.setMutualExclusive("GymRat", "Feeble");
 	TraitFactory.setMutualExclusive("GymRat", "Obese");
 	TraitFactory.setMutualExclusive("GymRat", "Very Underweight");
+	TraitFactory.setMutualExclusive("Pluviophobia", "Pluviophile");
 	
 	TraitFactory.sortList();
 
