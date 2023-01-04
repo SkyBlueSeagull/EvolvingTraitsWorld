@@ -1,3 +1,4 @@
-Fixes:
-	- Fixed Pluviophile and Pluviophobia not being mutually exclusive
-	- Fixed Wakeful and Sleepyhead using names of the opposite trait (they were working the same, it was only name mix-up)
+v.1.1.2
+Fixes
+	- Made migration from DT to DTW painless
+	- Few small fixes in weight system

@@ -51,7 +51,7 @@ local function weightSystemBasic()
     local stress = player:getStats():getStress();
     local unhappiness = player:getBodyDamage():getUnhappynessLevel();
     --print("stress: "..stress.." unhappiness:"..unhappiness); stress is 0-1, unhappiness is 0-100
-    if weight > 100 or weight < 65 then
+    if weight >= 100 or weight <= 65 then
         if not player:HasTrait("SlowHealer") then
             player:getTraits():add("SlowHealer");
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_SlowHealer"), true, HaloTextHelper.getColorRed());
@@ -61,7 +61,7 @@ local function weightSystemBasic()
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_ThinSkinned"), true, HaloTextHelper.getColorRed());
         end
     end
-    if weight > 85 or weight < 75 then
+    if (weight > 85 and weight < 100) or (weight > 65 and weight < 75) then
         if not player:HasTrait("HeartyAppitite") then
             player:getTraits():add("HeartyAppitite");
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_heartyappetite"), true, HaloTextHelper.getColorRed());
@@ -95,7 +95,7 @@ local function weightSystemBasic()
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowThirst"), false, HaloTextHelper.getColorRed());
         end
     end
-    if weight > 75 and weight < 85 then
+    if weight >= 75 and weight <= 85 then
         if player:HasTrait("HeartyAppitite") and startingTraits.HeartyAppetite ~= true then
             player:getTraits():remove("HeartyAppitite");
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_heartyappetite"), false, HaloTextHelper.getColorGreen());
@@ -145,7 +145,7 @@ local function weightSystemAdvanced()
     local stress = player:getStats():getStress();
     local unhappiness = player:getBodyDamage():getUnhappynessLevel();
     --print("stress: "..stress.." unhappiness:"..unhappiness); stress is 0-1, unhappiness is 0-100
-    if weight > 100 or weight < 65 then
+    if weight >= 100 or weight <= 65 then
         if not player:HasTrait("SlowHealer") then
             player:getTraits():add("SlowHealer");
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_SlowHealer"), true, HaloTextHelper.getColorRed());
@@ -155,7 +155,7 @@ local function weightSystemAdvanced()
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_ThinSkinned"), true, HaloTextHelper.getColorRed());
         end
     end
-    if weight > 85 or weight < 75 then
+    if (weight > 85 and weight < 100) or (weight > 65 and weight < 75) then
         if not player:HasTrait("HeartyAppitite") then
             player:getTraits():add("HeartyAppitite");
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_heartyappetite"), true, HaloTextHelper.getColorRed());
@@ -189,7 +189,7 @@ local function weightSystemAdvanced()
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowThirst"), false, HaloTextHelper.getColorRed());
         end
     end
-    if weight > 75 and weight < 85 then
+    if weight >= 75 and weight <= 85 then
         if player:HasTrait("HeartyAppitite") and startingTraits.HeartyAppetite ~= true then
             player:getTraits():remove("HeartyAppitite");
             HaloTextHelper.addTextWithArrow(player, getText("UI_trait_heartyappetite"), false, HaloTextHelper.getColorGreen());

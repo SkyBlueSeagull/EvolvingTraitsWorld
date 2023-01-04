@@ -13,7 +13,8 @@ This mod allows you to get really ripped in PZ and see an actual character progr
 [*] Client-sided moodles configuration if you run [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown. At the moment only supports bloodlust perk, planning to add same functionality to other dynamic systems, sleep is first one on TODO list.
 [/list]
 
-[h1]Compatibility[/h1]
+[h1]Compatibility and Installation[/h1]
+Installation instructions can be found in [url=https://steamcommunity.com/workshop/filedetails/discussion/2912185787/3722820884756862927/]this discussion[/url].
 [list]
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] - incompatible.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] - mostly absorbed by this mod, therefore probably incompatible.
@@ -39,7 +40,3 @@ If you like this mod, check out collection on top of page for other mods I made 
 
 [quote]Permission: On Lockdown
 This mod cannot be modified by anyone else, for anything else, at all, ever. Even if the user disappears, he or she would much rather you didn't touch the fruits of their hard labor.[/quote]
-
-Workshop ID: 2912185787
-Mod ID: DynamicTraitsWorld
-Mod ID: DynamicTraitsWorldMarkDynamicTraits

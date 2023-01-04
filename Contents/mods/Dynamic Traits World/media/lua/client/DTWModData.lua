@@ -1,14 +1,28 @@
 local function checkStartingTrait(startingTraits, player, trait)
-	if trait == "HeartyAppitite" then
-		if startingTraits.HeartyAppetite == nil then
-			startingTraits.HeartyAppetite = player:HasTrait(trait);
+	if player:getModData().DTKillscheck2 == nil then
+		if trait == "HeartyAppitite" then
+			if startingTraits.HeartyAppetite == nil then
+				startingTraits.HeartyAppetite = player:HasTrait(trait);
+			end
+		elseif trait == "Thinskinned" then
+			if startingTraits.ThinSkinned == nil then
+				startingTraits.ThinSkinned = player:HasTrait(trait);
+			end
+		elseif startingTraits[trait] == nil then
+			startingTraits[trait] = player:HasTrait(trait);
 		end
-	elseif trait == "Thinskinned" then
-		if startingTraits.ThinSkinned == nil then
-			startingTraits.ThinSkinned = player:HasTrait(trait);
+	else
+		if trait == "HeartyAppitite" then
+			if startingTraits.HeartyAppetite == nil then
+				startingTraits.HeartyAppetite = false;
+			end
+		elseif trait == "Thinskinned" then
+			if startingTraits.ThinSkinned == nil then
+				startingTraits.ThinSkinned = false;
+			end
+		elseif startingTraits[trait] == nil then
+			startingTraits[trait] = false;
 		end
-	elseif startingTraits[trait] == nil then
-		startingTraits[trait] = player:HasTrait(trait);
 	end
 end
 
