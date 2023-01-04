@@ -1,0 +1,45 @@
+[h1]Welcome to World of Dynamic Traits![/h1]
+First of all, if you're coming from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url], please read [url=https://steamcommunity.com/workshop/filedetails/discussion/2912185787/3722820884753505257/]this discussion[/url]. Now, to good stuff!
+
+[h1]What is this?[/h1]
+This mod allows you to get really ripped in PZ and see an actual character progression besides getting your skills from lvl 0 to lvl10. You'll be able to purge majority of negative traits and earn a whole lot of positive ones. That would help you to go from your average Joe to actual GigaChad in-game. You repair a lot of cars? You get better at it. You train yourself to take long-range kills with proper rifles? Why wouldn't it warranty getting Eagle-Eyed? You pickup thousands of plants through your lifetime and still can't call yourself Herbalist? Yea, that doesn't sound right to me. You maintain great sleeping schedule but for some reason you still need same amount of sleep as when you were sleeping whenever? Not anymore. Welcome to the Dynamic Traits World, ladies and gentlemen!
+
+[h1]Features[/h1]
+[list]
+[*] 80+ dynamic perks, full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
+[*] FULL sandbox customization. Choose which perks you want to be dynamic, choose how fast you get them, choose how fast you lose them, customize anything with more than 100 sandbox options
+[*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay!
+[*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.
+[*] Client-sided moodles configuration if you run [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown. At the moment only supports bloodlust perk, planning to add same functionality to other dynamic systems, sleep is first one on TODO list.
+[/list]
+
+[h1]Compatibility[/h1]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] - incompatible.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] - mostly absorbed by this mod, therefore probably incompatible.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1299328280]More Traits[/url] - my submod shows which traits are dynamic from it, additionally makes Butterfingers dynamic.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2792245343]More Simple Traits (MST)[/url] - my submod shows which traits are dynamic from it.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2812583527]Literacy Mod[/url] - my submod shows which traits are dynamic from it. (upcoming update, Literacy is not dynamic yet)
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2760950740]Explorer Trait[/url] - my submod marks the trait being dynamic.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2863908612]SixthSense[/url] - my submod marks the trait being dynamic.
+[*] Literally anything else: should be compatible.
+[/list]
+
+[h1]GitHub and Discord[/h1]
+If you want to submit translation files, easiest way to do it would be on github. I've also made Discord server for this and other of my mods so if you want to suggest some traits or report bugs, easiest way to reach me would be over the discord. Click on images, they will take you where you want.
+[url=https://github.com/MusicManiac/DynamicTraitsWorld][img]https://cdn.iconscout.com/icon/free/png-256/github-163-761603.png[/img][/url][url=https://discord.gg/8pBN5Ccm7z][img]https://cdn.iconscout.com/icon/free/png-256/discord-3691244-3073764.png[/img][/url]
+
+[h1]Credits[/h1]
+Huge thanks to [url=https://steamcommunity.com/profiles/76561198012326036]Chuckleberry Finn[/url], [url=https://steamcommunity.com/profiles/76561198042464272]albion[/url] and few others ([url=https://steamcommunity.com/profiles/76561199042257388]Glytch3r[/url], DeltaMango, Anonymous, [url=https://steamcommunity.com/profiles/76561197988519654]Nuzzleskatev[/url], [url=https://steamcommunity.com/profiles/76561198168480115]Browser8[/url]) from official PZ discord's #modding channel for answering like a hundred of questions :)
+Additional thanks to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] an it's author for starting this whole dynamic party :)
+
+[h1]Afterword and Permission[/h1]
+If you like this mod, check out collection on top of page for other mods I made or collaborated on! Rate ups are appreciated, and if you wanna send me a coffee, that's a real homie move and you can do it here:
+[url=https://ko-fi.com/musicmaniac][img]https://storage.ko-fi.com/cdn/brandasset/kofi_button_dark.png[/img][/url]
+
+[quote]Permission: On Lockdown
+This mod cannot be modified by anyone else, for anything else, at all, ever. Even if the user disappears, he or she would much rather you didn't touch the fruits of their hard labor.[/quote]
+
+Workshop ID: 2912185787
+Mod ID: DynamicTraitsWorld
+Mod ID: DynamicTraitsWorldMarkDynamicTraits
