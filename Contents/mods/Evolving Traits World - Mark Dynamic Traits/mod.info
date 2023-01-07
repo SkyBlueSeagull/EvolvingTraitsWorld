@@ -1,0 +1,6 @@
+name=Evolving Traits World - Mark Dynamic Traits
+require=EvolvingTraitsWorld
+id=EvolvingTraitsWorldMarkDynamicTraits
+versionMin=41.78
+description=Marks traits that can be lost/earned with (D). Includes support for popular mods.
+authors=MusicManiac

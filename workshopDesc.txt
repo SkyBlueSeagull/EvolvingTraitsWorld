@@ -1,5 +1,5 @@
-[h1]Welcome to World of Dynamic Traits![/h1]
-First of all, if you're coming from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url], please read [url=https://steamcommunity.com/workshop/filedetails/discussion/2912185787/3722820884753505257/]this discussion[/url]. Now, to good stuff!
+[h1]Welcome to World of EvolvingTraits![/h1]
+First of all, if you're coming from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url], please read [url=https://steamcommunity.com/workshop/filedetails/discussion/2914075159/3767857092594927216/]this discussion[/url]. Now, to good stuff!
 
 [h1]What is this?[/h1]
 This mod allows you to get really ripped in PZ and see an actual character progression besides getting your skills from lvl 0 to lvl10. You'll be able to purge majority of negative traits and earn a whole lot of positive ones. That would help you to go from your average Joe to actual GigaChad in-game. You repair a lot of cars? You get better at it. You train yourself to take long-range kills with proper rifles? Why wouldn't it warranty getting Eagle-Eyed? You pickup thousands of plants through your lifetime and still can't call yourself Herbalist? Yea, that doesn't sound right to me. You maintain great sleeping schedule but for some reason you still need same amount of sleep as when you were sleeping whenever? Not anymore. Welcome to the Dynamic Traits World, ladies and gentlemen!
@@ -14,7 +14,7 @@ This mod allows you to get really ripped in PZ and see an actual character progr
 [/list]
 
 [h1]Compatibility and Installation[/h1]
-Installation instructions can be found in [url=https://steamcommunity.com/workshop/filedetails/discussion/2912185787/3722820884756862927/]this discussion[/url].
+Installation instructions can be found in [url=https://steamcommunity.com/workshop/filedetails/discussion/2914075159/3767857092594929252/]this discussion[/url].
 [list]
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] - incompatible.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] - mostly absorbed by this mod, therefore probably incompatible.
@@ -32,7 +32,7 @@ If you want to submit translation files, easiest way to do it would be on github
 
 [h1]Credits[/h1]
 Huge thanks to [url=https://steamcommunity.com/profiles/76561198012326036]Chuckleberry Finn[/url], [url=https://steamcommunity.com/profiles/76561198042464272]albion[/url] and few others ([url=https://steamcommunity.com/profiles/76561199042257388]Glytch3r[/url], DeltaMango, Anonymous, [url=https://steamcommunity.com/profiles/76561197988519654]Nuzzleskatev[/url], [url=https://steamcommunity.com/profiles/76561198168480115]Browser8[/url]) from official PZ discord's #modding channel for answering like a hundred of questions :)
-Additional thanks to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] an it's author for starting this whole dynamic party :)
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] and it's author, [url=https://steamcommunity.com/profiles/76561197982774396]Draco[/url] as majority of their perks were absorbed by this mod
 
 [h1]Afterword and Permission[/h1]
 If you like this mod, check out collection on top of page for other mods I made or collaborated on! Rate ups are appreciated, and if you wanna send me a coffee, that's a real homie move and you can do it here:

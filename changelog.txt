@@ -1,4 +1,5 @@
-v.1.1.2
+v.1.1.3
+General:
+	- Mod rebranding
 Fixes:
-	- Made migration from DT to DTW painless
-	- Few small fixes in weight system
+	- Small fix for weight system
