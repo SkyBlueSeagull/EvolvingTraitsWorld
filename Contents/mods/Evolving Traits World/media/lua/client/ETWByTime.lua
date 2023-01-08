@@ -1,4 +1,5 @@
 require "ETWModData";
+local ETWMoodles = require "ETWMoodles";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
@@ -82,6 +83,7 @@ local function sleepSystem()
         else
             modData.SleepHealthinessBar = math.max(-200, (modData.SleepHealthinessBar - 1 / 6) * SBvars.SleepSystemMultiplier);
         end
+        ETWMoodles.sleepHealthMoodleUpdate(player, false);
     end
     if not player:isAsleep() and modData.CurrentlySleeping == true then
         --local currentPreferredTargetHour = calculateAverage(modData.Last100PreferredHour); -- only needed for debugging
@@ -96,6 +98,7 @@ local function sleepSystem()
             insertValueInSleepTable(findMidpoint(modData.WentToSleepAt, timeOfDay), modData.Last100PreferredHour);
             --print("ETW Logger: new currentPreferredTargetHour: "..calculateAverage(modData.Last100PreferredHour));
         end
+        ETWMoodles.sleepHealthMoodleUpdate(player, true);
         modData.CurrentlySleeping = false;
         modData.HoursSinceLastSleep = 0;
     end

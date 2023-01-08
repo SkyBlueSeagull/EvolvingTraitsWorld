@@ -133,6 +133,15 @@ option EvolvingTraitsWorld.BloodlustProgress
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_BloodlustProgress,
 }
+option EvolvingTraitsWorld.BloodlustMoodleVisibilityHours
+{
+	type = integer,
+	min = 1,
+	max = 480,
+	default = 6,
+	page = EvolvingTraitsWorldMoodles,
+	translation = EvolvingTraitsWorld_BloodlustMoodleVisibilityHours,
+}
 option EvolvingTraitsWorld.BodyworkEnthusiast
 {
 	type = boolean,

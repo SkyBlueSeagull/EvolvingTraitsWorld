@@ -1,6 +1,13 @@
-name=Evolving Traits World - Mark Dynamic Traits
-require=EvolvingTraitsWorld
+name=Evolving Traits World (ETW) - Mark Dynamic Traits
+url=https://steamcommunity.com/sharedfiles/filedetails/?id=2914075159
 id=EvolvingTraitsWorldMarkDynamicTraits
 versionMin=41.78
 description=Marks traits that can be lost/earned with (D). Includes support for popular mods.
+description= <LINE> Supported mods:
+description= <LINE> - Evolving Traits World
+description= <LINE> - Explorer Trait
+description= <LINE> - More Simple Traits (MST)
+description= <LINE> - More Traits
+description= <LINE> - Simple Overhaul: Traits and Occupations (SOTO)
+description= <LINE> - SixthSense
 authors=MusicManiac

@@ -82,6 +82,7 @@ local function createModData(playerIndex, player)
 
 	modData.BloodlustSystem = modData.BloodlustSystem or {};
 	local bloodlustSystem = modData.BloodlustSystem;
+	bloodlustSystem.LastKillTimestamp = bloodlustSystem.LastKillTimestamp or 0;
 	bloodlustSystem.BloodlustMeter = bloodlustSystem.BloodlustMeter or 0;
 	if bloodlustSystem.BloodlustProgress == nil and player:HasTrait("Bloodlust") then
 		bloodlustSystem.BloodlustProgress = SBvars.BloodlustProgress;

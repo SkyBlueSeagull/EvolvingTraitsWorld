@@ -1,19 +1,7 @@
-require "MF_ISMoodle";
 require "ETWModData";
-MF.createMoodle("BloodlustMoodle");
+local ETWMoodles = require "ETWMoodles";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
-
-local function bloodlustMoodleUpdate(player) -- confirmed working
-	local moodle = MF.getMoodle("BloodlustMoodle");
-	moodle:setThresholds(0.1, 0.2, 0.35, 0.4999, 0.5001, 0.65, 0.8, 0.9);
-	if player == getPlayer() and EvolvingTraitsWorld.settings.EnableBloodLustMoodle == true then
-		local percentage = player:getModData().EvolvingTraitsWorld.BloodlustSystem.BloodlustMeter / 36;
-		moodle:setValue(percentage);
-	else
-		moodle:setValue(0.5);
-	end
-end
 
 local function bloodlustKill(zombie) -- confirmed working
 	local player = getPlayer();
@@ -21,6 +9,7 @@ local function bloodlustKill(zombie) -- confirmed working
 		local bloodlust = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
 		local distance = player:DistTo(zombie);
 		if distance <= 10 then
+			bloodlust.LastKillTimestamp = player:getHoursSurvived();
 			if bloodlust.BloodlustMeter <= 36 then
 				bloodlust.BloodlustMeter = bloodlust.BloodlustMeter + math.min(1 / distance, 1) * SBvars.BloodlustMeterFillMultiplier;
 				--print("ETW Logger: BloodlustMeter="..bloodlust.BloodlustMeter);
@@ -28,7 +17,7 @@ local function bloodlustKill(zombie) -- confirmed working
 				bloodlust.BloodlustMeter = bloodlust.BloodlustMeter + math.min(1 / distance, 1) * SBvars.BloodlustMeterFillMultiplier * 0.1;
 				--print("ETW Logger: BloodlustMeter (soft-capped)="..bloodlust.BloodlustMeter);
 			end
-			bloodlustMoodleUpdate(player);
+			ETWMoodles.bloodlustMoodleUpdate(player, false);
 		end
 	end
 end
@@ -38,7 +27,7 @@ local function bloodlustTime() -- confirmed working
 	local modData = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
 	if SBvars.Bloodlust == true then
 		modData.BloodlustMeter = math.max(modData.BloodlustMeter - 1, 0);
-		bloodlustMoodleUpdate(player);
+		ETWMoodles.bloodlustMoodleUpdate(player, false);
 		-- Bloodlust Progress when no perk
 		if not player:HasTrait("Bloodlust") then
 			--print("ETW Log: Bloodlust Meter (perk is not present): "..modData.BloodlustMeter);
@@ -129,7 +118,7 @@ local function braverySystem(zombie) -- confirmed working
 end
 
 local function initializeKills(playerIndex, player)
-	bloodlustMoodleUpdate(player);
+	ETWMoodles.bloodlustMoodleUpdate(player);
 	Events.OnZombieDead.Add(bloodlustKill);
 	Events.EveryHours.Add(bloodlustTime);
 	if SBvars.EagleEyed == true and not player:HasTrait("EagleEyed") then Events.OnWeaponHitCharacter.Add(eagleEyed) end

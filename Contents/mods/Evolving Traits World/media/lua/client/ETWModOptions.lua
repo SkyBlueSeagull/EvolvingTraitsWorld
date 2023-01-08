@@ -1,18 +1,23 @@
 EvolvingTraitsWorld = EvolvingTraitsWorld or {};
 EvolvingTraitsWorld.settings = EvolvingTraitsWorld.SETTINGS or {};
 
-EvolvingTraitsWorld.settings.ScavengerLootIndicator = true;
-EvolvingTraitsWorld.settings.ScavengerExpIndicator = true;
-
 if ModOptions and ModOptions.getInstance then
     local function onModOptionsApply(optionValues)
         EvolvingTraitsWorld.settings.EnableBloodLustMoodle = optionValues.settings.options.EnableBloodLustMoodle;
+        EvolvingTraitsWorld.settings.EnableSleepHealthMoodle = optionValues.settings.options.EnableSleepHealthMoodle;
     end
     local SETTINGS = {
         options_data = {
             EnableBloodLustMoodle = {
                 name = "UI_EvolvingTraitsWorld_Options_EnableBloodLustMoodle",
                 tooltip = "UI_EvolvingTraitsWorld_Options_EnableBloodLustMoodle_tooltip",
+                default = true,
+                OnApplyMainMenu = onModOptionsApply,
+                OnApplyInGame = onModOptionsApply,
+            },
+            EnableSleepHealthMoodle = {
+                name = "UI_EvolvingTraitsWorld_Options_EnableSleepHealthMoodle",
+                tooltip = "UI_EvolvingTraitsWorld_Options_EnableSleepHealthMoodle_tooltip",
                 default = true,
                 OnApplyMainMenu = onModOptionsApply,
                 OnApplyInGame = onModOptionsApply,

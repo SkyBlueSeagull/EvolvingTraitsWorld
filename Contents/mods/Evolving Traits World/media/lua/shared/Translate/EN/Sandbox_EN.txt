@@ -2,6 +2,7 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld = "Evolving Traits World - Singular Perks",
 	Sandbox_EvolvingTraitsWorldSystems = "Evolving Traits World - Systems",
 	Sandbox_EvolvingTraitsWorldTraitsSettings = "Evolving Traits World - Traits",
+	Sandbox_EvolvingTraitsWorldMoodles = "Evolving Traits World - Moodles",
 	
 	Sandbox_EvolvingTraitsWorld_Mechanics = "Amateur Mechanic",
 	Sandbox_EvolvingTraitsWorld_MechanicsSkill = "Amateur Mechanic Mechanics Skill requirement",
@@ -28,6 +29,8 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_BloodlustMeterFillMultiplier_tooltip = "How fast do you fill your bloodlust meter",
 	Sandbox_EvolvingTraitsWorld_BloodlustProgress = "Bloodlust Progress",
 	Sandbox_EvolvingTraitsWorld_BloodlustProgress_tooltip = "How much total bloodlust progress you need to get trait. Keeping your bloodlust meter full would earn you 3.6 points in 1h. Be aware, that you also loose bloodlust if this meter ever falls below 50%. So if you set it low, it's going to be easy to earn but also easy to lose the perk. Progress is capped at 2x of Bloodlust Progress value.",
+	Sandbox_EvolvingTraitsWorld_BloodlustMoodleVisibilityHours = "Bloodlust moodle visibility hours",
+	Sandbox_EvolvingTraitsWorld_BloodlustMoodleVisibilityHours_tooltip = "For how many hours bloodlust moodle is visible after a nearby kill on zombie",
 
 	Sandbox_EvolvingTraitsWorld_BodyworkEnthusiast = "Bodywork Enthusiast",
 	Sandbox_EvolvingTraitsWorld_BodyworkEnthusiastSkill = "Bodywork Enthusiast Skill requirement",

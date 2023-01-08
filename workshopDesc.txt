@@ -1,16 +1,16 @@
-[h1]Welcome to World of EvolvingTraits![/h1]
+[h1]Welcome to World of Evolving Traits![/h1]
 First of all, if you're coming from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url], please read [url=https://steamcommunity.com/workshop/filedetails/discussion/2914075159/3767857092594927216/]this discussion[/url]. Now, to good stuff!
 
 [h1]What is this?[/h1]
-This mod allows you to get really ripped in PZ and see an actual character progression besides getting your skills from lvl 0 to lvl10. You'll be able to purge majority of negative traits and earn a whole lot of positive ones. That would help you to go from your average Joe to actual GigaChad in-game. You repair a lot of cars? You get better at it. You train yourself to take long-range kills with proper rifles? Why wouldn't it warranty getting Eagle-Eyed? You pickup thousands of plants through your lifetime and still can't call yourself Herbalist? Yea, that doesn't sound right to me. You maintain great sleeping schedule but for some reason you still need same amount of sleep as when you were sleeping whenever? Not anymore. Welcome to the Dynamic Traits World, ladies and gentlemen!
+This mod allows you to get really ripped in PZ and see an actual character progression besides getting your skills from lvl 0 to lvl10. You'll be able to purge the majority of negative traits and earn a lot of positive ones. That would help you to go from your average Joe to actual GigaChad in-game. You repair a lot of cars? You get better at it. You train yourself to take long-range kills with proper rifles? Why wouldn't it warranty getting Eagle-Eyed? You pickup thousands of plants through your lifetime and still can't call yourself Herbalist? Yea, that doesn't sound right to me. You maintain great sleeping schedule but for some reason you still need same amount of sleep as when you were sleeping whenever? Not anymore. Welcome to the Dynamic Traits World, ladies and gentlemen!
 
 [h1]Features[/h1]
 [list]
 [*] 80+ dynamic perks, full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
 [*] FULL sandbox customization. Choose which perks you want to be dynamic, choose how fast you get them, choose how fast you lose them, customize anything with more than 100 sandbox options
-[*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay!
+[*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay! Can be enabled without enabling main mod, so if you don't like main features added by this mod and just want to see which traits are dynamic in your game with SOTO/MST/MT - you can do that.
 [*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.
-[*] Client-sided moodles configuration if you run [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown. At the moment only supports bloodlust perk, planning to add same functionality to other dynamic systems, sleep is first one on TODO list.
+[*] Client-sided moodles configuration if you run [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown. At the moment supports Bloodlust and Sleep System.
 [/list]
 
 [h1]Compatibility and Installation[/h1]
@@ -19,19 +19,19 @@ Installation instructions can be found in [url=https://steamcommunity.com/worksh
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] - incompatible.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] - mostly absorbed by this mod, therefore probably incompatible.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1299328280]More Traits[/url] - my submod shows which traits are dynamic from it, additionally makes Butterfingers dynamic.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2840805724]Simple Overhaul: Traits and Occupations (SOTO)[/url] - my submod shows which traits are dynamic from it.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2792245343]More Simple Traits (MST)[/url] - my submod shows which traits are dynamic from it.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2812583527]Literacy Mod[/url] - my submod shows which traits are dynamic from it. (upcoming update, Literacy is not dynamic yet)
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2760950740]Explorer Trait[/url] - my submod marks the trait being dynamic.
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2863908612]SixthSense[/url] - my submod marks the trait being dynamic.
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2760950740]Explorer Trait[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2863908612]SixthSense[/url] - my submod marks the traits being dynamic.
 [*] Literally anything else: should be compatible.
 [/list]
 
 [h1]GitHub and Discord[/h1]
-If you want to submit translation files, easiest way to do it would be on github. I've also made Discord server for this and other of my mods so if you want to suggest some traits or report bugs, easiest way to reach me would be over the discord. Click on images, they will take you where you want.
+If you want to submit translation files, the easiest way to do it would be on GitHub. I've also made Discord server for this and other of my mods so if you want to suggest some traits or report bugs, the fastest way to reach me would be over the discord. Click on images, they will take you where you want.
 [url=https://github.com/MusicManiac/DynamicTraitsWorld][img]https://cdn.iconscout.com/icon/free/png-256/github-163-761603.png[/img][/url][url=https://discord.gg/8pBN5Ccm7z][img]https://cdn.iconscout.com/icon/free/png-256/discord-3691244-3073764.png[/img][/url]
 
 [h1]Credits[/h1]
-Huge thanks to [url=https://steamcommunity.com/profiles/76561198012326036]Chuckleberry Finn[/url], [url=https://steamcommunity.com/profiles/76561198042464272]albion[/url] and few others ([url=https://steamcommunity.com/profiles/76561199042257388]Glytch3r[/url], DeltaMango, Anonymous, [url=https://steamcommunity.com/profiles/76561197988519654]Nuzzleskatev[/url], [url=https://steamcommunity.com/profiles/76561198168480115]Browser8[/url]) from official PZ discord's #modding channel for answering like a hundred of questions :)
+Huge thanks to [url=https://steamcommunity.com/profiles/76561198012326036]Chuckleberry Finn[/url], [url=https://steamcommunity.com/profiles/76561198042464272]albion[/url] and few others ([url=https://steamcommunity.com/profiles/76561199042257388]Glytch3r[/url], [url=https://steamcommunity.com/profiles/76561198017173991]DeltaMango[/url], Anonymous, [url=https://steamcommunity.com/profiles/76561197988519654]Nuzzleskatev[/url], [url=https://steamcommunity.com/profiles/76561198168480115]Browser8[/url]) from official PZ discord's #modding channel for answering like a hundred of questions :)
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] and it's author, [url=https://steamcommunity.com/profiles/76561197982774396]Draco[/url] as majority of their perks were absorbed by this mod
 
 [h1]Afterword and Permission[/h1]
