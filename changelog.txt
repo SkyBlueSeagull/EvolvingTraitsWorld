@@ -1,10 +1,3 @@
-v.1.2.0
-General:
-	- Mark Dynamic Traits submod is using much smarter logic, utilizing existing translations and just adding "(D)" at the end of the trait name, instead of using manually written translation files.
-	- Removed ETW dependency from submod, meaning you can run submod without running main file.
-	- Added support for SOTO to submod.
-Moodles:
-	- Added moodle for Sleep Schedule system, now you can see if you're sleeping in correct hours via the moodle, only active while sleeping.
-	- Bloodlust Moodle is now shown only within 6 (customizable via sandbox) hours after killing a zombie
-	- Bloodlust Moodle is now showing exact % how filled your Bloodlust Meter is.
-	- New Sandbox Settings page, for moodle settings, at the moment it's quite empty, but new moodle settings will be there with time.
+v.1.2.1
+Fixes:
+	- Fixed Submod showing traits made dynamic by ETW even when ETW was not enabled (I forgor :c)

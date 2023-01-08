@@ -4,7 +4,7 @@ require('NPCs/MainCreationMethods');
 local altNames = {};
 
 --base game
-if true then
+if getActivatedMods():contains('EvolvingTraitsWorld') then
     altNames.AdrenalineJunkie = true;
     altNames.Agoraphobic = true;
     altNames.AllThumbs = true;
