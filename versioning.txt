@@ -1,0 +1,17 @@
+v.1.x.x
+
+General:
+	-
+Moodles:
+	-
+Fixes:
+	-
+Mod Conflicts:
+	-
+
+Numbers to increase:
+Overhauls: X.x.x
+General: x.X.x
+Moodles: x.X.x
+Fixes: x.x.X
+Mod Conflicts: x.x.X

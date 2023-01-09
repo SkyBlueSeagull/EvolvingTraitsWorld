@@ -1,3 +1,6 @@
-v.1.2.1
-Fixes:
-	- Fixed Submod showing traits made dynamic by ETW even when ETW was not enabled (I forgor :c)
+v.1.3.0
+
+General:
+	- Added support for Dynamic Traits to submod. Main mod is still not compatible and won't be. Reminder that submod can be run without running main mod.
+Mod Conflicts:
+	- Resolved mod conflict with Superb Survivors!

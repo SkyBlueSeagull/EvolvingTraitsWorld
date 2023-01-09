@@ -1,6 +1,6 @@
 name=Evolving Traits World (ETW)
 poster=poster.png
-require=MoodleFramework,KillCount
+require=MoodleFramework,KillCount,modoptions
 url=https://steamcommunity.com/sharedfiles/filedetails/?id=2914075159
 id=EvolvingTraitsWorld
 versionMin=41.78

@@ -67,40 +67,45 @@ function ISFixAction:perform()
 	end
 end
 
-local original_transfer_perform = ISInventoryTransferAction.perform;
-function ISInventoryTransferAction:perform() -- confirmed working
-	-- TODO: figure out a way to stop overwriting the function after player has the trait (low priority)
-	local player = self.character;
-	local item = self.item;
-	local itemWeight = item:getWeight();
-	local modData = player:getModData().EvolvingTraitsWorld.TransferSystem;
-	--print("DTW Logger: Moving an item with weight of "..itemWeight);
-	modData.ItemsTransferred = modData.ItemsTransferred + 1;
-	modData.WeightTransferred = modData.WeightTransferred + itemWeight;
-	original_transfer_perform(self);
-	if SBvars.InventoryTransferSystem == true then
-		if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
-			player:getTraits():remove("Disorganized");
-			HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen());
-		end
-		if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
-			player:getTraits():add("Organized");
-			HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen());
-		end
-		if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
-			player:getTraits():remove("AllThumbs");
-			HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen());
-		end
-		if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
-			player:getTraits():add("Dextrous");
-			HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen());
-		end
-		if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
-			player:getTraits():remove("butterfingers");
-			HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen());
+--if not getActivatedMods():contains('SuperbSurvivors') then
+	local original_transfer_perform = ISInventoryTransferAction.perform;
+	function ISInventoryTransferAction:perform() -- confirmed working
+		if self.character == getPlayer() then
+			local player = self.character;
+			local item = self.item;
+			local itemWeight = item:getWeight();
+			local modData = player:getModData().EvolvingTraitsWorld.TransferSystem;
+			--print("ETW Logger: Moving an item with weight of "..itemWeight);
+			modData.ItemsTransferred = modData.ItemsTransferred + 1;
+			modData.WeightTransferred = modData.WeightTransferred + itemWeight;
+			original_transfer_perform(self);
+			if SBvars.InventoryTransferSystem == true then
+				if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
+					player:getTraits():remove("Disorganized");
+					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen());
+				end
+				if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
+					player:getTraits():add("Organized");
+					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen());
+				end
+				if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
+					player:getTraits():remove("AllThumbs");
+					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen());
+				end
+				if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
+					player:getTraits():add("Dextrous");
+					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen());
+				end
+				if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
+					player:getTraits():remove("butterfingers");
+					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen());
+				end
+			end
+		else
+			original_transfer_perform(self);
 		end
 	end
-end
+--end
 
 local function iterList(_list)
 	local list = _list;
@@ -118,7 +123,7 @@ local original_forageSystem_addOrDropItems = forageSystem.addOrDropItems;
 function forageSystem.addOrDropItems(_character, _inventory, _items, _discardItems)
 	if not _character:HasTrait("Herbalist") and (not _discardItems) then
 		for item in iterList(_items) do
-			--print("DTW Logger: picking up item: "..item:getFullType());
+			--print("ETW Logger: picking up item: "..item:getFullType());
 			local herbs = {
 				-- Medical herbs
 				"Base.Plantain",
@@ -144,7 +149,7 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 			}
 			for _, herb in pairs(herbs) do
 				if herb == item:getFullType() then
-					--print("DTW Logger: picking up herbs: "..item:getFullType())
+					--print("ETW Logger: picking up herbs: "..item:getFullType())
 					local modData = player:getModData().EvolvingTraitsWorld;
 					modData.HerbsPickedUp = modData.HerbsPickedUp + 1;
 					if modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then
