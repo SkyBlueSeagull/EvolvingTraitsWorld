@@ -12,6 +12,7 @@ Mod Conflicts:
 Numbers to increase:
 Overhauls: X.x.x
 General: x.X.x
-Moodles: x.X.x
+Moodles (new): x.X.x
+Moodles (improvements): x.x.X
 Fixes: x.x.X
 Mod Conflicts: x.x.X

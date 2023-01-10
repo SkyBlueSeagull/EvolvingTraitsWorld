@@ -42,6 +42,7 @@ local function calculateTime(time1, time2)
     else return endTime end
 end
 
+-- TODO: rewrite time math
 local function findMidpoint(time1, time2)
     local midPoint = 0;
     if time1 > time2 then midPoint = (time1 + time2 + 24) / 2
@@ -63,6 +64,7 @@ local function calculateAverage(values)
         sum = sum + value;
         --print("ETW Logger: Value in modData.Last100PreferredHour = "..value);
     end
+    --print("ETW Logger: AVG from: modData.Last100PreferredHour"..(sum / #values));
     return sum / #values
 end
 
@@ -83,10 +85,13 @@ local function sleepSystem()
         else
             modData.SleepHealthinessBar = math.max(-200, (modData.SleepHealthinessBar - 1 / 6) * SBvars.SleepSystemMultiplier);
         end
-        ETWMoodles.sleepHealthMoodleUpdate(player, false);
+        if currentPreferredTargetHour >= 24 then currentPreferredTargetHour = currentPreferredTargetHour - 24 end
+        local hoursAwayFromPreferredHour = math.min(math.abs(currentPreferredTargetHour - timeOfDay), 24 - math.abs(timeOfDay - currentPreferredTargetHour));
+        --print("ETW Logger: current hour: "..timeOfDay..", hours away from perferred hour: "..hoursAwayFromPreferredHour);
+        ETWMoodles.sleepHealthMoodleUpdate(player, hoursAwayFromPreferredHour,false);
     end
     if not player:isAsleep() and modData.CurrentlySleeping == true then
-        --local currentPreferredTargetHour = calculateAverage(modData.Last100PreferredHour); -- only needed for debugging
+        local currentPreferredTargetHour = calculateAverage(modData.Last100PreferredHour); -- only needed for debugging
         if modData.WentToSleepAt > timeOfDay then
             --print("ETW Logger: old currentPreferredTargetHour: "..currentPreferredTargetHour)
             --print("ETW Logger: findMidpoint("..modData.WentToSleepAt..", "..24 + timeOfDay..")="..findMidpoint(modData.WentToSleepAt, 24 + timeOfDay));
@@ -98,9 +103,11 @@ local function sleepSystem()
             insertValueInSleepTable(findMidpoint(modData.WentToSleepAt, timeOfDay), modData.Last100PreferredHour);
             --print("ETW Logger: new currentPreferredTargetHour: "..calculateAverage(modData.Last100PreferredHour));
         end
-        ETWMoodles.sleepHealthMoodleUpdate(player, true);
+        ETWMoodles.sleepHealthMoodleUpdate(nil, nil,true);
         modData.CurrentlySleeping = false;
         modData.HoursSinceLastSleep = 0;
+        --print("ETW Logger: AVG from: modData.Last100PreferredHour"..currentPreferredTargetHour);
+        --print("ETW Logger: SleepHealthinessBar: "..modData.SleepHealthinessBar);
     end
     if not player:isAsleep() then
         modData.HoursSinceLastSleep = modData.HoursSinceLastSleep + 1 / 6;

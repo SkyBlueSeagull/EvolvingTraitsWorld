@@ -15,19 +15,22 @@ function ETWMoodles.bloodlustMoodleUpdate(player, hide) -- confirmed working
         local percentage = modData.BloodlustMeter / 36;
         local displayedPercentage = string.format("%.1f",percentage * 100);
         moodle:setValue(percentage);
-        moodle:setDescription(moodle:getGoodBadNeutral(),moodle:getLevel(), getText("Moodles_BloodlustMoodle_Custom",displayedPercentage));
+        moodle:setDescription(moodle:getGoodBadNeutral(),moodle:getLevel(), getText("Moodles_BloodlustMoodle_Custom", displayedPercentage));
     else
         moodle:setValue(0.5);
     end
 end
 
-function ETWMoodles.sleepHealthMoodleUpdate(player, hide)
+function ETWMoodles.sleepHealthMoodleUpdate(player, hoursAwayFromPreferredHour, hide)
     local moodle = MF.getMoodle("SleepHealthMoodle");
-    moodle:setThresholds(-0.0001, nil, nil, nil, nil, nil, nil, 0.0001);
+    moodle:setThresholds(1.5, 3, 4.5, 5.999, 6.001, 7.5, 9, 10.5);
     if player == getPlayer() and EvolvingTraitsWorld.settings.EnableSleepHealthMoodle == true and hide == false then
-        moodle:setValue(player:getModData().EvolvingTraitsWorld.SleepSystem.SleepHealthinessBar);
+        --print("ETW Logger: hoursAwayFromPreferredHour: "..hoursAwayFromPreferredHour);
+        local displayedDifference = string.format("%.1f", hoursAwayFromPreferredHour);
+        moodle:setValue(12 - hoursAwayFromPreferredHour);
+        moodle:setDescription(moodle:getGoodBadNeutral(),moodle:getLevel(), getText("Moodles_SleepHealthMoodle_Custom", displayedDifference));
     else
-        moodle:setValue(0);
+        moodle:setValue(6);
     end
 end
 

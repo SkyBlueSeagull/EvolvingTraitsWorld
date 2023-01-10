@@ -1,6 +1,5 @@
-v.1.3.0
-
-General:
-	- Added support for Dynamic Traits to submod. Main mod is still not compatible and won't be. Reminder that submod can be run without running main mod.
-Mod Conflicts:
-	- Resolved mod conflict with Superb Survivors!
+v.1.3.1
+Moodles:
+	- Sleep Health moodle now shows precise hours to your optimal sleeping hour.
+Fixes:
+	- Fixed Sleep Heath Moodle displaying incorrect information.

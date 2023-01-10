@@ -9,8 +9,13 @@ Moodles_EN {
 	Moodles_BloodlustMoodle_Bad_lvl4 = "I really don't feel like killing any zombies",
 	Moodles_BloodlustMoodle_Custom = "My Bloodlust Meter is filled up to %1 percent.",
 
-	Moodles_SleepHealthMoodle_Good_lvl4 = "Sleeping in optimal hours",
-	Moodles_SleepHealthMoodle_Good_desc_lvl4 = "You're reinforcing your good sleeping schedule",
-	Moodles_SleepHealthMoodle_Bad_lvl4 = "Sleeping in sub-optimal hours",
-	Moodles_SleepHealthMoodle_Bad_desc_lvl4 = "You're not maintaining your sleeping schedule",
+	Moodles_SleepHealthMoodle_Good_lvl4 = "Right in the perfect spot",
+	Moodles_SleepHealthMoodle_Good_lvl3 = "Great time to sleep",
+	Moodles_SleepHealthMoodle_Good_lvl2 = "Decent time to sleep",
+	Moodles_SleepHealthMoodle_Good_lvl1 = "Slightly above average time to sleep.",
+	Moodles_SleepHealthMoodle_Bad_lvl1 = "Slightly off my schedule",
+	Moodles_SleepHealthMoodle_Bad_lvl2 = "Not great time to sleep",
+	Moodles_SleepHealthMoodle_Bad_lvl3 = "Way off my sleeping schedule",
+	Moodles_SleepHealthMoodle_Bad_lvl4 = "My schedule is completely broken",
+	Moodles_SleepHealthMoodle_Custom = "Sleeping %1 h away from optimal hour"
 }
