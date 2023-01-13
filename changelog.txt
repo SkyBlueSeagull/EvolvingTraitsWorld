@@ -1,7 +1,4 @@
-v.2.1.0
-General:
-	- Herbalist can be lost now, counter very slowly decays (1/day).
-	- Slightly buffed Bloodlust, now also removes some stress and panic when killing zombies
+v.2.1.1
 Fixes:
-	- Fixed Outdoorsman being removed upon starting with it. Existing characters will have to manually earn it, new characters will behave as expected.
-	- Found some issues here and there in code, fixed them.
+	- Fixed Smoker moodle being displayed when shouldn't
+	- Updated Submod with missing traits, added new notation, (P/D) means that they are permanent if picked in character creation, but if not picked they are dynamic and obtainable/losable during the game.

@@ -2,7 +2,7 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local original_oneat_cigarettes = OnEat_Cigarettes;
 function OnEat_Cigarettes(food, character, percent)
-	print("ETW Logger: detected smoking");
+	--print("ETW Logger: detected smoking");
 	local modData = character:getModData().EvolvingTraitsWorld.SmokeSystem; -- SmokingAddiction MinutesSinceLastSmoke
 	local timeSinceLastSmoke = character:getTimeSinceLastSmoke() * 60;
 	--print("ETW Logger: timeSinceLastSmoke: "..timeSinceLastSmoke);

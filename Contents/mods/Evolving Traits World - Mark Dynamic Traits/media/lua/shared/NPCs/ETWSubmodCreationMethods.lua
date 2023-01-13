@@ -2,6 +2,7 @@ require('NPCs/MainCreationMethods');
 
 -- Special thanks to Albion and Chuck for this function
 local altNames = {};
+local altNamesSpecial = {};
 
 --base game
 if true then
@@ -23,7 +24,7 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.AdrenalineJunkie = true;
 	altNames.Agoraphobic = true;
 	altNames.AllThumbs = true;
-	altNames.Asthmatic = true;
+	altNamesSpecial.Asthmatic = true;
 	altNames.BaseballPlayer = true;
 	altNames.Brave = true;
 	altNames.Brawler = true;
@@ -35,7 +36,7 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.Dextrous = true;
 	altNames.Disorganized = true;
 	altNames.EagleEyed = true;
-	altNames.FastHealer = true;
+	altNamesSpecial.FastHealer = true;
 	altNames.FastLearner = true;
 	altNames.FirstAid = true;
 	altNames.Gardener = true;
@@ -43,18 +44,18 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.Gymnast = true;
 	altNames.Handy = true;
 	altNames.HardOfHearing = true;
-	altNames.HeartyAppitite = true;
+	altNamesSpecial.HeartyAppitite = true;
 	altNames.Hemophobic = true;
 	altNames.Herbalist = true;
-	altNames.HighThirst = true;
+	altNamesSpecial.HighThirst = true;
 	altNames.Hiker = true;
 	altNames.Hunter = true;
 	altNames.Inconspicuous = true;
 	altNames.IronGut = true;
 	altNames.Jogger = true;
 	altNames.KeenHearing = true;
-	altNames.LightEater = true;
-	altNames.LowThirst = true;
+	altNamesSpecial.LightEater = true;
+	altNamesSpecial.LowThirst = true;
 	altNames.Lucky = true;
 	altNames.Mechanics = true;
 	altNames.NeedsLessSleep = true;
@@ -65,11 +66,12 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.Pacifist = true;
 	altNames.ProneToIllness = true;
 	altNames.Resilient = true;
-	altNames.SlowHealer = true;
+	altNamesSpecial.SlowHealer = true;
 	altNames.SlowLearner = true;
+	altNames.Smoker = true;
 	altNames.Tailor = true;
-	altNames.ThickSkinned = true;
-	altNames.Thinskinned = true;
+	altNamesSpecial.ThickSkinned = true;
+	altNamesSpecial.Thinskinned = true;
 	altNames.Unlucky = true;
 	altNames.WeakStomach = true;
 end
@@ -310,7 +312,9 @@ end
 local old_addTrait = TraitFactory.addTrait
 
 function TraitFactory.addTrait(type, name, ...)
-	if altNames[type] == true then
+	if altNamesSpecial[type] == true then
+		name = name .. " (P/D)";
+	elseif altNames[type] == true then
 		name = name .. " (D)";
 	end
 	return old_addTrait(type, name, ...)

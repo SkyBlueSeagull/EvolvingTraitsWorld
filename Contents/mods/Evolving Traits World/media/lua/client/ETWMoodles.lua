@@ -71,7 +71,7 @@ function ETWMoodles.smokerMoodleUpdate(player, smokingAddiction)
 			moodleLoseSmoker:setValue(50);
 		else
 			local percentage = 100 - (smokingAddiction - smokerLoseThreshold) * 100 / (upperBoundary - smokerLoseThreshold);
-			if percentage <= math.min(SBvars.SmokerMoodlePercentage, MOvars.SmokerMoodleVisibilityValue) and MOvars.EnableSmokerMoodle == true then
+			if 100 - percentage <= math.min(SBvars.SmokerMoodlePercentage, MOvars.SmokerMoodleVisibilityValue) and MOvars.EnableSmokerMoodle == true then
 				local displayedDifference = string.format("%.2f", math.abs(100 - percentage));
 				moodleLoseSmoker:setValue(percentage);
 				moodleLoseSmoker:setDescription(moodleLoseSmoker:getGoodBadNeutral(), moodleLoseSmoker:getLevel(), getText("Moodles_SmokerLSMoodle_LosingSmoker", displayedDifference));
