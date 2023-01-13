@@ -1,6 +1,7 @@
-v.2.0.1
+v.2.1.0
+General:
+	- Herbalist can be lost now, counter very slowly decays (1/day).
+	- Slightly buffed Bloodlust, now also removes some stress and panic when killing zombies
 Fixes:
-	- SmokerMoodlePercentage sandbox was linked to incorrect localization string.
-	- Fixed smoker being auto-removed when player start with it. Can't help existing characters on my side, but new ones will behave properly.
-Translations:
-	- Changed Italian translation to correct encoding.
+	- Fixed Outdoorsman being removed upon starting with it. Existing characters will have to manually earn it, new characters will behave as expected.
+	- Found some issues here and there in code, fixed them.

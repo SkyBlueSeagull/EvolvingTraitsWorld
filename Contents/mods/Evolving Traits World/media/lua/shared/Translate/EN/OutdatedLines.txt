@@ -1,0 +1,8 @@
+New/changed lines since v.2.0.0
+
+Moodles_EN.txt
+
+Sandbox_EN.txt
+
+UI_EN.txt
+	UI_trait_BloodlustDesc = "You find great joy in culling the undead.<br>You gain happiness and lose stress and panic from killing zombies.",

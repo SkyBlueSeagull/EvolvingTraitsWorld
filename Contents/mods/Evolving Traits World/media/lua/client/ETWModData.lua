@@ -55,7 +55,6 @@ local function createModData(playerIndex, player)
 	modData.CatEyesCounter = modData.CatEyesCounter or 0;
 	modData.LocationFearCounter = nil; -- v.2.0.0 cleaning up, remove it later
 	modData.FoodSicknessWeathered = modData.FoodSicknessWeathered or 0;
-	modData.HerbsPickedUp = modData.HerbsPickedUp or 0;
 	modData.AsthmaticCounter = modData.AsthmaticCounter or 0;
 
 	modData.StartingTraits = modData.StartingTraits or {};
@@ -76,11 +75,21 @@ local function createModData(playerIndex, player)
 	checkStartingDTConflictingTrait(startingTraits, player, "Asthmatic");
 	checkStartingTrait(startingTraits, player, "Bloodlust");
 	checkStartingTrait(startingTraits, player, "Smoker");
+	checkStartingTrait(startingTraits, player, "Outdoorsman");
+	checkStartingTrait(startingTraits, player, "Herbalist");
+
+	if modData.HerbsPickedUp == nil and startingTraits.Herbalist == true then -- start at full counter if they have the trait
+		modData.HerbsPickedUp = SBvars.HerbalistHerbsPicked;
+	end
+	modData.HerbsPickedUp = modData.HerbsPickedUp or 0;
 
 	modData.OutdoorsmanCounter = nil; -- v.2.0.0 - remove this later, this is only for cleaning up
 
 	modData.OutdoorsmanSystem = modData.OutdoorsmanSystem or {};
 	local outdoorsmanSystem = modData.OutdoorsmanSystem;
+	if outdoorsmanSystem.OutdoorsmanCounter == nil and startingTraits.Outdoorsman == true then -- start at full counter if they have the trait
+		outdoorsmanSystem.OutdoorsmanCounter = SBvars.OutdoorsmanCounter * 10;
+	end
 	outdoorsmanSystem.OutdoorsmanCounter = outdoorsmanSystem.OutdoorsmanCounter or 0;
 	outdoorsmanSystem.MinutesSinceOutside = outdoorsmanSystem.MinutesSinceOutside or 0;
 
@@ -119,7 +128,6 @@ local function createModData(playerIndex, player)
 	else
 		smokeSystem.SmokingAddiction = smokeSystem.SmokingAddiction or 0;
 	end
-
 	smokeSystem.MinutesSinceLastSmoke = smokeSystem.MinutesSinceLastSmoke or 0;
 
 	modData.ColdSystem = modData.ColdSystem or {};

@@ -5,7 +5,6 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 
-
 local function catEyes()
 	-- confirmed working
 	local player = getPlayer();
@@ -120,6 +119,18 @@ local function smoker()
 	end
 end
 
+local function herbalist()
+	local player = getPlayer();
+	local modData = player:getModData().EvolvingTraitsWorld;
+	modData.HerbsPickedUp = math.max(0, modData.HerbsPickedUp - 1);
+	print("ETW Logger: modData.HerbsPickedUp: "..modData.HerbsPickedUp);
+	if modData.HerbsPickedUp < SBvars.HerbalistHerbsPicked / 2 and player:HasTrait("Herbalist") then
+		player:getTraits():remove("Herbalist");
+		player:getKnownRecipes():remove("Herbalist");
+		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Herbalist"), false, HaloTextHelper.getColorRed()) end
+	end
+end
+
 local function initializeEvents(playerIndex, player)
 	Events.EveryOneMinute.Remove(catEyes);
 	if SBvars.CatEyes == true and not player:HasTrait("NightVision") then Events.EveryOneMinute.Add(catEyes) end
@@ -127,6 +138,8 @@ local function initializeEvents(playerIndex, player)
 	if SBvars.SleepSystem == true then Events.EveryTenMinutes.Add(sleepSystem) end
 	Events.EveryOneMinute.Remove(smoker);
 	if SBvars.Smoker == true then Events.EveryOneMinute.Add(smoker) end
+	Events.EveryDays.Remove(herbalist);
+	if SBvars.Herbalist == true then Events.EveryDays.Add(herbalist) end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);

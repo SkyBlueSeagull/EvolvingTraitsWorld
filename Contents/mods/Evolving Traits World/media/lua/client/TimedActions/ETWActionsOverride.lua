@@ -14,7 +14,7 @@ end
 local function addRecipe (player, recipe)
 	local playerRecipes = player:getKnownRecipes();
 	if not playerRecipes:contains(recipe) then
-		addRecipe(player, recipe);
+		playerRecipes:add(recipe);
 	end
 end
 
@@ -24,6 +24,7 @@ function ETWActionsOverride.bodyworkEnthusiastCheck()
 	local modData = player:getModData().EvolvingTraitsWorld;
 	local level = player:getPerkLevel(Perks.MetalWelding) + player:getPerkLevel(Perks.Mechanics);
 	if level >= SBvars.BodyworkEnthusiastSkill and modData.VehiclePartRepairs >= SBvars.BodyworkEnthusiastRepairs then
+		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 		player:getTraits():add("BodyWorkEnthusiast");
 		applyXPBoost(player, Perks.MetalWelding, 1);
 		applyXPBoost(player, Perks.Mechanics, 1);
@@ -33,7 +34,7 @@ function ETWActionsOverride.bodyworkEnthusiastCheck()
 		addRecipe(player, "Make Metal Sheet");
 		addRecipe(player, "Make Small Metal Sheet");
 		addRecipe(player, "Make Metal Roof");
-		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BodyWorkEnthusiast"), true, HaloTextHelper.getColorGreen()) end
+		if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BodyWorkEnthusiast"), true, HaloTextHelper.getColorGreen()) end
 	end
 end
 
@@ -43,10 +44,11 @@ function ETWActionsOverride.mechanicsCheck()
 	local modData = player:getModData().EvolvingTraitsWorld;
 	if player:getPerkLevel(Perks.Mechanics) >= SBvars.BodyworkEnthusiastSkill and modData.VehiclePartRepairs >= SBvars.MechanicsRepairs then
 		player:getTraits():add("Mechanics");
+		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 		applyXPBoost(player, Perks.Mechanics, 1);
 		addRecipe(player, "Basic Mechanics");
 		addRecipe(player, "Intermediate Mechanics");
-		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Mechanics"), true, HaloTextHelper.getColorGreen()) end
+		if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Mechanics"), true, HaloTextHelper.getColorGreen()) end
 	end
 end
 
@@ -86,23 +88,23 @@ function ISInventoryTransferAction:perform() -- confirmed working
 			original_transfer_perform(self);
 			if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
 				player:getTraits():remove("Disorganized");
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen()) end
+				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen()) end
 			end
 			if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
 				player:getTraits():add("Organized");
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen()) end
+				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen()) end
 			end
 			if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
 				player:getTraits():remove("AllThumbs");
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
+				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
 			end
 			if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
 				player:getTraits():add("Dextrous");
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen()) end
+				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen()) end
 			end
 			if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
 				player:getTraits():remove("butterfingers");
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
+				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
 			end
 		end
 	else
@@ -118,15 +120,14 @@ local function iterList(_list)
 		i = i + 1;
 		if i <= size and not list:isEmpty() then
 			return list:get(i), i;
-		end ;
-	end;
+		end
+	end
 end
 
 local original_forageSystem_addOrDropItems = forageSystem.addOrDropItems;
 function forageSystem.addOrDropItems(_character, _inventory, _items, _discardItems)
 	local player = getPlayer();
-	if not player:HasTrait("Herbalist") and (not _discardItems) then
-		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
+	if not _discardItems then
 		for item in iterList(_items) do
 			--print("ETW Logger: picking up item: "..item:getFullType());
 			local herbs = {
@@ -160,8 +161,10 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 					local modData = player:getModData().EvolvingTraitsWorld;
 					modData.HerbsPickedUp = modData.HerbsPickedUp + 1;
 					if modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then
+						local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 						player:getTraits():add("Herbalist");
-						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Herbalist"), true, HaloTextHelper.getColorGreen()) end
+						addRecipe(player, "Herbalist");
+						if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Herbalist"), true, HaloTextHelper.getColorGreen()) end
 						break
 					end
 					break
