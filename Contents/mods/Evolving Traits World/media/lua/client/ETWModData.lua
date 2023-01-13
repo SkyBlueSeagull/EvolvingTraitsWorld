@@ -75,6 +75,7 @@ local function createModData(playerIndex, player)
 	checkStartingDTConflictingTrait(startingTraits, player, "Claustophobic");
 	checkStartingDTConflictingTrait(startingTraits, player, "Asthmatic");
 	checkStartingTrait(startingTraits, player, "Bloodlust");
+	checkStartingTrait(startingTraits, player, "Smoker");
 
 	modData.OutdoorsmanCounter = nil; -- v.2.0.0 - remove this later, this is only for cleaning up
 
@@ -113,7 +114,12 @@ local function createModData(playerIndex, player)
 
 	modData.SmokeSystem = modData.SmokeSystem or {};
 	local smokeSystem = modData.SmokeSystem;
-	smokeSystem.SmokingAddiction = smokeSystem.SmokingAddiction or 0;
+	if smokeSystem.SmokingAddiction == nil and startingTraits.Smoker == true then
+		smokeSystem.SmokingAddiction = SBvars.SmokerCounter * 2;
+	else
+		smokeSystem.SmokingAddiction = smokeSystem.SmokingAddiction or 0;
+	end
+
 	smokeSystem.MinutesSinceLastSmoke = smokeSystem.MinutesSinceLastSmoke or 0;
 
 	modData.ColdSystem = modData.ColdSystem or {};

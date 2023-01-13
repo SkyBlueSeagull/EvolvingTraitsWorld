@@ -1,4 +1,6 @@
 Sandbox_EN = {
+	note_to_LANGUAGE_translators = "Make sure file is saved in <ENCODING> encoding, so game display correct characters"
+
 	Sandbox_EvolvingTraitsWorld = "Evolving Traits World - Singular Perks",
 	Sandbox_EvolvingTraitsWorldSystems = "Evolving Traits World - Systems",
 	Sandbox_EvolvingTraitsWorldTraitsSettings = "Evolving Traits World - Traits",

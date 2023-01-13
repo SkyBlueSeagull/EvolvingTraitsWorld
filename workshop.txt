@@ -10,16 +10,16 @@ description=
 description=[h1]Features[/h1]
 description=[list]
 description=[*] 80+ dynamic perks, full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
-description=[*] FULL sandbox customization. Choose which perks you want to be dynamic, choose how fast you get them, choose how fast you lose them, customize anything with more than 100 sandbox options
+description=[*] [h3][b]FULL sandbox customization[/b]. Choose which perks you want to be dynamic, choose how fast you get them, choose how fast you lose them, customize anything with more than 130 sandbox options. Nothing is forced upon player, if you like 1% of the mod, you can literally set it up so you get to use that 1% and nothing else.[/h3]
 description=[*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay! Can be enabled without enabling main mod, so if you don't like main features added by this mod and just want to see which traits are dynamic in your game with SOTO/MST/MT/DT - you can do that.
 description=[*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.
-description=[*] Client-sided moodles configuration available with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown. At the moment supports Bloodlust and Sleep System.
+description=[*] Client-sided moodles configuration available with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown.
 description=[/list]
 description=
 description=[h1]Compatibility and Installation[/h1]
 description=Installation instructions can be found in [url=https://steamcommunity.com/workshop/filedetails/discussion/2914075159/3767857092594929252/]this discussion[/url].
 description=[list]
-description=[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] - main mod is incompatible. Submod is compatible.
+description=[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2459400130]Dynamic Traits[/url] - an alternative to this mod, therefore main mod is incompatible. Submod is compatible.
 description=[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2894296454]Change Sandbox Options (by Star)[/url] - use this to change SP starting options after save is up. Other sandbox changing mods won't work unless they get fixed.
 description=[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] - mostly absorbed by this mod, therefore probably incompatible.
 description=[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1299328280]More Traits[/url] - my submod shows which traits are dynamic from it, additionally makes Butterfingers dynamic.
@@ -54,6 +54,10 @@ description=[url=https://ko-fi.com/musicmaniac][img]https://uploads-ssl.webflow.
 description=
 description=[quote]? Permissions
 description=Redistribution of this mod without explicit permission from the creator is prohibited under any circumstances. This includes, but not limited to, uploading this mod to the Steam Workshop or any other site, distribution as part of another mod or modpack, distribution of modified versions.
-description=© 2023 [url=https://steamcommunity.com/profiles/76561198152820942]MusicManiac[/url] (SteamID64: 76561198152820942)[/quote]
+description=© 2023 [url=https://steamcommunity.com/profiles/76561198152820942]MusicManiac[/url] (SteamID64: 76561198152820942)[/quote]
+description=
+description=Workshop ID: 2914075159
+description=Mod ID: EvolvingTraitsWorld
+description=Mod ID: EvolvingTraitsWorldMarkDynamicTraits
 tags=Build 41;Balance;Multiplayer;Realistic;Silly/Fun;Traits
 visibility=public

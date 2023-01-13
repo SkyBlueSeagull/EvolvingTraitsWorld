@@ -22,6 +22,7 @@ function ETWMoodles.bloodlustMoodleUpdate(player, hide)  -- confirmed working
 			local displayedPercentage = string.format("%.2f", percentage * 100);
 			moodle:setValue(percentage);
 			moodle:setDescription(moodle:getGoodBadNeutral(), moodle:getLevel(), getText("Moodles_BloodlustMoodle_Custom", displayedPercentage));
+			moodle:setPicture(moodle:getGoodBadNeutral(), moodle:getLevel(),getTexture("media/ui/Moodles/BloodlustMoodle.png"));
 		else
 			moodle:setValue(0.5);
 		end
@@ -38,6 +39,7 @@ function ETWMoodles.sleepHealthMoodleUpdate(player, hoursAwayFromPreferredHour, 
 			local displayedDifference = string.format("%.2f", hoursAwayFromPreferredHour);
 			moodle:setValue(12 - hoursAwayFromPreferredHour);
 			moodle:setDescription(moodle:getGoodBadNeutral(), moodle:getLevel(), getText("Moodles_SleepHealthMoodle_Custom", displayedDifference));
+			moodle:setPicture(moodle:getGoodBadNeutral(), moodle:getLevel(),getTexture("media/ui/Moodles/SleepHealthMoodle.png"));
 		else
 			moodle:setValue(6);
 		end
@@ -62,6 +64,7 @@ function ETWMoodles.smokerMoodleUpdate(player, smokingAddiction)
 				local displayedDifference = string.format("%.2f", percentage);
 				moodleGainSmoker:setValue(percentage);
 				moodleGainSmoker:setDescription(moodleGainSmoker:getGoodBadNeutral(), moodleGainSmoker:getLevel(), getText("Moodles_SmokerGSMoodle_GainingSmoker", displayedDifference));
+				moodleGainSmoker:setPicture(moodleGainSmoker:getGoodBadNeutral(), moodleGainSmoker:getLevel(),getTexture("media/ui/Moodles/SmokerGSMoodle.png"));
 			else
 				moodleGainSmoker:setValue(50);
 			end
@@ -72,6 +75,7 @@ function ETWMoodles.smokerMoodleUpdate(player, smokingAddiction)
 				local displayedDifference = string.format("%.2f", math.abs(100 - percentage));
 				moodleLoseSmoker:setValue(percentage);
 				moodleLoseSmoker:setDescription(moodleLoseSmoker:getGoodBadNeutral(), moodleLoseSmoker:getLevel(), getText("Moodles_SmokerLSMoodle_LosingSmoker", displayedDifference));
+				moodleLoseSmoker:setPicture(moodleLoseSmoker:getGoodBadNeutral(), moodleLoseSmoker:getLevel(),getTexture("media/ui/Moodles/SmokerLSMoodle.png"));
 			else
 				moodleLoseSmoker:setValue(50);
 			end

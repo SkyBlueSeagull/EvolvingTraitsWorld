@@ -1,21 +1,6 @@
-v.2.0.0 - Negative Traits Rollout
-General:
-	- Asked Star to fix Sandbox Options mod, now it's working, enjoy changing your sandbox settings after game start (link in description)
-	- Claustrophobic and Agoraphobic can be gained now. Existing progress is lost due splitting system into 2 different parts. New Sandbox Options included.
-	- Outdoorsman can be lost now. Existing progress is lost due to system being rebuilt. New Sandbox Options included.
-	- Pluviophobia can be gained now, Pluviophile can be lost now. Existing progress is saved but can be a bit weird since system was rescaled from 0% - 200% to -100% - 200%. New Sandbox Options included.
-	- Asthmatic can be gained and lost now. Be aware that if you pick it on character creation, it's permanent. Sandbox options included.
-	- Changed Sleep system due to impossible logic problems, now it's much simpler, and it's much easier to shift your schedule. I liked old system, but it wasn't working as intended.
-	- Smoker is added and can be lost and earned. Sandbox options included.
-	- Added ModOption to enable/disable notifications whenever you get the trait.
-Moodles:
-	- New sandbox options for Bloodlust and Sleep System moodles. Server admins can disable them for players by adjusting sandbox setting.
-	- Smoker Moodle added. Shows how close you are from gaining or losing the trait. Sandbox options included.
+v.2.0.1
 Fixes:
-	- Fixed traits showing their description twice.
-	- Fixed missing initialization for fresh characters, so they get starting traits if they qualify for them.
-Mod Conflicts:
-	- Another shot at trying to resolve errors when ran with Superb Survivors.
-	- Forage action shouldn't conflict with Snake modpack anymore.
+	- SmokerMoodlePercentage sandbox was linked to incorrect localization string.
+	- Fixed smoker being auto-removed when player start with it. Can't help existing characters on my side, but new ones will behave properly.
 Translations:
-	- Italian translation added, courtesy of UattO
+	- Changed Italian translation to correct encoding.

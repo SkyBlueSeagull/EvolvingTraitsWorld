@@ -1,4 +1,6 @@
 UI_EN = {
+	note_to_LANGUAGE_translators = "Make sure file is saved in <ENCODING> encoding, so game display correct characters"
+
 	UI_trait_AVClub = "AV Club Member"
 	UI_trait_AVClubDesc = "You are a part of the AV Club.<br>+1 Electrical"
 	UI_trait_AxeThrower = "Axe Thrower"

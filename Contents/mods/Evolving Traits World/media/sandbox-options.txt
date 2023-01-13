@@ -236,7 +236,7 @@ option EvolvingTraitsWorld.SmokerMoodlePercentage
 	max = 100,
 	default = 100,
 	page = EvolvingTraitsWorldMoodles,
-	translation = EvolvingTraitsWorld_SmokerMoodle,
+	translation = EvolvingTraitsWorld_SmokerMoodlePercentage,
 }
 option EvolvingTraitsWorld.TRAITS
 {
