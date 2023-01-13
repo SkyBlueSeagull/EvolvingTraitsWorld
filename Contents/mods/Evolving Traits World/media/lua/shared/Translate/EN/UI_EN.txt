@@ -1,12 +1,12 @@
 UI_EN = {
 	UI_trait_AVClub = "AV Club Member"
-    UI_trait_AVClubDesc = "You are a part of the AV Club.<br>+1 Electrical"
-    UI_trait_AxeThrower = "Axe Thrower"
-    UI_trait_AxeThrowerDesc = "You have participated in axe throwing competitions.<br>+1 Axe"
-    UI_trait_Bloodlust = "Bloodlust"
-    UI_trait_BloodlustDesc = "You find great joy in culling the undead.<br>You gain happiness and lose boredom quickly from killing zombies."
-    UI_trait_BodyWorkEnthusiast = "Bodywork Enthusiast"
-    UI_trait_BodyWorkEnthusiastDesc = "You enjoy repairing and restoring the bodies of old cars.<br>+1 Metalworking"
+	UI_trait_AVClubDesc = "You are a part of the AV Club.<br>+1 Electrical"
+	UI_trait_AxeThrower = "Axe Thrower"
+	UI_trait_AxeThrowerDesc = "You have participated in axe throwing competitions.<br>+1 Axe"
+	UI_trait_Bloodlust = "Bloodlust"
+	UI_trait_BloodlustDesc = "You find great joy in culling the undead.<br>You gain happiness and lose boredom quickly from killing zombies."
+	UI_trait_BodyWorkEnthusiast = "Bodywork Enthusiast"
+	UI_trait_BodyWorkEnthusiastDesc = "You enjoy repairing and restoring the bodies of old cars.<br>+1 Metalworking"
 	UI_trait_FurnitureAssembler = "Furniture Assembler",
 	UI_trait_FurnitureAssemblerDesc = "You are a fan of putting together your own furniture.<br>+1 Carpentry",
 	UI_trait_GunEnthusiast = "Gun Enthusiast",
@@ -28,7 +28,7 @@ UI_EN = {
 	UI_trait_Pluviophile = "Pluviophile",
 	UI_trait_PluviophileDesc = "You love the rain and being under it. Slowly lose unhappiness, stress and boredom while being outside in rainy weather. Effect is halved if you're under umbrella.<br>You can stand under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh, eh, eh, eh<br>These fancy things will never come in between<br>You're part of my entity, here for infinity<br>When the world has took its part<br>When the world has dealt its cards<br>If the hand is hard, together we'll mend your heart",
 	UI_trait_Pluviophobia = "Pluviophobia",
-    UI_trait_PluviophobiaDesc = "You hate the rain and being under it. Slowly gain unhappiness, stress and boredom while being outside in rainy weather. Effect is halved if you're under umbrella.<br>You can stand under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh, eh, eh, eh<br>These fancy things will never come in between<br>You're part of my entity, here for infinity<br>When the world has took its part<br>When the world has dealt its cards<br>If the hand is hard, together we'll mend your heart",
+	UI_trait_PluviophobiaDesc = "You hate the rain and being under it. Slowly gain unhappiness, stress and boredom while being outside in rainy weather. Effect is halved if you're under umbrella.<br>You can stand under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh<br>Under my umbrella, ella, ella, eh, eh, eh, eh, eh, eh<br>These fancy things will never come in between<br>You're part of my entity, here for infinity<br>When the world has took its part<br>When the world has dealt its cards<br>If the hand is hard, together we'll mend your heart",
 	UI_trait_RestorationExpert = "Restoration Expert",
 	UI_trait_RestorationExpertDesc = "You know how to restore old items to pristine condition. You do not gain penalties for multiple repairs.<br>+1 Maintenance",
 	UI_trait_Sojutsu = "Sojutsu Martial Artist",
@@ -36,8 +36,15 @@ UI_EN = {
 	UI_trait_StickFighter = "Stick Fighter",
 	UI_trait_StickFighterDesc = "You have practiced stick fighting martial arts.<br>+1 Short Blunt",
 
+	UI_EvolvingTraitsWorld_Options_EnableNotifications = "Enable Trait Notifications",
+	UI_EvolvingTraitsWorld_Options_EnableNotifications_tooltip = "Show Colored Arrow above your character whenever you gain or lose trait.",
 	UI_EvolvingTraitsWorld_Options_EnableBloodLustMoodle = "Enable Bloodlust Moodle",
 	UI_EvolvingTraitsWorld_Options_EnableBloodLustMoodle_tooltip = "Will take up to 1 in-game hour to update since moodle is updated on hourly basis.",
 	UI_EvolvingTraitsWorld_Options_EnableSleepHealthMoodle = "Enable Sleep Health Moodle",
-    UI_EvolvingTraitsWorld_Options_EnableSleepHealthMoodle_tooltip = "Shows if you're sleeping within your optimal hours or not. Only active while character is sleeping.",
+	UI_EvolvingTraitsWorld_Options_EnableSleepHealthMoodle_tooltip = "Shows if you're sleeping within your optimal hours or not. Only active while character is sleeping.",
+	UI_EvolvingTraitsWorld_Options_EnableSmokerMoodle = "Enable Smoker Moodle",
+	UI_EvolvingTraitsWorld_Options_EnableSmokerMoodle_tooltip = "Shows if when you're close to gaining or loosing Smoker trait.",
+	UI_EvolvingTraitsWorld_Options_SmokerMoodleVisibilityValue = "When Smoker Moodle Shows up",
+	UI_EvolvingTraitsWorld_Options_SmokerMoodleVisibilityValue_tooltip = "This controls when moodle shows up. Setting this to 20%, for example, will make moodle show up when you're 20% away from earning or loosing Smoker. Setting to 100 will leave smoker moodle up always. Limited by Sandbox Settings, so if Sandbox Settings allow max of 40%, and you set 60% here, it'll still show up only at 40%. However, if server has 70% for example, and you wish to show ot much less, you can lower the value, for example, to 20%.",
+
 }

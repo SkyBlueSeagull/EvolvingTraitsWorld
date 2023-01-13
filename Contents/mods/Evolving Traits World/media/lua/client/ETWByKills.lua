@@ -3,9 +3,12 @@ local ETWMoodles = require "ETWMoodles";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
-local function bloodlustKill(zombie) -- confirmed working
-	local player = getPlayer();
+local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
+
+local function bloodlustKill(zombie)
+	-- confirmed working
 	if SBvars.Bloodlust == true then
+		local player = getPlayer();
 		local bloodlust = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
 		local distance = player:DistTo(zombie);
 		if distance <= 10 then
@@ -22,23 +25,25 @@ local function bloodlustKill(zombie) -- confirmed working
 	end
 end
 
-local function bloodlustTime() -- confirmed working
-	local player = getPlayer();
-	local modData = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
+local function bloodlustTime()
+	-- confirmed working
 	if SBvars.Bloodlust == true then
+		local player = getPlayer();
+		local modData = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
 		modData.BloodlustMeter = math.max(modData.BloodlustMeter - 1, 0);
 		ETWMoodles.bloodlustMoodleUpdate(player, false);
 		-- Bloodlust Progress when no perk
 		if not player:HasTrait("Bloodlust") then
 			--print("ETW Log: Bloodlust Meter (perk is not present): "..modData.BloodlustMeter);
-			if modData.BloodlustMeter >= 18 then -- gain if above 50%
+			if modData.BloodlustMeter >= 18 then
+				-- gain if above 50%
 				modData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, modData.BloodlustProgress + modData.BloodlustMeter * 0.1);
 				--print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress);
 				if modData.BloodlustProgress >= SBvars.BloodlustProgress then
 					player:getTraits():add("Bloodlust");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), true, HaloTextHelper.getColorGreen());
+					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), true, HaloTextHelper.getColorGreen()) end
 				end
-			else 
+			else
 				modData.BloodlustProgress = math.max(0, modData.BloodlustProgress - (3.6 - modData.BloodlustMeter * 0.1));
 				--print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress);
 			end
@@ -46,22 +51,25 @@ local function bloodlustTime() -- confirmed working
 		-- Bloodlust Progress when perk is present
 		if player:HasTrait("Bloodlust") then
 			--print("ETW Log: Bloodlust Meter (perk is present): "..modData.BloodlustMeter);
-			if modData.BloodlustMeter >= 18 then -- gain progress if above 50%
+			if modData.BloodlustMeter >= 18 then
+				-- gain progress if above 50%
 				modData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, modData.BloodlustProgress + modData.BloodlustMeter * 0.1);
 				--print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (trait)="..modData.BloodlustProgress);
-			else -- lose progress when below 50%
+			else
+				-- lose progress when below 50%
 				modData.BloodlustProgress = math.max(0, modData.BloodlustProgress - (3.6 - modData.BloodlustMeter * 0.1));
 				--print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (trait)="..modData.BloodlustProgress);
 				if modData.BloodlustProgress <= SBvars.BloodlustProgress / 2 then
 					player:getTraits():remove("Bloodlust");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), false, HaloTextHelper.getColorRed());
+					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), false, HaloTextHelper.getColorRed()) end
 				end
 			end
 		end
 	end
 end
 
-local function eagleEyed(wielder, character, handWeapon, damage) -- confirmed working
+local function eagleEyed(wielder, character, handWeapon, damage)
+	-- confirmed working
 	if wielder == getPlayer() and character:isZombie() and SBvars.EagleEyed == true and not wielder:HasTrait("EagleEyed") then
 		local player = wielder;
 		local zombie = character;
@@ -72,13 +80,14 @@ local function eagleEyed(wielder, character, handWeapon, damage) -- confirmed wo
 			--print("ETW Logger: Caught a kill on following distance: "..distance..", current eagle eyed kills:"..player:getModData().EvolvingTraitsWorld.EagleEyedKills);
 			if player:getModData().EvolvingTraitsWorld.EagleEyedKills >= SBvars.EagleEyedKills then
 				player:getTraits():add("EagleEyed");
-				HaloTextHelper.addTextWithArrow(player, getText("UI_trait_eagleeyed"), true, HaloTextHelper.getColorGreen());
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_eagleeyed"), true, HaloTextHelper.getColorGreen()) end
 			end
 		end
 	end
 end
 
-local function braverySystem(zombie) -- confirmed working
+local function braverySystem(zombie)
+	-- confirmed working
 	local player = getPlayer();
 	local totalKills = player:getZombieKills();
 	local braveryKills = SBvars.BraverySystemKills;
@@ -88,12 +97,12 @@ local function braverySystem(zombie) -- confirmed working
 	local explosivesKills = killCountModData["Explosives"].count;
 	local meleeKills = totalKills - fireKills - vehiclesKills - explosivesKills;
 	local traitInfo = {
-		{trait = "Cowardly", threshold = braveryKills * 0.1, remove = true},
-		{trait = "Hemophobic", threshold = braveryKills * 0.2, remove = true},
-		{trait = "Pacifist", threshold = braveryKills * 0.3, remove = true},
-		{trait = "AdrenalineJunkie", threshold = braveryKills * 0.4, add = true},
-		{trait = "Brave", threshold = braveryKills * 0.6, add = true},
-		{trait = "Desensitized", threshold = braveryKills, add = true}
+		{ trait = "Cowardly", threshold = braveryKills * 0.1, remove = true },
+		{ trait = "Hemophobic", threshold = braveryKills * 0.2, remove = true },
+		{ trait = "Pacifist", threshold = braveryKills * 0.3, remove = true },
+		{ trait = "AdrenalineJunkie", threshold = braveryKills * 0.4, add = true },
+		{ trait = "Brave", threshold = braveryKills * 0.6, add = true },
+		{ trait = "Desensitized", threshold = braveryKills, add = true }
 	}
 
 	for i, info in ipairs(traitInfo) do
@@ -105,10 +114,10 @@ local function braverySystem(zombie) -- confirmed working
 		if (totalKills + meleeKills) >= threshold then
 			if player:HasTrait(trait) and remove then
 				player:getTraits():remove(trait)
-				HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. trait), false, HaloTextHelper.getColorGreen())
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. trait), false, HaloTextHelper.getColorRed()) end
 			elseif not player:HasTrait(trait) and add then
 				player:getTraits():add(trait)
-				HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. (trait == "Brave" and "brave" or trait)), true, HaloTextHelper.getColorGreen())
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. (trait == "Brave" and "brave" or trait)), true, HaloTextHelper.getColorRed()) end
 				if trait == "Desensitized" then
 					Events.OnZombieDead.Remove(braverySystem);
 				end
@@ -122,9 +131,8 @@ local function initializeKills(playerIndex, player)
 	Events.OnZombieDead.Add(bloodlustKill);
 	Events.EveryHours.Add(bloodlustTime);
 	if SBvars.EagleEyed == true and not player:HasTrait("EagleEyed") then Events.OnWeaponHitCharacter.Add(eagleEyed) end
-	if SBvars.BraverySystem == true and not player:HasTrait("Desensitized") then
-		Events.OnZombieDead.Add(braverySystem);
-	end
+	if SBvars.BraverySystem == true and not player:HasTrait("Desensitized") then Events.OnZombieDead.Add(braverySystem) end
 end
 
+Events.OnCreatePlayer.Remove(initializeKills);
 Events.OnCreatePlayer.Add(initializeKills);

@@ -1,4 +1,5 @@
 ETWActionsOverride = {};
+
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local function applyXPBoost(player, perk, boostLevel)
@@ -17,7 +18,8 @@ local function addRecipe (player, recipe)
 	end
 end
 
-function ETWActionsOverride.bodyworkEnthusiastCheck() -- confirmed working
+function ETWActionsOverride.bodyworkEnthusiastCheck()
+	-- confirmed working
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
 	local level = player:getPerkLevel(Perks.MetalWelding) + player:getPerkLevel(Perks.Mechanics);
@@ -31,11 +33,12 @@ function ETWActionsOverride.bodyworkEnthusiastCheck() -- confirmed working
 		addRecipe(player, "Make Metal Sheet");
 		addRecipe(player, "Make Small Metal Sheet");
 		addRecipe(player, "Make Metal Roof");
-		HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BodyWorkEnthusiast"), true, HaloTextHelper.getColorGreen());
+		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BodyWorkEnthusiast"), true, HaloTextHelper.getColorGreen()) end
 	end
 end
 
-function ETWActionsOverride.mechanicsCheck() -- confirmed working
+function ETWActionsOverride.mechanicsCheck()
+	-- confirmed working
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
 	if player:getPerkLevel(Perks.Mechanics) >= SBvars.BodyworkEnthusiastSkill and modData.VehiclePartRepairs >= SBvars.MechanicsRepairs then
@@ -43,7 +46,7 @@ function ETWActionsOverride.mechanicsCheck() -- confirmed working
 		applyXPBoost(player, Perks.Mechanics, 1);
 		addRecipe(player, "Basic Mechanics");
 		addRecipe(player, "Intermediate Mechanics");
-		HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Mechanics"), true, HaloTextHelper.getColorGreen());
+		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Mechanics"), true, HaloTextHelper.getColorGreen()) end
 	end
 end
 
@@ -67,45 +70,45 @@ function ISFixAction:perform()
 	end
 end
 
---if not getActivatedMods():contains('SuperbSurvivors') then
-	local original_transfer_perform = ISInventoryTransferAction.perform;
-	function ISInventoryTransferAction:perform() -- confirmed working
-		if self.character == getPlayer() then
+local original_transfer_perform = ISInventoryTransferAction.perform;
+function ISInventoryTransferAction:perform() -- confirmed working
+	if self.character == getPlayer() and self.character:getModData().EvolvingTraitsWorld ~= nil then
+		if SBvars.InventoryTransferSystem == true then
+			local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 			local player = self.character;
 			local item = self.item;
 			local itemWeight = item:getWeight();
 			local modData = player:getModData().EvolvingTraitsWorld.TransferSystem;
-			--print("ETW Logger: Moving an item with weight of "..itemWeight);
 			modData.ItemsTransferred = modData.ItemsTransferred + 1;
 			modData.WeightTransferred = modData.WeightTransferred + itemWeight;
+			--print("ETW Logger: Moving an item with weight of "..itemWeight);
+			--print("ETW Logger: Moved weight: "..modData.WeightTransferred..", Moved Items: "..modData.ItemsTransferred);
 			original_transfer_perform(self);
-			if SBvars.InventoryTransferSystem == true then
-				if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
-					player:getTraits():remove("Disorganized");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen());
-				end
-				if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
-					player:getTraits():add("Organized");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen());
-				end
-				if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
-					player:getTraits():remove("AllThumbs");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen());
-				end
-				if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
-					player:getTraits():add("Dextrous");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen());
-				end
-				if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
-					player:getTraits():remove("butterfingers");
-					HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen());
-				end
+			if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
+				player:getTraits():remove("Disorganized");
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen()) end
 			end
-		else
-			original_transfer_perform(self);
+			if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
+				player:getTraits():add("Organized");
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen()) end
+			end
+			if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
+				player:getTraits():remove("AllThumbs");
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
+			end
+			if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
+				player:getTraits():add("Dextrous");
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen()) end
+			end
+			if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
+				player:getTraits():remove("butterfingers");
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
+			end
 		end
+	else
+		original_transfer_perform(self);
 	end
---end
+end
 
 local function iterList(_list)
 	local list = _list;
@@ -115,13 +118,15 @@ local function iterList(_list)
 		i = i + 1;
 		if i <= size and not list:isEmpty() then
 			return list:get(i), i;
-		end;
+		end ;
 	end;
 end
 
 local original_forageSystem_addOrDropItems = forageSystem.addOrDropItems;
 function forageSystem.addOrDropItems(_character, _inventory, _items, _discardItems)
-	if not _character:HasTrait("Herbalist") and (not _discardItems) then
+	local player = getPlayer();
+	if not player:HasTrait("Herbalist") and (not _discardItems) then
+		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 		for item in iterList(_items) do
 			--print("ETW Logger: picking up item: "..item:getFullType());
 			local herbs = {
@@ -145,7 +150,9 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 				"Base.Parsley",
 				"Base.Rosemary",
 				"Base.Sage",
-				"Base.Thyme"
+				"Base.Thyme",
+				-- Testing
+				--"Base.Twigs",
 			}
 			for _, herb in pairs(herbs) do
 				if herb == item:getFullType() then
@@ -153,8 +160,8 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 					local modData = player:getModData().EvolvingTraitsWorld;
 					modData.HerbsPickedUp = modData.HerbsPickedUp + 1;
 					if modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then
-						_character:getTraits():add("Herbalist");
-						HaloTextHelper.addTextWithArrow(_character, getText("UI_trait_Herbalist"), true, HaloTextHelper.getColorGreen());
+						player:getTraits():add("Herbalist");
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Herbalist"), true, HaloTextHelper.getColorGreen()) end
 						break
 					end
 					break

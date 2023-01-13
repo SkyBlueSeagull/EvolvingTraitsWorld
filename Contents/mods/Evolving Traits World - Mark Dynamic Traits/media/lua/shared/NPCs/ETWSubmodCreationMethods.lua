@@ -5,24 +5,25 @@ local altNames = {};
 
 --base game
 if true then
-    altNames.Athletic = true;
-    altNames.Feeble = true;
-    altNames.Fit = true;
-    altNames.Obese = true;
-    altNames.Overweight = true;
-    altNames.Stout = true;
-    altNames.Strong = true;
-    altNames.Underweight = true;
-    altNames.Unfit = true;
-    altNames.Weak = true;
-    altNames["Out of Shape"] = true;
-    altNames["Very Underweight"] = true;
+	altNames.Athletic = true;
+	altNames.Feeble = true;
+	altNames.Fit = true;
+	altNames.Obese = true;
+	altNames.Overweight = true;
+	altNames.Stout = true;
+	altNames.Strong = true;
+	altNames.Underweight = true;
+	altNames.Unfit = true;
+	altNames.Weak = true;
+	altNames["Out of Shape"] = true;
+	altNames["Very Underweight"] = true;
 end
 
 if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.AdrenalineJunkie = true;
 	altNames.Agoraphobic = true;
 	altNames.AllThumbs = true;
+	altNames.Asthmatic = true;
 	altNames.BaseballPlayer = true;
 	altNames.Brave = true;
 	altNames.Brawler = true;
@@ -73,7 +74,8 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.WeakStomach = true;
 end
 
-if getActivatedMods():contains('Literacy') and false then -- pending Literacy update first
+if false and getActivatedMods():contains('Literacy') then
+	-- pending Literacy update first
 	altNames.FastReader = true;
 	altNames.SlowReader = true;
 	altNames.PoorReader = true;
@@ -242,10 +244,10 @@ if getActivatedMods():contains('DynamicTraits') then
 	altNames.Tailor = true;
 	altNames.ThickSkinned = true;
 	altNames.Thinskinned = true;
-    altNames.AmateurElectrician = true;
-    altNames.Herbalist = true;
-    altNames.Melancholic = true;
-    altNames.NervousWreck = true;
+	altNames.AmateurElectrician = true;
+	altNames.Herbalist = true;
+	altNames.Melancholic = true;
+	altNames.NervousWreck = true;
 end
 
 if getActivatedMods():contains('SimpleOverhaulTraitsAndOccupations') then
@@ -297,9 +299,13 @@ if getActivatedMods():contains('SimpleOverhaulTraitsAndOccupations') then
 	altNames.Trapper = true;
 end
 
-if getActivatedMods():contains('SixthSenseMoodle') then altNames.SixthSense = true end
+if getActivatedMods():contains('SixthSenseMoodle') then
+	altNames.SixthSense = true
+end
 
-if getActivatedMods():contains('ExplorerTrait') then altNames.Explorer = true end
+if getActivatedMods():contains('ExplorerTrait') then
+	altNames.Explorer = true
+end
 
 local old_addTrait = TraitFactory.addTrait
 

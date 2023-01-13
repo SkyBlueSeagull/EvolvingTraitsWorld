@@ -7,10 +7,14 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_Mechanics = "Amateur Mechanic",
 	Sandbox_EvolvingTraitsWorld_MechanicsSkill = "Amateur Mechanic Mechanics Skill requirement",
 	Sandbox_EvolvingTraitsWorld_MechanicsRepairs = "Repairs requirement",
-    Sandbox_EvolvingTraitsWorld_MechanicsRepairs_tooltip = "How much % of car condition you have to repair to qualify for perk. Works on every part of a car, saved between all cars.",
+	Sandbox_EvolvingTraitsWorld_MechanicsRepairs_tooltip = "How much % of car condition you have to repair to qualify for perk. Works on every part of a car, saved between all cars.",
 
 	Sandbox_EvolvingTraitsWorld_Fishing = "Angler",
 	Sandbox_EvolvingTraitsWorld_FishingSkill = "Angler Fishing Skill requirement",
+
+	Sandbox_EvolvingTraitsWorld_Asthmatic = "Asthmatic",
+	Sandbox_EvolvingTraitsWorld_AsthmaticCounter = "Asthmatic counter",
+	Sandbox_EvolvingTraitsWorld_AsthmaticCounter_tooltip = "What value on counter you should reach to gain asthmatic trait.",
 
 	Sandbox_EvolvingTraitsWorld_AVClub = "AV Club Member",
 	Sandbox_EvolvingTraitsWorld_AVClubSkill = "AV Club Member Electrical Skill Requirement",
@@ -29,6 +33,8 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_BloodlustMeterFillMultiplier_tooltip = "How fast do you fill your bloodlust meter",
 	Sandbox_EvolvingTraitsWorld_BloodlustProgress = "Bloodlust Progress",
 	Sandbox_EvolvingTraitsWorld_BloodlustProgress_tooltip = "How much total bloodlust progress you need to get trait. Keeping your bloodlust meter full would earn you 3.6 points in 1h. Be aware, that you also loose bloodlust if this meter ever falls below 50%. So if you set it low, it's going to be easy to earn but also easy to lose the perk. Progress is capped at 2x of Bloodlust Progress value.",
+	Sandbox_EvolvingTraitsWorld_BloodlustMoodle = "Enable Bloodlust moodle",
+	Sandbox_EvolvingTraitsWorld_BloodlustMoodle_tooltip = "If this option is disabled, moodle won't show up. For single-player leave this on and change moodles you see with Mod Options. If it's a server setting, players won't be able to enable moodle client-sided.",
 	Sandbox_EvolvingTraitsWorld_BloodlustMoodleVisibilityHours = "Bloodlust moodle visibility hours",
 	Sandbox_EvolvingTraitsWorld_BloodlustMoodleVisibilityHours_tooltip = "For how many hours bloodlust moodle is visible after a nearby kill on zombie",
 
@@ -39,8 +45,8 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_BodyworkEnthusiastRepairs_tooltip = "How much % of car condition you have to repair to qualify for perk. Works on every part of a car, saved between all cars.",
 
 	Sandbox_EvolvingTraitsWorld_BraverySystem = "Bravery System",
-    Sandbox_EvolvingTraitsWorld_BraverySystemKills = "Kills to max Bravery perks",
-    Sandbox_EvolvingTraitsWorld_BraverySystemKills_tooltip = "Here you set up how many kills you need to get to MAX your bravery system. Melee kills count twice for progress. Progression is as follows: Cowardly -> Fear of Blood -> Pacifist -> Adrenaline Junkie -> Brave -> Desensitized<br> Amounts ot reach each stage are as follows:<br>Cowardly: 10% of max kills<br>Fear of blood: 20% of max Kills<br>Pacifist: 30% of max Kills<br>Adrenaline Junkie: 40% of max Kills<br>Brave: 60% of max Kills<br>Desensitized: 100% of max Kills<br>Example: Max kills is set to 1000. You start with Cowardly. You need 100 kills to remove it. If you get 50 melee kills, it'll be removed. Same is true if you'd get 40 melee kills (x2 = 80 kills for counter) and 20 firearms kills",
+	Sandbox_EvolvingTraitsWorld_BraverySystemKills = "Kills to max Bravery perks",
+	Sandbox_EvolvingTraitsWorld_BraverySystemKills_tooltip = "Here you set up how many kills you need to get to MAX your bravery system. Melee kills count twice for progress. Progression is as follows: Cowardly -> Fear of Blood -> Pacifist -> Adrenaline Junkie -> Brave -> Desensitized<br> Amounts ot reach each stage are as follows:<br>Cowardly: 10% of max kills<br>Fear of blood: 20% of max Kills<br>Pacifist: 30% of max Kills<br>Adrenaline Junkie: 40% of max Kills<br>Brave: 60% of max Kills<br>Desensitized: 100% of max Kills<br>Example: Max kills is set to 1000. You start with Cowardly. You need 100 kills to remove it. If you get 50 melee kills, it'll be removed. Same is true if you'd get 40 melee kills (x2 = 80 kills for counter) and 20 firearms kills",
 
 	Sandbox_EvolvingTraitsWorld_Brawler = "Brawler",
 	Sandbox_EvolvingTraitsWorld_BrawlerSkill = "Brawler Skill requirement",
@@ -49,12 +55,12 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_BrawlerKills_tooltip = "Axe + Long Blunt",
 
 	Sandbox_EvolvingTraitsWorld_CatEyes = "Cat Eyes",
-    Sandbox_EvolvingTraitsWorld_CatEyesCounter = "Cat Eyes Counter",
-    Sandbox_EvolvingTraitsWorld_CatEyesCounter_tooltip = "---General understanding---<br>This perk allows you to gain points by seeing and observing squares within a certain radius of your character. The number of points you earn is influenced by factors such as the time of day, the darkness of the square, and whether you and the square are inside or outside. The more squares you see and the darker they are, the more points you will earn.<br>---Technical description, don't read this if you don't want to meta-game much---<br>To earn points for this perk, you must see and observe squares within a 30 radius of your character. The exact number of points you earn for each square is determined by a formula that takes into account the darkness of the square, the time of day, and whether you and the square are inside or outside. The detailed formula for calculating points for each square is: 0.01 * darkness of square * 2 (if both player and square are inside) * time of day. On average, spending a full night outside will net you approximately 1.1k points.",
+	Sandbox_EvolvingTraitsWorld_CatEyesCounter = "Cat Eyes Counter",
+	Sandbox_EvolvingTraitsWorld_CatEyesCounter_tooltip = "---General understanding---<br>This perk allows you to gain points by seeing and observing squares within a certain radius of your character. The number of points you earn is influenced by factors such as the time of day, the darkness of the square, and whether you and the square are inside or outside. The more squares you see and the darker they are, the more points you will earn.<br>---Technical description, don't read this if you don't want to meta-game much---<br>To earn points for this perk, you must see and observe squares within a 30 radius of your character. The exact number of points you earn for each square is determined by a formula that takes into account the darkness of the square, the time of day, and whether you and the square are inside or outside. The detailed formula for calculating points for each square is: 0.01 * darkness of square * 2 (if both player and square are inside) * time of day. On average, spending a full night outside will net you approximately 1.1k points.",
 
 	Sandbox_EvolvingTraitsWorld_Clumsy = "Clumsy",
-    Sandbox_EvolvingTraitsWorld_ClumsySkill = "Clumsy Skill requirement",
-    Sandbox_EvolvingTraitsWorld_ClumsySkill_tooltip = "Sneak + Lightfooted",
+	Sandbox_EvolvingTraitsWorld_ClumsySkill = "Clumsy Skill requirement",
+	Sandbox_EvolvingTraitsWorld_ClumsySkill_tooltip = "Sneak + Lightfooted",
 
 	Sandbox_EvolvingTraitsWorld_ColdIllnessSystem = "Cold Illness System",
 	Sandbox_EvolvingTraitsWorld_ColdIllnessSystemColdsWeathered = "Colds to weather",
@@ -64,7 +70,7 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_ConspicuousSkill = "Conspicuous Sneaking Skill requirement",
 
 	Sandbox_EvolvingTraitsWorld_Cook = "Cook",
-    Sandbox_EvolvingTraitsWorld_CookSkill = "Cook Cooking Skill requirement",
+	Sandbox_EvolvingTraitsWorld_CookSkill = "Cook Cooking Skill requirement",
 
 	Sandbox_EvolvingTraitsWorld_EagleEyed = "Eagle Eyed",
 	Sandbox_EvolvingTraitsWorld_EagleEyedDistance = "Eagle Eyed Distance",
@@ -77,14 +83,16 @@ Sandbox_EN = {
 
 	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystem = "Fear Of Locations System",
 	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounter = "Fear Of Locations System Counter",
-	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounter_tooltip = "Counter = amount of minutes you need to spend outside/inside to lose respective trait, Agoraphobic or Claustrophobic.",
+	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounter_tooltip = "Counter = amount of minutes you need to spend outside/inside to lose respective trait, Agoraphobic or Claustrophobic. Being outside/inside when stressed or unhappy will decrease counter. Reaching -counter value will GAIN you appropriate trait. Reaching +counter value will get rid of appropriate trait, being in between -counter and +counter . Lower boundary is -2x of counter, upper boundary is 2x of set value here.",
+	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounterLoseMultiplier = "Fear Of Locations Counter Decrease Multiplier",
+	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounterLoseMultiplier_tooltip = "How fast you decrease counter when you either unhappy (50%+) or stressed (50%+). Considering you're more often normal than unhappy or stressed, I'd recommend not setting this too low. Formula for how much counter decreases every minute is (1 + unhappiness(0-1) + stress(0-1)) * multiplier, so at minimum you lose 1.5 * multiplier, at maximum you lose 2 * multiplier.",
 	
 	Sandbox_EvolvingTraitsWorld_FirstAid = "First Aider",
 	Sandbox_EvolvingTraitsWorld_FirstAidSkill = "First Aider First Aid Skill requirement",
 
 	Sandbox_EvolvingTraitsWorld_FoodSicknessSystem = "Food Sickness System",
-    Sandbox_EvolvingTraitsWorld_FoodSicknessSystemCounter = "Food Sickness Counter",
-    Sandbox_EvolvingTraitsWorld_FoodSicknessSystemCounter_tooltip = "How much food sickness you have to accumulate to lose/gain Food Sickness related traits, Weak Stomach and Iron Gut. Sickness can be between 0 and 1, where at one you can actually die. Each minute, your current sickness is added to counter, simple as that.",
+	Sandbox_EvolvingTraitsWorld_FoodSicknessSystemCounter = "Food Sickness Counter",
+	Sandbox_EvolvingTraitsWorld_FoodSicknessSystemCounter_tooltip = "How much food sickness you have to accumulate to lose/gain Food Sickness related traits, Weak Stomach and Iron Gut. Sickness can be between 0 and 1, where at one you can actually die. Each minute, your current sickness is added to counter, simple as that.",
 
 	Sandbox_EvolvingTraitsWorld_FurnitureAssembler = "Furniture Assembler",
 	Sandbox_EvolvingTraitsWorld_FurnitureAssemblerSkill = "Furniture Assembler Carpentry Skill requirement",
@@ -132,19 +140,19 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_HomeCookSkill = "Home Cook Skill requirement",
 
 	Sandbox_EvolvingTraitsWorld_Hunter = "Hunter",
-    Sandbox_EvolvingTraitsWorld_HunterSkill = "Hunter Skill requirement",
-    Sandbox_EvolvingTraitsWorld_HunterSkill_tooltip = "Sneaking + Aiming + Small Blade + Trapping",
-    Sandbox_EvolvingTraitsWorld_HunterKills = "Hunter Kills requirement",
-    Sandbox_EvolvingTraitsWorld_HunterKills_tooltip = "Firearm + Small Blade",
+	Sandbox_EvolvingTraitsWorld_HunterSkill = "Hunter Skill requirement",
+	Sandbox_EvolvingTraitsWorld_HunterSkill_tooltip = "Sneaking + Aiming + Small Blade + Trapping",
+	Sandbox_EvolvingTraitsWorld_HunterKills = "Hunter Kills requirement",
+	Sandbox_EvolvingTraitsWorld_HunterKills_tooltip = "Firearm + Small Blade",
 
 	Sandbox_EvolvingTraitsWorld_Inconspicuous = "Inconspicuous",
 	Sandbox_EvolvingTraitsWorld_InconspicuousSkill = "Inconspicuous Sneak Skill requirement",
 
 	Sandbox_EvolvingTraitsWorld_InventoryTransferSystem = "Inventory Transfer System",
-    Sandbox_EvolvingTraitsWorld_InventoryTransferSystemItems = "Items Counter",
-    Sandbox_EvolvingTraitsWorld_InventoryTransferSystemItems_tooltip = "How many items (and weight) you have to transfer to earn/lose traits related to item transfer: Disorganized, Organized, All Thumbs, Dexterous, Butterfingers (More Traits)<br>Disorganized: 60% of Weight counter and 30% of Items counter<br>Organized: 100% of Weight counter and 60% of Items counter<br>All Thumbs: 30% of Weight counter and 60% of Items counter<br>Dexterous: 60% of Weight counter and 100% of Items counter.<br>Butterfingers (More Traits): 150% of Weight counter and 150% of Items counter.",
-    Sandbox_EvolvingTraitsWorld_InventoryTransferSystemWeight = "Weight Counter",
-    Sandbox_EvolvingTraitsWorld_InventoryTransferSystemWeight_tooltip = "How many weight (and items) you have to transfer to earn/lose traits related to item transfer: Disorganized, Organized, All Thumbs, Dexterous, Butterfingers (More Traits)<br>Disorganized: 60% of Weight counter and 30% of Items counter<br>Organized: 100% of Weight counter and 60% of Items counter<br>All Thumbs: 30% of Weight counter and 60% of Items counter<br>Dexterous: 60% of Weight counter and 100% of Items counter.<br>Butterfingers (More Traits): 150% of Weight counter and 150% of Items counter.",
+	Sandbox_EvolvingTraitsWorld_InventoryTransferSystemItems = "Items Counter",
+	Sandbox_EvolvingTraitsWorld_InventoryTransferSystemItems_tooltip = "How many items (and weight) you have to transfer to earn/lose traits related to item transfer: Disorganized, Organized, All Thumbs, Dexterous, Butterfingers (More Traits)<br>Disorganized: 60% of Weight counter and 30% of Items counter<br>Organized: 100% of Weight counter and 60% of Items counter<br>All Thumbs: 30% of Weight counter and 60% of Items counter<br>Dexterous: 60% of Weight counter and 100% of Items counter.<br>Butterfingers (More Traits): 150% of Weight counter and 150% of Items counter.",
+	Sandbox_EvolvingTraitsWorld_InventoryTransferSystemWeight = "Weight Counter",
+	Sandbox_EvolvingTraitsWorld_InventoryTransferSystemWeight_tooltip = "How many weight (and items) you have to transfer to earn/lose traits related to item transfer: Disorganized, Organized, All Thumbs, Dexterous, Butterfingers (More Traits)<br>Disorganized: 60% of Weight counter and 30% of Items counter<br>Organized: 100% of Weight counter and 60% of Items counter<br>All Thumbs: 30% of Weight counter and 60% of Items counter<br>Dexterous: 60% of Weight counter and 100% of Items counter.<br>Butterfingers (More Traits): 150% of Weight counter and 150% of Items counter.",
 
 	Sandbox_EvolvingTraitsWorld_Kenshi = "Kenshi",
 	Sandbox_EvolvingTraitsWorld_KenshiSkill = "Kenshi Long Blade Skill requirement",
@@ -161,21 +169,24 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_LowProfileSkill = "Low Profile Sneak Skill requirement",
 
 	Sandbox_EvolvingTraitsWorld_LuckSystem = "Luck System",
-    Sandbox_EvolvingTraitsWorld_LuckSystemSkill = "% of skill levels to max Luck system",
-    Sandbox_EvolvingTraitsWorld_LuckSystemSkill_tooltip = "Code will count ALL your skill levels (including any added by mods and passives), and check if you have % of skill levels required to lose/gain Unlucky/Lucky. You lose Unlucky when you reach half of % you set. Meaning on default settings, you'll lose Unlucky when sum of your skill levels is 33% or higher (from max) and you'll get lucky when you hit 66%.",
+	Sandbox_EvolvingTraitsWorld_LuckSystemSkill = "% of skill levels to max Luck system",
+	Sandbox_EvolvingTraitsWorld_LuckSystemSkill_tooltip = "Code will count ALL your skill levels (including any added by mods and passives), and check if you have % of skill levels required to lose/gain Unlucky/Lucky. You lose Unlucky when you reach half of % you set. Meaning on default settings, you'll lose Unlucky when sum of your skill levels is 33% or higher (from max) and you'll get lucky when you hit 66%.",
 
 	Sandbox_EvolvingTraitsWorld_Outdoorsman = "Outdoorsman",
 	Sandbox_EvolvingTraitsWorld_OutdoorsmanCounter = "Outdoorsman counter",
-	Sandbox_EvolvingTraitsWorld_OutdoorsmanCounter_tooltip = "<br>---General understanding---<br>This perk allows you to gain a trait by spending time outside and being exposed to various weather conditions. The longer you spend outside and the more adverse the weather conditions are, the more quickly you will gain the trait.<br>---Technical details---<br>Every minute you spend outside will add 1 point to a counter. When the counter reaches a certain threshold, you will gain the trait. The rate at which the counter increases is further multiplied by certain weather conditions, such as rain, snow, and wind. From testing, it has been determined that spending 24 hours in clear weather with one foggy morning will result in approximately 1.7k points, while spending 24 hours in weather with two foggy mornings and a storm at midday will result in approximately 5k points.",
+	Sandbox_EvolvingTraitsWorld_OutdoorsmanCounter_tooltip = "---General understanding---<br>This allows you to gain a trait by spending time outside and being exposed to various weather conditions. The more adverse the weather conditions are, the more quickly you will gain the trait. Being inside slowly loses progress. Reaching counter will gain the trait, dropping down to half will lose it.<br>---Technical details---<br>Every minute you spend outside will add 1 point to a counter. The rate at which the counter increases is further multiplied by certain weather conditions, such as rain, snow, and wind. When the counter reaches specified threshold, you will gain the trait. From testing, it has been determined that spending 24 hours in clear weather with one foggy morning will result in approximately 1.7k points, while spending 24 hours in weather with two foggy mornings and a storm at midday will result in approximately 5k points. If you're inside, you lose 10% of what you'd gain if you'd be outside. This has liner scaling to 100% over the course of 900 minutes of being inside. You can reset current % at which you lose point by being outside. You decrease % by 0.3 for each minute being outside (You can go from 100% to 10% in 300 minutes). When reaching half of the counter you set up, you lose the trait. Counter has upper boundary of 10x the counter value and lower boundary of 0",
+	Sandbox_EvolvingTraitsWorld_OutdoorsmanCounterLoseMultiplier = "Outdoorsman Counter Decrease Multiplier",
+	Sandbox_EvolvingTraitsWorld_OutdoorsmanCounterLoseMultiplier_tooltip = "Defines how fast or slow you decrease your outdoorsman counter, multiplier of 1 is described in previous tooltip",
 
 	Sandbox_EvolvingTraitsWorld_RainSystem = "Rain System",
-    Sandbox_EvolvingTraitsWorld_RainSystemCounter = "Pluviophile / Pluviophobia Counter",
-    Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "You get 1 * rainIntensity every minute you spend in rain. Rain intensity takes values between 0 and 1. Upon reaching half of the counter, Pluviophobia is removed. Upon reaching full value of counter, Pluviophile is added.",
-    Sandbox_EvolvingTraitsWorld_PluviophileMultiplier = "Pluviophile effect multiplier",
-    Sandbox_EvolvingTraitsWorld_PluviophileMultiplier_tooltip = "All effects (Unhappiness, Stress and Boredom decrease) are multiplied by this value.",
-
-    Sandbox_EvolvingTraitsWorld_PluviophobiaMultiplier = "Pluviophobia effect multiplier",
-    Sandbox_EvolvingTraitsWorld_PluviophobiaMultiplier_tooltip = "All effects (Unhappiness, Stress and Boredom increase) are multiplied by this value.",
+	Sandbox_EvolvingTraitsWorld_RainSystemCounter = "Rain System Counter",
+	Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "You get 1 * rainIntensity every minute you spend in rain. If you have above 25% panic, instead you lose 1 * rainIntensity * panicPercentage * RainSystemDecreaseMultiplier. Counter max and min boundaries are -counter and 2*counter. When being under 0, you gain Pluviophobia, when reaching counter, you gain Pluviophile. When in between, you get nothing.",
+	Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier = "Rain System Decrease Multiplier",
+	Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier_tooltip = "Defines how fast or slow you decrease your Rain System Counter, explained in Rain System Counter tooltip",
+	Sandbox_EvolvingTraitsWorld_PluviophileMultiplier = "Pluviophile effect multiplier",
+	Sandbox_EvolvingTraitsWorld_PluviophileMultiplier_tooltip = "All effects (Unhappiness, Stress and Boredom decrease) are multiplied by this value.",
+	Sandbox_EvolvingTraitsWorld_PluviophobiaMultiplier = "Pluviophobia effect multiplier",
+	Sandbox_EvolvingTraitsWorld_PluviophobiaMultiplier_tooltip = "All effects (Unhappiness, Stress and Boredom increase) are multiplied by this value.",
 
 	Sandbox_EvolvingTraitsWorld_RestorationExpert = "Restoration Expert",
 	Sandbox_EvolvingTraitsWorld_RestorationExpertSkill = "Restoration Expert Maintenance Skill requirement",
@@ -187,10 +198,24 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_SleepSystem_tooltip = "Enables obtaining/losing sleep related traits, Wakeful and Sleepyhead. <br>---General description---<br>Mod tracks at which hours you like to sleep, and as long as you sleep within around those hours, you reinforce your healthy sleep schedule. If you sleep outside of it, you lose some schedule integrity. Not sleeping for more than 24h also starts to damage your sleep schedule. Mod tracks at which hours you like to sleep by averaging decent amount of last sleep actions you taken, so it's possible to shift your schedule to different hours. Very easy at the start, and harder as you play since it's going to be more data so singular sleep action is not going to weight a lot. So if you want to keep your sleep schedule healthy, change it gradually.<br>---Technical description, don't read this if you don't want to meta-game much---<br>Every time you sleep, mod tracks midpoint of your sleep, aka if u sleep between 23:00 and 05:30, midpoint would be 03:45, then it's added to table with last 100 same results. When table is full, the oldest value is removed from it. The average of this table is your optimal sleeping hour. If you sleep within +-6h you get progress to your SleepHealthiness bar. Goes from -200 to 200. Check is made every 10 min, you get + 0.167 to said bar, so essentially 1h of sleeping in correct schedule gives +1 to bar. Sleeping outside of it removes 0.167 from bar every 10 min. After not sleeping for more than 24h you start getting -0.167 every ten minutes. If your bar below -100, you get Sleepyhead. If it's above 100, you get Wakeful. Starting with either trait will set starting value of the bar to max/min point, so for Wakeful +200 and for Sleepyhead -200.",
 	Sandbox_EvolvingTraitsWorld_SleepSystemMultiplier = "Sleep System Multiplier",
 	Sandbox_EvolvingTraitsWorld_SleepSystemMultiplier_tooltip = "How fast you increase/decrease SleepHealthiness counter, which dictates if you get/lose Wakeful and Sleepyhead. Higher values = faster gain but also faster lose. Same goes other way, lower multiplier = slower gain but also harder to lose them.",
+	Sandbox_EvolvingTraitsWorld_SleepMoodle = "Sleep System Moodle",
+	Sandbox_EvolvingTraitsWorld_SleepMoodle_tooltip = "If this option is disabled, moodle won't show up. For single-player leave this on and change moodles you see with Mod Options. If it's a server setting, players won't be able to enable moodle client-sided.",
 
 	Sandbox_EvolvingTraitsWorld_SlowLearner = "Slow Learner",
 	Sandbox_EvolvingTraitsWorld_SlowLearnerSkill = "Slow Learner Skill requirement",
 	Sandbox_EvolvingTraitsWorld_SlowLearnerSkill_tooltip = "Maintenance + Carpentry + Cooking + Farming + First Aid + Electrical + Metalworking + Mechanics + Tailoring",
+
+	Sandbox_EvolvingTraitsWorld_Smoker = "Smoker",
+	Sandbox_EvolvingTraitsWorld_SmokerCounter = "Smoking addiction counter",
+	Sandbox_EvolvingTraitsWorld_SmokerCounter_tooltip = "Upon reaching this value on the counter, you'll get Smoker trait. When dropping to half of it, you'll lose it. Counter boundaries are 0 to 2x counter",
+	Sandbox_EvolvingTraitsWorld_SmokingAddictionDecay = "Smoker Addiction Decay Multiplier",
+	Sandbox_EvolvingTraitsWorld_SmokingAddictionDecay_tooltip = "How fast your addiction decaying",
+	Sandbox_EvolvingTraitsWorld_SmokingAddictionMultiplier = "Smoker Addiction Increase Multiplier",
+	Sandbox_EvolvingTraitsWorld_SmokingAddictionMultiplier_tooltip = "How fast your addiction is increasing",
+	Sandbox_EvolvingTraitsWorld_SmokerMoodle = "Enable Smoker Moodle",
+	Sandbox_EvolvingTraitsWorld_SmokerMoodle_tooltip = "If this option is disabled, moodle won't show up. For single-player leave this on and change moodles you see with Mod Options. If it's a server setting, players won't be able to enable moodle client-sided.",
+	Sandbox_EvolvingTraitsWorld_SmokerMoodlePercentage = "Smoker Moodle Percentage",
+	Sandbox_EvolvingTraitsWorld_SmokerMoodlePercentage_tooltip = "This controls when moodle shows up. Setting this to 20%, for example, will make moodle show up when you're 20% away from earning or loosing Smoker. Setting to 100 will leave smoker moodle up always. For single-player It's recommended to set this to 100, and then change % in Mod Options. For servers, this setting controls what's maximum % that clients can set up for themselves. So if this value in server settings is at 10%, players can't set their value to 30%. Well, they can, but it'll still only show up when it hits 10%. But if you set this value to 50%, players can then change it client-sided to 20%, for example.",
 
 	Sandbox_EvolvingTraitsWorld_Sojutsu = "Sojutsu Martial Artist",
 	Sandbox_EvolvingTraitsWorld_SojutsuSkill = "Sojutsu Martial Artist Spear Skill requirement",

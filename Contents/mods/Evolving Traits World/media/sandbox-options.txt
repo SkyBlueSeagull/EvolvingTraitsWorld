@@ -1,5 +1,279 @@
 VERSION = 1,
 
+option EvolvingTraitsWorld.SYSTEMS
+{
+	translation = ---------------------------------------------SYSTEMS-------------------------------------------------------------------,
+}
+
+
+option EvolvingTraitsWorld.BraverySystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_BraverySystem,
+}
+option EvolvingTraitsWorld.BraverySystemKills
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 20000,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_BraverySystemKills,
+}
+option EvolvingTraitsWorld.ColdIllnessSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_ColdIllnessSystem,
+}
+option EvolvingTraitsWorld.ColdIllnessSystemColdsWeathered
+{
+	type = integer,
+	min = 0,
+	max = 5000,
+	default = 100,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_ColdIllnessSystemColdsWeathered,
+}
+option EvolvingTraitsWorld.FearOfLocationsSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_FearOfLocationsSystem,
+}
+option EvolvingTraitsWorld.FearOfLocationsSystemCounter
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 12000,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_FearOfLocationsSystemCounter,
+}
+option EvolvingTraitsWorld.FearOfLocationsSystemCounterLoseMultiplier
+{
+	type = double,
+	min = 0,
+	max = 100,
+	default = 1,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_FearOfLocationsSystemCounterLoseMultiplier,
+}
+option EvolvingTraitsWorld.FoodSicknessSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_FoodSicknessSystem,
+}
+option EvolvingTraitsWorld.FoodSicknessSystemCounter
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 40000,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_FoodSicknessSystemCounter,
+}
+option EvolvingTraitsWorld.HearingSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_HearingSystem,
+}
+option EvolvingTraitsWorld.HearingSystemSkill
+{
+	type = integer,
+	min = 0,
+	max = 100,
+	default = 80,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_HearingSystemSkill,
+}
+option EvolvingTraitsWorld.InventoryTransferSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_InventoryTransferSystem,
+}
+option EvolvingTraitsWorld.InventoryTransferSystemItems
+{
+	type = integer,
+	min = 0,
+	max = 2500000,
+	default = 500000,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_InventoryTransferSystemItems,
+}
+option EvolvingTraitsWorld.InventoryTransferSystemWeight
+{
+	type = integer,
+	min = 0,
+	max = 2500000,
+	default = 50000,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_InventoryTransferSystemWeight,
+}
+option EvolvingTraitsWorld.LuckSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_LuckSystem,
+}
+option EvolvingTraitsWorld.LuckSystemSkill
+{
+	type = double,
+	min = 0,
+	max = 100,
+	default = 66,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_LuckSystemSkill,
+}
+option EvolvingTraitsWorld.RainSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_RainSystem,
+}
+option EvolvingTraitsWorld.RainSystemCounter
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 50000,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_RainSystemCounter,
+}
+option EvolvingTraitsWorld.RainSystemCounterMultiplier
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_RainSystemCounterMultiplier,
+}
+option EvolvingTraitsWorld.SleepSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_SleepSystem,
+}
+option EvolvingTraitsWorld.SleepSystemMultiplier
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_SleepSystemMultiplier,
+}
+option EvolvingTraitsWorld.WeightSystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_WeightSystem,
+}
+option EvolvingTraitsWorld.WeightSystemSkill
+{
+	type = integer,
+	min = 0,
+	max = 20,
+	default = 16,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_WeightSystemSkill,
+}
+
+option EvolvingTraitsWorld.MOODLES
+{
+	translation = -----------------------------------------------MOODLES-----------------------------------------------------------------,
+}
+
+option EvolvingTraitsWorld.BloodlustMoodle
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldMoodles,
+	translation = EvolvingTraitsWorld_BloodlustMoodle,
+}
+option EvolvingTraitsWorld.BloodlustMoodleVisibilityHours
+{
+	type = integer,
+	min = 1,
+	max = 480,
+	default = 6,
+	page = EvolvingTraitsWorldMoodles,
+	translation = EvolvingTraitsWorld_BloodlustMoodleVisibilityHours,
+}
+option EvolvingTraitsWorld.SleepMoodle
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldMoodles,
+	translation = EvolvingTraitsWorld_SleepMoodle,
+}
+option EvolvingTraitsWorld.SmokerMoodle
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldMoodles,
+	translation = EvolvingTraitsWorld_SmokerMoodle,
+}
+option EvolvingTraitsWorld.SmokerMoodlePercentage
+{
+	type = double,
+	min = 0,
+	max = 100,
+	default = 100,
+	page = EvolvingTraitsWorldMoodles,
+	translation = EvolvingTraitsWorld_SmokerMoodle,
+}
+option EvolvingTraitsWorld.TRAITS
+{
+	translation = --------------------------------------------------TRAITS-----------------------------------------------------------------,
+}
+option EvolvingTraitsWorld.HoarderWeight
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 0.5,
+	page = EvolvingTraitsWorldTraitsSettings,
+	translation = EvolvingTraitsWorld_HoarderWeight,
+}
+option EvolvingTraitsWorld.PluviophileMultiplier
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorldTraitsSettings,
+	translation = EvolvingTraitsWorld_PluviophileMultiplier,
+}
+option EvolvingTraitsWorld.PluviophobiaMultiplier
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorldTraitsSettings,
+	translation = EvolvingTraitsWorld_PluviophileMultiplier,
+}
+
+option EvolvingTraitsWorld.SINGULAR_PERKS
+{
+	translation = --------------------------------------------SINGULAR_PERKS-----------------------------------------------------------------,
+}
 
 option EvolvingTraitsWorld.Mechanics
 {
@@ -41,6 +315,22 @@ option EvolvingTraitsWorld.FishingSkill
 	default = 4,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_FishingSkill,
+}
+option EvolvingTraitsWorld.Asthmatic
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_Asthmatic,
+}
+option EvolvingTraitsWorld.AsthmaticCounter
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 20000,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_AsthmaticCounter,
 }
 option EvolvingTraitsWorld.AVClub
 {
@@ -118,7 +408,7 @@ option EvolvingTraitsWorld.Bloodlust
 option EvolvingTraitsWorld.BloodlustMeterFillMultiplier
 {
 	type = double,
-	min = 0.01,
+	min = 0,
 	max = 10,
 	default = 0.5,
 	page = EvolvingTraitsWorld,
@@ -132,15 +422,6 @@ option EvolvingTraitsWorld.BloodlustProgress
 	default = 1000,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_BloodlustProgress,
-}
-option EvolvingTraitsWorld.BloodlustMoodleVisibilityHours
-{
-	type = integer,
-	min = 1,
-	max = 480,
-	default = 6,
-	page = EvolvingTraitsWorldMoodles,
-	translation = EvolvingTraitsWorld_BloodlustMoodleVisibilityHours,
 }
 option EvolvingTraitsWorld.BodyworkEnthusiast
 {
@@ -166,22 +447,6 @@ option EvolvingTraitsWorld.BodyworkEnthusiastRepairs
 	default = 6000,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_BodyworkEnthusiastRepairs,
-}
-option EvolvingTraitsWorld.BraverySystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_BraverySystem,
-}
-option EvolvingTraitsWorld.BraverySystemKills
-{
-	type = integer,
-	min = 0,
-	max = 500000,
-	default = 20000,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_BraverySystemKills,
 }
 option EvolvingTraitsWorld.Brawler
 {
@@ -239,22 +504,6 @@ option EvolvingTraitsWorld.ClumsySkill
 	default = 12,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_ClumsySkill,
-}
-option EvolvingTraitsWorld.ColdIllnessSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_ColdIllnessSystem,
-}
-option EvolvingTraitsWorld.ColdIllnessSystemColdsWeathered
-{
-	type = integer,
-	min = 0,
-	max = 5000,
-	default = 100,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_ColdIllnessSystemColdsWeathered,
 }
 option EvolvingTraitsWorld.Conspicuous
 {
@@ -329,22 +578,6 @@ option EvolvingTraitsWorld.FastLearnerSkill
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_FastLearnerSkill,
 }
-option EvolvingTraitsWorld.FearOfLocationsSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_FearOfLocationsSystem,
-}
-option EvolvingTraitsWorld.FearOfLocationsSystemCounter
-{
-	type = integer,
-	min = 0,
-	max = 500000,
-	default = 12000,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_FearOfLocationsSystemCounter,
-}
 option EvolvingTraitsWorld.FirstAid
 {
 	type = boolean,
@@ -360,22 +593,6 @@ option EvolvingTraitsWorld.FirstAidSkill
 	default = 4,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_FirstAidSkill,
-}
-option EvolvingTraitsWorld.FoodSicknessSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_FoodSicknessSystem,
-}
-option EvolvingTraitsWorld.FoodSicknessSystemCounter
-{
-	type = integer,
-	min = 0,
-	max = 500000,
-	default = 40000,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_FoodSicknessSystemCounter,
 }
 option EvolvingTraitsWorld.FurnitureAssembler
 {
@@ -466,22 +683,6 @@ option EvolvingTraitsWorld.GymRatSkill
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_GymRatSkill,
 }
-option EvolvingTraitsWorld.HearingSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_HearingSystem,
-}
-option EvolvingTraitsWorld.HearingSystemSkill
-{
-	type = integer,
-	min = 0,
-	max = 100,
-	default = 80,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_HearingSystemSkill,
-}
 option EvolvingTraitsWorld.Herbalist
 {
 	type = boolean,
@@ -546,15 +747,6 @@ option EvolvingTraitsWorld.HoarderSkill
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_HoarderSkill,
 }
-option EvolvingTraitsWorld.HoarderWeight
-{
-	type = double,
-	min = 0,
-	max = 10,
-	default = 0.5,
-	page = EvolvingTraitsWorldTraitsSettings,
-	translation = EvolvingTraitsWorld_HoarderWeight,
-}
 option EvolvingTraitsWorld.HomeCook
 {
 	type = boolean,
@@ -611,31 +803,6 @@ option EvolvingTraitsWorld.InconspicuousSkill
 	default = 7,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_InconspicuousSkill,
-}
-option EvolvingTraitsWorld.InventoryTransferSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_InventoryTransferSystem,
-}
-option EvolvingTraitsWorld.InventoryTransferSystemItems
-{
-	type = integer,
-	min = 0,
-	max = 2500000,
-	default = 500000,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_InventoryTransferSystemItems,
-}
-option EvolvingTraitsWorld.InventoryTransferSystemWeight
-{
-	type = integer,
-	min = 0,
-	max = 2500000,
-    default = 50000,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_InventoryTransferSystemWeight,
 }
 option EvolvingTraitsWorld.Kenshi
 {
@@ -719,22 +886,6 @@ option EvolvingTraitsWorld.LowProfileSkill
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_LowProfileSkill,
 }
-option EvolvingTraitsWorld.LuckSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_LuckSystem,
-}
-option EvolvingTraitsWorld.LuckSystemSkill
-{
-	type = double,
-	min = 0,
-	max = 100,
-	default = 66,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_LuckSystemSkill,
-}
 option EvolvingTraitsWorld.Outdoorsman
 {
 	type = boolean,
@@ -751,39 +902,14 @@ option EvolvingTraitsWorld.OutdoorsmanCounter
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_OutdoorsmanCounter,
 }
-option EvolvingTraitsWorld.PluviophileMultiplier
+option EvolvingTraitsWorld.OutdoorsmanCounterLoseMultiplier
 {
 	type = double,
-	min = 0.1,
-	max = 10,
-	default = 1,
-	page = EvolvingTraitsWorldTraitsSettings,
-	translation = EvolvingTraitsWorld_PluviophileMultiplier,
-}
-option EvolvingTraitsWorld.PluviophobiaMultiplier
-{
-	type = double,
-	min = 0.1,
-	max = 10,
-	default = 1,
-	page = EvolvingTraitsWorldTraitsSettings,
-	translation = EvolvingTraitsWorld_PluviophileMultiplier,
-}
-option EvolvingTraitsWorld.RainSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_RainSystem,
-}
-option EvolvingTraitsWorld.RainSystemCounter
-{
-	type = integer,
 	min = 0,
-	max = 500000,
-	default = 50000,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_RainSystemCounter,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_OutdoorsmanCounterLoseMultiplier,
 }
 option EvolvingTraitsWorld.RestorationExpert
 {
@@ -833,22 +959,6 @@ option EvolvingTraitsWorld.SewerSkill
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_SewerSkill,
 }
-option EvolvingTraitsWorld.SleepSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_SleepSystem,
-}
-option EvolvingTraitsWorld.SleepSystemMultiplier
-{
-	type = double,
-	min = 0.01,
-	max = 10,
-	default = 1,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_SlowLearnerSkill,
-}
 option EvolvingTraitsWorld.SlowLearner
 {
 	type = boolean,
@@ -864,6 +974,40 @@ option EvolvingTraitsWorld.SlowLearnerSkill
 	default = 30,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_SlowLearnerSkill,
+}
+option EvolvingTraitsWorld.Smoker
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_Smoker,
+}
+option EvolvingTraitsWorld.SmokerCounter
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 1000,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_SmokerCounter,
+}
+option EvolvingTraitsWorld.SmokingAddictionDecay
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_SmokingAddictionDecay,
+}
+option EvolvingTraitsWorld.SmokingAddictionMultiplier
+{
+	type = double,
+	min = 0,
+	max = 10,
+	default = 1,
+	page = EvolvingTraitsWorld,
+	translation = EvolvingTraitsWorld_SmokingAddictionMultiplier,
 }
 option EvolvingTraitsWorld.Sojutsu
 {
@@ -914,20 +1058,4 @@ option EvolvingTraitsWorld.StickFighterKills
 	default = 200,
 	page = EvolvingTraitsWorld,
 	translation = EvolvingTraitsWorld_StickFighterKills,
-}
-option EvolvingTraitsWorld.WeightSystem
-{
-	type = boolean,
-	default = true,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_WeightSystem,
-}
-option EvolvingTraitsWorld.WeightSystemSkill
-{
-	type = integer,
-	min = 0,
-	max = 20,
-	default = 16,
-	page = EvolvingTraitsWorldSystems,
-	translation = EvolvingTraitsWorld_WeightSystemSkill,
 }

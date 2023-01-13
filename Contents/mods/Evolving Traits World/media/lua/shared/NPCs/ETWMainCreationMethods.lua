@@ -4,9 +4,9 @@ local function createTrait(name, cost, isProfExclusive, isDisabled)
 	isProfExclusive = isProfExclusive or false;
 	isDisabled = isDisabled or false;
 	if getActivatedMods():contains("EvolvingTraitsWorldMarkDynamicTraits") then
-		return TraitFactory.addTrait(name, getText("UI_trait_" .. name) .. " (D)", cost, getText("UI_trait_" .. name .."Desc"), isProfExclusive, isDisabled);
+		return TraitFactory.addTrait(name, getText("UI_trait_" .. name) .. " (D)", cost, getText("UI_trait_" .. name .. "Desc"), isProfExclusive, isDisabled);
 	else
-		return TraitFactory.addTrait(name, getText("UI_trait_" .. name), cost, getText("UI_trait_" .. name .."Desc"), isProfExclusive, isDisabled);
+		return TraitFactory.addTrait(name, getText("UI_trait_" .. name), cost, getText("UI_trait_" .. name .. "Desc"), isProfExclusive, isDisabled);
 	end
 end
 
@@ -19,7 +19,7 @@ local function addTraits()
 	AVClub:getFreeRecipes():add("Make Remote Controller V3");
 	AVClub:getFreeRecipes():add("Make Remote Trigger");
 	AVClub:getFreeRecipes():add("Make Timer");
-	AVClub:getFreeRecipes():add("Craft Makeshift Radio");	
+	AVClub:getFreeRecipes():add("Craft Makeshift Radio");
 	AVClub:getFreeRecipes():add("Craft Makeshift HAM Radio");
 	AVClub:getFreeRecipes():add("Craft Makeshift Walkie Talkie");
 	AVClub:getFreeRecipes():add("Make Noise generator");
@@ -95,14 +95,14 @@ local function addTraits()
 	TraitFactory.setMutualExclusive("GymRat", "Obese");
 	TraitFactory.setMutualExclusive("GymRat", "Very Underweight");
 	TraitFactory.setMutualExclusive("Pluviophobia", "Pluviophile");
-	
+
 	TraitFactory.sortList();
 
-	local traitList = TraitFactory.getTraits()
-	for i = 1, traitList:size() do
-		local trait = traitList:get(i - 1)
-		BaseGameCharacterDetails.SetTraitDescription(trait)
-	end
+	--local traitList = TraitFactory.getTraits()
+	--for i = 1, traitList:size() do
+	--	local trait = traitList:get(i - 1)
+	--	BaseGameCharacterDetails.SetTraitDescription(trait)
+	--end
 end
 
 Events.OnGameBoot.Add(addTraits);

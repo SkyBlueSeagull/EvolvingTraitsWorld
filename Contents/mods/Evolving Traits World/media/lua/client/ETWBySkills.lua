@@ -1,6 +1,10 @@
 require "ETWModData";
 local ETWActionsOverride = require "TimedActions/ETWActionsOverride";
 
+local SBvars = SandboxVars.EvolvingTraitsWorld;
+local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
+
+
 local function applyXPBoost(player, perk, boostLevel)
 	local newBoost = player:getXp():getPerkBoost(perk) + boostLevel;
 	if newBoost > 3 then
@@ -18,8 +22,10 @@ local function addRecipe (player, recipe)
 end
 
 local function traitsGainsBySkill(player, perk)
-	local SBvars = SandboxVars.EvolvingTraitsWorld;
+	if player:getModData().EvolvingTraitsWorld == nil then return end
+	player = getPlayer();
 	local modData = player:getModData();
+	print("ETW Logger: notification "..tostring(notification));
 
 	-- locals for perk levels
 	local strength = player:getPerkLevel(Perks.Strength);
@@ -68,7 +74,7 @@ local function traitsGainsBySkill(player, perk)
 					for i = 1, Perks.getMaxIndex() - 1 do
 						local selectedPerk = Perks.fromIndex(i)
 						if selectedPerk:getParent():getName() ~= "None" then
-							print("Perk: "..selectedPerk:getName()..", parent: "..selectedPerk:getParent():getName());
+							--print("ETW Logger: Perk: "..selectedPerk:getName()..", parent: "..selectedPerk:getParent():getName());
 							local perkLevel = player:getPerkLevel(selectedPerk)
 							totalPerkLevel = totalPerkLevel + perkLevel;
 							totalMaxPerkLevel = totalMaxPerkLevel + 10;
@@ -77,10 +83,10 @@ local function traitsGainsBySkill(player, perk)
 					local percentageOfSkillLevels = totalPerkLevel / totalMaxPerkLevel * 100;
 					if player:HasTrait("Unlucky") and percentageOfSkillLevels >= SBvars.LuckSystemSkill / 2 then
 						player:getTraits():remove("Unlucky");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_unlucky"), false, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_unlucky"), false, HaloTextHelper.getColorGreen()) end
 					elseif not player:HasTrait("Lucky") and percentageOfSkillLevels >= SBvars.LuckSystemSkill then
 						player:getTraits():add("Lucky");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_lucky"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_lucky"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 	-- Passive
@@ -89,14 +95,14 @@ local function traitsGainsBySkill(player, perk)
 				if perk == "characterInitialization" or perk == Perks.Strength then
 					if SBvars.Hoarder == true and not player:HasTrait("Hoarder") and strength >= SBvars.HoarderSkill then
 						player:getTraits():add("Hoarder");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hoarder"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hoarder"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Gym Rat / confirmed working
 				if perk == "characterInitialization" or perk == Perks.Strength or perk == Perks.Fitness then
 					if SBvars.GymRat == true and not player:HasTrait("GymRat") and (strength + fitness) >= SBvars.GymRatSkill then
 						player:getTraits():add("GymRat");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_GymRat"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_GymRat"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 	-- Agility
@@ -106,7 +112,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.Runner == true and not player:HasTrait("Jogger") and sprinting >= SBvars.RunnerSkill then
 						player:getTraits():add("Jogger");
 						applyXPBoost(player, Perks.Sprinting, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Jogger"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Jogger"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Hard of Hearing / Keen Hearing
@@ -114,10 +120,10 @@ local function traitsGainsBySkill(player, perk)
 					local levels = sprinting + lightfooted + nimble + sneaking + axe + longBlunt + shortBlunt + longBlade + shortBlade + spear;
 					if player:HasTrait("HardOfHearing") and levels >= SBvars.HearingSystemSkill / 2 then
 						player:getTraits():remove("HardOfHearing");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_hardhear"), false, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_hardhear"), false, HaloTextHelper.getColorGreen()) end
 					elseif not player:HasTrait("KeenHearing") and levels >= SBvars.HearingSystemSkill then
 						player:getTraits():add("KeenHearing");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_keenhearing"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_keenhearing"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Lightfooted
@@ -126,7 +132,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.LightStep == true and not player:HasTrait("LightStep") and lightfooted >= SBvars.LightStepSkill then
 						player:getTraits():add("LightStep");
 						applyXPBoost(player, Perks.Lightfoot, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LightStep"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LightStep"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Gymnast / confirmed working
@@ -135,14 +141,14 @@ local function traitsGainsBySkill(player, perk)
 						player:getTraits():add("Gymnast");
 						applyXPBoost(player, Perks.Lightfoot, 1);
 						applyXPBoost(player, Perks.Nimble, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Gymnast"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Gymnast"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Clumsy
 				if perk == "characterInitialization" or perk == Perks.Lightfoot or perk == Perks.Sneak then
 					if SBvars.Gymnast == true and player:HasTrait("Clumsy") and (lightfooted + sneaking) >= SBvars.ClumsySkill then
 						player:getTraits():remove("Clumsy");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_clumsy"), false, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_clumsy"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Sneaking
@@ -151,21 +157,21 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.LowProfile == true and not player:HasTrait("LowProfile") and axe >= SBvars.LowProfileSkill then
 						player:getTraits():add("LowProfile");
 						applyXPBoost(player, Perks.Sneak, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowProfile"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowProfile"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Conspicuous / confirmed working
 				if perk == "characterInitialization" or perk == Perks.Sneak then
 					if SBvars.Conspicuous == true and player:HasTrait("Conspicuous") and sneaking >= SBvars.ConspicuousSkill then
 						player:getTraits():remove("Conspicuous");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Conspicuous"), false, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Conspicuous"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Inconspicuous / confirmed working
 				if perk == "characterInitialization" or perk == Perks.Sneak then
 					if SBvars.Inconspicuous == true and not player:HasTrait("Inconspicuous") and sneaking >= SBvars.InconspicuousSkill then
 						player:getTraits():add("Inconspicuous");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Inconspicuous"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Inconspicuous"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Hunter / confirmed working
@@ -182,7 +188,7 @@ local function traitsGainsBySkill(player, perk)
 						addRecipe(player, "Make Wooden Box Trap");
 						addRecipe(player, "Make Trap Box");
 						addRecipe(player, "Make Cage Trap");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hunter"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hunter"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 	-- Combat
@@ -193,7 +199,7 @@ local function traitsGainsBySkill(player, perk)
 						player:getTraits():add("Brawler");
 						applyXPBoost(player, Perks.Axe, 1);
 						applyXPBoost(player, Perks.Blunt, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BarFighter"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BarFighter"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Axe Thrower / confirmed working 
@@ -201,7 +207,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.AxeThrower == true and not player:HasTrait("AxeThrower") and axe >= SBvars.AxeThrowerSkill and axeKills >= SBvars.AxeThrowerKills then
 						player:getTraits():add("AxeThrower");
 						applyXPBoost(player, Perks.Axe, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AxeThrower"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AxeThrower"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Long Blunt
@@ -210,7 +216,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.BaseballPlayer == true and not player:HasTrait("BaseballPlayer") and longBlunt >= SBvars.BaseballPlayerSkill and longBluntKills >= SBvars.BaseballPlayerKills then
 						player:getTraits():add("BaseballPlayer");
 						applyXPBoost(player, Perks.Blunt, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_PlaysBaseball"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_PlaysBaseball"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Short Blunt
@@ -219,7 +225,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.StickFighter == true and not player:HasTrait("StickFighter") and shortBlunt >= SBvars.StickFighterSkill and shortBluntKills >= SBvars.StickFighterKills then
 						player:getTraits():add("StickFighter");
 						applyXPBoost(player, Perks.SmallBlunt, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_StickFighter"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_StickFighter"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Long Blade
@@ -228,7 +234,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.Kenshi == true and not player:HasTrait("Kenshi") and longBlade >= SBvars.KenshiSkill and longBladeKills >= SBvars.KenshiKills then
 						player:getTraits():add("Kenshi");
 						applyXPBoost(player, Perks.LongBlade, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Kenshi"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Kenshi"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Short Blade
@@ -237,7 +243,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.KnifeFighter == true and not player:HasTrait("KnifeFighter") and shortBlade >= SBvars.KnifeFighterSkill and shortBladeKills >= SBvars.KnifeFighterKills then
 						player:getTraits():add("KnifeFighter");
 						applyXPBoost(player, Perks.ShortBlade, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_KnifeFighter"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_KnifeFighter"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Spear
@@ -246,7 +252,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.Sojutsu == true and not player:HasTrait("Sojutsu") and spear >= SBvars.SojutsuSkill and spearKills >= SBvars.SojutsuKills then
 						player:getTraits():add("Sojutsu");
 						applyXPBoost(player, Perks.Spear, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Sojutsu"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Sojutsu"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Maintenance
@@ -255,7 +261,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.RestorationExpert == true and not player:HasTrait("RestorationExpert") and maintenance >= SBvars.RestorationExpertSkill then
 						player:getTraits():add("RestorationExpert");
 						applyXPBoost(player, Perks.Maintenance, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_RestorationExpert"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_RestorationExpert"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Handy / confirmed working
@@ -264,7 +270,7 @@ local function traitsGainsBySkill(player, perk)
 						player:getTraits():add("Handy");
 						applyXPBoost(player, Perks.Maintenance, 1);
 						applyXPBoost(player, Perks.Woodwork, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_handy"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_handy"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Slow Learner / confirmed working
@@ -272,7 +278,7 @@ local function traitsGainsBySkill(player, perk)
 					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring;
 					if SBvars.SlowLearner == true and player:HasTrait("SlowLearner") and levels >= SBvars.SlowLearnerSkill then
 						player:getTraits():remove("SlowLearner");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_SlowLearner"), false, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_SlowLearner"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Fast Learner / confirmed working
@@ -280,7 +286,7 @@ local function traitsGainsBySkill(player, perk)
 					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring;
 					if SBvars.FastLearner == true and not player:HasTrait("FastLearner") and levels >= SBvars.FastLearnerSkill then
 						player:getTraits():add("FastLearner");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FastLearner"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FastLearner"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 	-- Crafting
@@ -290,7 +296,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.FurnitureAssembler == true and not player:HasTrait("FurnitureAssembler") and carpentry >= SBvars.FurnitureAssemblerSkill then
 						player:getTraits():add("FurnitureAssembler");
 						applyXPBoost(player, Perks.Woodwork, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FurnitureAssembler"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FurnitureAssembler"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Cooking
@@ -300,7 +306,7 @@ local function traitsGainsBySkill(player, perk)
 						player:getTraits():add("HomeCook");
 						addRecipe(player, "Make Cake Batter");
 						applyXPBoost(player, Perks.Cooking, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_HomeCook"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_HomeCook"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Cook / confirmed working
@@ -318,7 +324,7 @@ local function traitsGainsBySkill(player, perk)
 						addRecipe(player, "Make Sugar Cookie Dough");
 						addRecipe(player, "Make Pizza");
 						applyXPBoost(player, Perks.Cooking, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Cook"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Cook"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Farming
@@ -329,7 +335,7 @@ local function traitsGainsBySkill(player, perk)
 						applyXPBoost(player, Perks.Farming, 1);
 						addRecipe(player, "Make Mildew Cure");
 						addRecipe(player, "Make Flies Cure");
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Gardener"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Gardener"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- First Aid
@@ -338,7 +344,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.FirstAid == true and not player:HasTrait("FirstAid") and firstAid >= SBvars.FirstAidSkill then
 						player:getTraits():add("FirstAid");
 						applyXPBoost(player, Perks.Doctor, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FirstAid"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FirstAid"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Electrical
@@ -356,7 +362,7 @@ local function traitsGainsBySkill(player, perk)
 						addRecipe(player, "Craft Makeshift Walkie Talkie");
 						addRecipe(player, "Make Noise generator");
 						applyXPBoost(player, Perks.Electricity, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AVClub"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AVClub"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Metalworking
@@ -379,7 +385,7 @@ local function traitsGainsBySkill(player, perk)
 					if SBvars.Sewer == true and not player:HasTrait("Tailor") and mechanics >= SBvars.SewerSkill then
 						player:getTraits():add("Tailor");
 						applyXPBoost(player, Perks.Tailoring, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Tailor"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Tailor"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 	-- Firearms
@@ -390,7 +396,7 @@ local function traitsGainsBySkill(player, perk)
 						player:getTraits():add("GunEnthusiast");
 						applyXPBoost(player, Perks.Aiming, 1);
 						applyXPBoost(player, Perks.Reloading, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_GunEnthusiast"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_GunEnthusiast"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 	-- Survival
@@ -402,7 +408,7 @@ local function traitsGainsBySkill(player, perk)
 						addRecipe(player, "Make Fishing Rod");
 						addRecipe(player, "Fix Fishing Rod");
 						applyXPBoost(player, Perks.Fishing, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Fishing"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Fishing"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Trapping
@@ -415,7 +421,7 @@ local function traitsGainsBySkill(player, perk)
 						addRecipe(player, "Make Wooden Box Trap");
 						applyXPBoost(player, Perks.PlantScavenging, 1);
 						applyXPBoost(player, Perks.Trapping, 1);
-						HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hiker"), true, HaloTextHelper.getColorGreen());
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hiker"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 end
@@ -425,9 +431,13 @@ local function onZombieKill(zombie)
 	traitsGainsBySkill(player, "kill");
 end
 
-local function initializeEvents()
+local function initializeEvents(playerIndex, player)
+	traitsGainsBySkill(player, "characterInitialization");
+	Events.LevelPerk.Remove(traitsGainsBySkill);
 	Events.LevelPerk.Add(traitsGainsBySkill);
+	Events.OnZombieDead.Remove(onZombieKill);
 	Events.OnZombieDead.Add(onZombieKill);
 end
 
-Events.OnGameStart.Add(initializeEvents)
+Events.OnCreatePlayer.Remove(initializeEvents);
+Events.OnCreatePlayer.Add(initializeEvents);

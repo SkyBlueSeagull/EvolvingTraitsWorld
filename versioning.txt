@@ -1,5 +1,4 @@
 v.1.x.x
-
 General:
 	-
 Moodles:
@@ -7,6 +6,8 @@ Moodles:
 Fixes:
 	-
 Mod Conflicts:
+	-
+Translations:
 	-
 
 Numbers to increase:
@@ -16,3 +17,4 @@ Moodles (new): x.X.x
 Moodles (improvements): x.x.X
 Fixes: x.x.X
 Mod Conflicts: x.x.X
+Translations: x.x.X

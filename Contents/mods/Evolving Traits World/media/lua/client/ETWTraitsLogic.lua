@@ -2,7 +2,10 @@ require "ETWModData";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
-local function onZombieKill(zombie) -- confirmed working
+local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
+
+local function onZombieKill(zombie)
+	-- confirmed working
 	local player = getPlayer();
 	if player:HasTrait("Bloodlust") and player:DistTo(zombie) <= 4 then
 		local bodydamage = player:getBodyDamage();
@@ -11,7 +14,8 @@ local function onZombieKill(zombie) -- confirmed working
 	end
 end
 
-local function checkWeightLimit(player) -- confirmed working
+local function checkWeightLimit(player)
+	-- confirmed working
 	if not getActivatedMods():contains("ToadTraitsDynamic") and player:HasTrait("Hoarder") then
 		local default = 8;
 		local strength = player:getPerkLevel(Perks.Strength);
@@ -23,7 +27,8 @@ local function checkWeightLimit(player) -- confirmed working
 	end
 end
 
-local function pluviophileTrait(player, rainIntensity) -- confirmed working
+local function pluviophileTrait(player, rainIntensity)
+	-- confirmed working
 	local primaryItem = player:getPrimaryHandItem();
 	local secondaryItem = player:getSecondaryHandItem();
 	local rainProtection = (primaryItem and primaryItem:isProtectFromRainWhileEquipped()) or (secondaryItem and secondaryItem:isProtectFromRainWhileEquipped());
@@ -40,7 +45,8 @@ local function pluviophileTrait(player, rainIntensity) -- confirmed working
 	--print("ETW Logger: Pluviophile: stressDecrease:"..stressDecrease);
 end
 
-local function pluviophobiaTrait(player, rainIntensity) -- confirmed working
+local function pluviophobiaTrait(player, rainIntensity)
+	-- confirmed working
 	local primaryItem = player:getPrimaryHandItem();
 	local secondaryItem = player:getSecondaryHandItem();
 	local rainProtection = (primaryItem and primaryItem:isProtectFromRainWhileEquipped()) or (secondaryItem and secondaryItem:isProtectFromRainWhileEquipped());
@@ -59,7 +65,11 @@ end
 
 local function oneMinuteUpdate()
 	local player = getPlayer();
-	checkWeightLimit(player);
+	if false and not getActivatedMods():contains("SimpleOverhaulTraitsAndOccupations") and not getActivatedMods():contains("MoreSimpleTraitsVanilla") and not getActivatedMods():contains("MoreSimpleTraits") then
+		-- pending SOTO/MST update first
+		checkWeightLimit(player)
+	end
+	checkWeightLimit(player)
 	local rainIntensity = getClimateManager():getRainIntensity();
 	if rainIntensity > 0 and player:isOutside() then
 		if player:HasTrait("Pluviophobia") then pluviophobiaTrait(player, rainIntensity)
@@ -68,8 +78,11 @@ local function oneMinuteUpdate()
 end
 
 local function initializeTraitsLogic(playerIndex, player)
+	Events.OnZombieDead.Remove(onZombieKill);
 	Events.OnZombieDead.Add(onZombieKill);
+	Events.EveryOneMinute.Remove(oneMinuteUpdate);
 	Events.EveryOneMinute.Add(oneMinuteUpdate);
 end
 
-Events.OnCreatePlayer.Add(initializeTraitsLogic)
+Events.OnCreatePlayer.Remove(initializeTraitsLogic);
+Events.OnCreatePlayer.Add(initializeTraitsLogic);
