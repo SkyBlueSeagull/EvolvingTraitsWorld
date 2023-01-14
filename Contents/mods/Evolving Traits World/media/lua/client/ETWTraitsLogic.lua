@@ -13,10 +13,10 @@ local function onZombieKill(zombie)
 		local unhappiness = bodydamage:getUnhappynessLevel(); -- 0-1
 		local stress = stats:getStress(); -- 0-1
 		local panic = stats:getPanic(); -- 0-100
-		bodydamage:setUnhappynessLevel(math.max(0, bodydamage:getUnhappynessLevel() - 0.04));
+		bodydamage:setUnhappynessLevel(math.max(0, unhappiness - 0.04));
 		stats:setStress(math.max(0, stress - 0.04));
 		stats:setPanic(math.max(0, panic - 0.4));
-		--print("ETW Logger: Bloodlust kill, adjusted unhappiness.");
+		--print("ETW Logger: Bloodlust kill. Unhappiness:"..unhappiness.."->"..bodydamage:getUnhappynessLevel()..", stress: "..stress.."->"..stats:getStress()..", panic: "..panic.."->"..stats:getPanic());
 	end
 end
 

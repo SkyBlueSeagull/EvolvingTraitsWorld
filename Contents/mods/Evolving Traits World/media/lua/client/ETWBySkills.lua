@@ -25,7 +25,6 @@ local function traitsGainsBySkill(player, perk)
 	if player:getModData().EvolvingTraitsWorld == nil then return end
 	player = getPlayer();
 	local modData = player:getModData();
-	print("ETW Logger: notification "..tostring(notification));
 
 	-- locals for perk levels
 	local strength = player:getPerkLevel(Perks.Strength);

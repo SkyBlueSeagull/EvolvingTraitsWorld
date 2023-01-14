@@ -6,7 +6,7 @@ This mod allows you to get really ripped in PZ and see an actual character progr
 
 [h1]Features[/h1]
 [list]
-[*] 80+ dynamic perks (vanilla + added by the mod), full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
+[*] 70+ dynamic perks (vanilla + added by the mod), full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
 [*] [h3][b]FULL sandbox customization[/b]. Choose which perks you want to be dynamic, choose how fast you get them, choose how fast you lose them, customize anything with more than 130 sandbox options. Nothing is forced upon player, if you like 1% of the mod, you can literally set it up so you get to use that 1% and nothing else.[/h3]
 [*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay! Can be enabled without enabling main mod, so if you don't like main features added by this mod and just want to see which traits are dynamic in your game with SOTO/MST/MT/DT - you can do that.
 [*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.
@@ -42,7 +42,7 @@ If you want to submit translation files, the easiest way to do it would be on Gi
 
 [h1]Credits and Translations[/h1]
 Huge thanks to [url=https://steamcommunity.com/profiles/76561198012326036]Chuckleberry Finn[/url], [url=https://steamcommunity.com/profiles/76561198042464272]albion[/url] and few others ([url=https://steamcommunity.com/profiles/76561199042257388]Glytch3r[/url], [url=https://steamcommunity.com/profiles/76561198017173991]DeltaMango[/url], Anonymous, [url=https://steamcommunity.com/profiles/76561197988519654]Nuzzleskatev[/url], [url=https://steamcommunity.com/profiles/76561198168480115]Browser8[/url]) from official PZ discord's #modding channel for answering like a hundred of questions :)
-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] and it's author, [url=https://steamcommunity.com/profiles/76561197982774396]Draco[/url] as majority of their perks were absorbed by this mod
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] and it's author, [url=https://steamcommunity.com/profiles/76561197982774396]Draco[/url] as the majority of their perks were absorbed by this mod
 UattO - Italian translation
 
 [h1]Afterword and Permission[/h1]

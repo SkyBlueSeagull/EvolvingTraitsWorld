@@ -1,6 +1,5 @@
-v.2.1.2
+v.2.1.3
 Fixes:
-	- Fix on Claustrophobic and Agoraphobic moddata initialization.
-	- Fix on Pluviophobia and Pluviophile moddata initialization.
-	- Fix Sewer being dependent on Mechanics instead of Tailoring.
-	- Fix on Angler tooltip
+	- Fixed Herbalist being added multiple times
+Translations:
+	- ITA translation files polishing

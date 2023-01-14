@@ -160,14 +160,12 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 					--print("ETW Logger: picking up herbs: "..item:getFullType())
 					local modData = player:getModData().EvolvingTraitsWorld;
 					modData.HerbsPickedUp = modData.HerbsPickedUp + 1;
-					if modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then
+					if not player:HasTrait("Herbalist") and modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then
 						local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 						player:getTraits():add("Herbalist");
 						addRecipe(player, "Herbalist");
 						if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Herbalist"), true, HaloTextHelper.getColorGreen()) end
-						break
 					end
-					break
 				end
 			end
 		end
