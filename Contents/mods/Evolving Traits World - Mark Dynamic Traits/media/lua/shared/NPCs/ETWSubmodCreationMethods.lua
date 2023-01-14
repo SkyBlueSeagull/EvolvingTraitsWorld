@@ -24,7 +24,6 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.AdrenalineJunkie = true;
 	altNames.Agoraphobic = true;
 	altNames.AllThumbs = true;
-	altNamesSpecial.Asthmatic = true;
 	altNames.BaseballPlayer = true;
 	altNames.Brave = true;
 	altNames.Brawler = true;
@@ -36,26 +35,22 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.Dextrous = true;
 	altNames.Disorganized = true;
 	altNames.EagleEyed = true;
-	altNamesSpecial.FastHealer = true;
 	altNames.FastLearner = true;
 	altNames.FirstAid = true;
+	altNames.Fishing = true;
 	altNames.Gardener = true;
 	altNames.Graceful = true;
 	altNames.Gymnast = true;
 	altNames.Handy = true;
 	altNames.HardOfHearing = true;
-	altNamesSpecial.HeartyAppitite = true;
 	altNames.Hemophobic = true;
 	altNames.Herbalist = true;
-	altNamesSpecial.HighThirst = true;
 	altNames.Hiker = true;
 	altNames.Hunter = true;
 	altNames.Inconspicuous = true;
 	altNames.IronGut = true;
 	altNames.Jogger = true;
 	altNames.KeenHearing = true;
-	altNamesSpecial.LightEater = true;
-	altNamesSpecial.LowThirst = true;
 	altNames.Lucky = true;
 	altNames.Mechanics = true;
 	altNames.NeedsLessSleep = true;
@@ -66,14 +61,20 @@ if getActivatedMods():contains('EvolvingTraitsWorld') then
 	altNames.Pacifist = true;
 	altNames.ProneToIllness = true;
 	altNames.Resilient = true;
-	altNamesSpecial.SlowHealer = true;
 	altNames.SlowLearner = true;
 	altNames.Smoker = true;
 	altNames.Tailor = true;
-	altNamesSpecial.ThickSkinned = true;
-	altNamesSpecial.Thinskinned = true;
 	altNames.Unlucky = true;
 	altNames.WeakStomach = true;
+	altNamesSpecial.Asthmatic = true;
+	altNamesSpecial.FastHealer = true;
+	altNamesSpecial.HeartyAppitite = true;
+	altNamesSpecial.HighThirst = true;
+	altNamesSpecial.LightEater = true;
+	altNamesSpecial.LowThirst = true;
+	altNamesSpecial.SlowHealer = true;
+	altNamesSpecial.ThickSkinned = true;
+	altNamesSpecial.Thinskinned = true;
 end
 
 if false and getActivatedMods():contains('Literacy') then
@@ -319,3 +320,9 @@ function TraitFactory.addTrait(type, name, ...)
 	end
 	return old_addTrait(type, name, ...)
 end
+
+--local traitList = TraitFactory.getTraits()
+--for i = 1, traitList:size() do
+--	local trait = traitList:get(i - 1)
+--	BaseGameCharacterDetails.SetTraitDescription(trait)
+--end

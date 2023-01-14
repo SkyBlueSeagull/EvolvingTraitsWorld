@@ -1,4 +1,6 @@
-v.2.1.1
+v.2.1.2
 Fixes:
-	- Fixed Smoker moodle being displayed when shouldn't
-	- Updated Submod with missing traits, added new notation, (P/D) means that they are permanent if picked in character creation, but if not picked they are dynamic and obtainable/losable during the game.
+	- Fix on Claustrophobic and Agoraphobic moddata initialization.
+	- Fix on Pluviophobia and Pluviophile moddata initialization.
+	- Fix Sewer being dependent on Mechanics instead of Tailoring.
+	- Fix on Angler tooltip

@@ -51,7 +51,6 @@ local function createModData(playerIndex, player)
 
 	modData.VehiclePartRepairs = modData.VehiclePartRepairs or 0;
 	modData.EagleEyedKills = modData.EagleEyedKills or 0;
-	modData.RainCounter = modData.RainCounter or 0;
 	modData.CatEyesCounter = modData.CatEyesCounter or 0;
 	modData.LocationFearCounter = nil; -- v.2.0.0 cleaning up, remove it later
 	modData.FoodSicknessWeathered = modData.FoodSicknessWeathered or 0;
@@ -77,11 +76,20 @@ local function createModData(playerIndex, player)
 	checkStartingTrait(startingTraits, player, "Smoker");
 	checkStartingTrait(startingTraits, player, "Outdoorsman");
 	checkStartingTrait(startingTraits, player, "Herbalist");
+	checkStartingTrait(startingTraits, player, "Pluviophile");
+	checkStartingTrait(startingTraits, player, "Pluviophobia");
 
 	if modData.HerbsPickedUp == nil and startingTraits.Herbalist == true then -- start at full counter if they have the trait
 		modData.HerbsPickedUp = SBvars.HerbalistHerbsPicked;
 	end
 	modData.HerbsPickedUp = modData.HerbsPickedUp or 0;
+
+	if modData.RainCounter == nil and startingTraits.Pluviophile == true then -- start at full counter if they have the trait
+		modData.RainCounter = SBvars.RainSystemCounter * 2;
+	elseif modData.RainCounter == nil and startingTraits.Pluviophobia == true then
+		modData.RainCounter = SBvars.RainSystemCounter * -2;
+	end
+	modData.RainCounter = modData.RainCounter or 0;
 
 	modData.OutdoorsmanCounter = nil; -- v.2.0.0 - remove this later, this is only for cleaning up
 
@@ -96,10 +104,10 @@ local function createModData(playerIndex, player)
 	modData.LocationFearSystem = modData.LocationFearSystem or {};
 	local locationFearSystem = modData.LocationFearSystem;
 	if locationFearSystem.FearOfInside == nil and startingTraits.Claustrophobic == true then -- start at full counter if they have the trait
-		locationFearSystem.FearOfInside = SBvars.FearOfLocationsSystemCounter * 2;
+		locationFearSystem.FearOfInside = SBvars.FearOfLocationsSystemCounter * -2;
 	end
 	if locationFearSystem.FearOfOutside == nil and startingTraits.Agoraphobic == true then -- start at full counter if they have the trait
-		locationFearSystem.FearOfOutside = SBvars.FearOfLocationsSystemCounter * 2;
+		locationFearSystem.FearOfOutside = SBvars.FearOfLocationsSystemCounter * -2;
 	end
 	locationFearSystem.FearOfInside = locationFearSystem.FearOfInside or 0; -- use existing value or start at 0 cuz they don't have the trait
 	locationFearSystem.FearOfOutside = locationFearSystem.FearOfOutside or 0; -- use existing value or start at 0 cuz they don't have the trait

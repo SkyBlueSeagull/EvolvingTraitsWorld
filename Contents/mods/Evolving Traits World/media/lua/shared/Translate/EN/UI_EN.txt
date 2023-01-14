@@ -1,14 +1,14 @@
 UI_EN = {
 	note_to_LANGUAGE_translators = "Make sure file is saved in <ENCODING> encoding, so game display correct characters"
 
-	UI_trait_AVClub = "AV Club Member"
-	UI_trait_AVClubDesc = "You are a part of the AV Club.<br>+1 Electrical"
-	UI_trait_AxeThrower = "Axe Thrower"
-	UI_trait_AxeThrowerDesc = "You have participated in axe throwing competitions.<br>+1 Axe"
-	UI_trait_Bloodlust = "Bloodlust"
-	UI_trait_BloodlustDesc = "You find great joy in culling the undead.<br>You gain happiness and lose stress and panic from killing zombies."
-	UI_trait_BodyWorkEnthusiast = "Bodywork Enthusiast"
-	UI_trait_BodyWorkEnthusiastDesc = "You enjoy repairing and restoring the bodies of old cars.<br>+1 Metalworking"
+	UI_trait_AVClub = "AV Club Member",
+	UI_trait_AVClubDesc = "You are a part of the AV Club.<br>+1 Electrical",
+	UI_trait_AxeThrower = "Axe Thrower",
+	UI_trait_AxeThrowerDesc = "You have participated in axe throwing competitions.<br>+1 Axe",
+	UI_trait_Bloodlust = "Bloodlust",
+	UI_trait_BloodlustDesc = "You find great joy in culling the undead.<br>You gain happiness and lose stress and panic from killing zombies.",
+	UI_trait_BodyWorkEnthusiast = "Bodywork Enthusiast",
+	UI_trait_BodyWorkEnthusiastDesc = "You enjoy repairing and restoring the bodies of old cars.<br>+1 Metalworking",
 	UI_trait_FurnitureAssembler = "Furniture Assembler",
 	UI_trait_FurnitureAssemblerDesc = "You are a fan of putting together your own furniture.<br>+1 Carpentry",
 	UI_trait_GunEnthusiast = "Gun Enthusiast",

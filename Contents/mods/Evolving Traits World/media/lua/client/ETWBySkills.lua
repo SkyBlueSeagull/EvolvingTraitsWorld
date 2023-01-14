@@ -382,7 +382,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Tailoring
 			-- Sewer / confirmed working
 				if perk == "characterInitialization" or perk == Perks.Tailoring then
-					if SBvars.Sewer == true and not player:HasTrait("Tailor") and mechanics >= SBvars.SewerSkill then
+					if SBvars.Sewer == true and not player:HasTrait("Tailor") and tailoring >= SBvars.SewerSkill then
 						player:getTraits():add("Tailor");
 						applyXPBoost(player, Perks.Tailoring, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Tailor"), true, HaloTextHelper.getColorGreen()) end

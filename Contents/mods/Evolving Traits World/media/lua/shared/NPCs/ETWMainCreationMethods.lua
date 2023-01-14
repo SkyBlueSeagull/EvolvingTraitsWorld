@@ -40,11 +40,6 @@ local function addTraits()
 	BodyWorkEnthusiast:getFreeRecipes():add("Make Metal Roof");
 	BodyWorkEnthusiast:getFreeRecipes():add("Make Metal Pipe");
 
-	local Fishing = createTrait("Fishing", 4);
-	Fishing:addXPBoost(Perks.Fishing, 1)
-	Fishing:getFreeRecipes():add("Make Fishing Rod");
-	Fishing:getFreeRecipes():add("Fix Fishing Rod");
-
 	local FurnitureAssembler = createTrait("FurnitureAssembler", 4);
 	FurnitureAssembler:addXPBoost(Perks.Woodwork, 1);
 

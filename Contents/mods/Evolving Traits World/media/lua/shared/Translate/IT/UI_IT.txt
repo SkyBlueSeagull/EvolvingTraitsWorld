@@ -1,14 +1,14 @@
 UI_IT = {
-	note_to_italian_translators = "Make sure file is saved in ISO-8859-1 encoding, so game display correct characters"
+	note_to_italian_translators = "Make sure file is saved in ISO-8859-1 encoding, so game display correct characters",
 
-	UI_trait_AVClub = "Membro dell'AV Club"
-	UI_trait_AVClubDesc = "Sei un membro dell'AV Club.<br>+1 Elettrica"
-	UI_trait_AxeThrower = "Lanciatore di Asce"
-	UI_trait_AxeThrowerDesc = "Hai partecipato a una gara di lancio dell'ascia.<br>+1 Ascia"
-	UI_trait_Bloodlust = "Sete di Sangue"
-	UI_trait_BloodlustDesc = "Provi molto piacere ad uccidere i non morti.<br>La tua felicità aumenta e la noia scompare velocemente uccidendo gli zombie."
-	UI_trait_BodyWorkEnthusiast = "Carrozziere Dilettante"
-	UI_trait_BodyWorkEnthusiastDesc = "Ti piace molto restaurare l'estetica delle auto d'epoca.<br>+1 Lavorazione Metalli"
+	UI_trait_AVClub = "Membro dell'AV Club",
+	UI_trait_AVClubDesc = "Sei un membro dell'AV Club.<br>+1 Elettrica",
+	UI_trait_AxeThrower = "Lanciatore di Asce",
+	UI_trait_AxeThrowerDesc = "Hai partecipato a una gara di lancio dell'ascia.<br>+1 Ascia",
+	UI_trait_Bloodlust = "Sete di Sangue",
+	UI_trait_BloodlustDesc = "Provi molto piacere ad uccidere i non morti.<br>La tua felicità aumenta e la noia scompare velocemente uccidendo gli zombie.",
+	UI_trait_BodyWorkEnthusiast = "Carrozziere Dilettante",
+	UI_trait_BodyWorkEnthusiastDesc = "Ti piace molto restaurare l'estetica delle auto d'epoca.<br>+1 Lavorazione Metalli",
 	UI_trait_FurnitureAssembler = "Assemblatore di Mobilio",
 	UI_trait_FurnitureAssemblerDesc = "Hai l'hobby di costruire mobili.<br>+1 Carpenteria",
 	UI_trait_GunEnthusiast = "Appassionato di Armi",
