@@ -13,13 +13,15 @@ local function fearOfLocations()
 	local SBCounter = SBvars.FearOfLocationsSystemCounter;
 	local upperCounterBoundary = SBCounter * 2;
 	local lowerCounterBoundary = -2 * SBCounter;
-	local counterIncrease = 1;
-	if stress > 0 then counterIncrease = counterIncrease * (1 + stress) end
-	if unhappiness > 0 then counterIncrease = counterIncrease * (1 + unhappiness / 100) end
-	if counterIncrease == 1 then counterIncrease = 0 end
+	local counterDecrease = 1;
+	if stress > 0 then counterDecrease = counterDecrease * (1 + stress) end
+	if unhappiness > 0 then counterDecrease = counterDecrease * (1 + unhappiness / 100) end
+	if counterDecrease == 1 then counterDecrease = 0 end
+	counterDecrease = counterDecrease * SBvars.FearOfLocationsSystemCounterLoseMultiplier;
 	if player:isOutside() then
-		local resultingCounter = math.max(lowerCounterBoundary, modData.FearOfOutside + counterIncrease - 1 * SBvars.FearOfLocationsSystemCounterLoseMultiplier);
+		local resultingCounter = modData.FearOfOutside - counterDecrease + 1; -- +1 from passive ticking of just being outside
 		resultingCounter = math.min(upperCounterBoundary, resultingCounter);
+		resultingCounter = math.max(lowerCounterBoundary, resultingCounter);
 		modData.FearOfOutside = resultingCounter;
 		--print("ETW Logger: modData.FearOfOutside: " .. modData.FearOfOutside);
 		if player:HasTrait("Agoraphobic") and modData.FearOfOutside >= SBCounter then
@@ -31,8 +33,9 @@ local function fearOfLocations()
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_agoraphobic"), true, HaloTextHelper.getColorRed()) end
 		end
 	elseif not player:isOutside() or player:getVehicle() ~= nil then
-		local resultingCounter = math.max(lowerCounterBoundary, modData.FearOfInside + counterIncrease - 1 * SBvars.FearOfLocationsSystemCounterLoseMultiplier);
+		local resultingCounter = modData.FearOfInside - counterDecrease + 1; -- +1 from passive ticking of just being outside
 		resultingCounter = math.min(upperCounterBoundary, resultingCounter);
+		resultingCounter = math.max(lowerCounterBoundary, resultingCounter);
 		modData.FearOfInside = resultingCounter;
 		--print("ETW Logger: modData.FearOfInside: " .. modData.FearOfInside);
 		if player:HasTrait("Claustophobic") and modData.FearOfInside >= SBCounter then
