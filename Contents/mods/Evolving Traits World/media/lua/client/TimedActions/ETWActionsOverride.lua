@@ -74,40 +74,43 @@ end
 
 local original_transfer_perform = ISInventoryTransferAction.perform;
 function ISInventoryTransferAction:perform() -- confirmed working
-	if self.character == getPlayer() and self.character:getModData().EvolvingTraitsWorld ~= nil then
-		if SBvars.InventoryTransferSystem == true then
-			local notification = EvolvingTraitsWorld.settings.EnableNotifications;
-			local player = self.character;
-			local item = self.item;
-			local itemWeight = item:getWeight();
-			local modData = player:getModData().EvolvingTraitsWorld.TransferSystem;
-			modData.ItemsTransferred = modData.ItemsTransferred + 1;
-			modData.WeightTransferred = modData.WeightTransferred + itemWeight;
-			--print("ETW Logger: Moving an item with weight of "..itemWeight);
-			--print("ETW Logger: Moved weight: "..modData.WeightTransferred..", Moved Items: "..modData.ItemsTransferred);
-			original_transfer_perform(self);
-			if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
-				player:getTraits():remove("Disorganized");
-				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen()) end
-			end
-			if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
-				player:getTraits():add("Organized");
-				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen()) end
-			end
-			if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
-				player:getTraits():remove("AllThumbs");
-				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
-			end
-			if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
-				player:getTraits():add("Dextrous");
-				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen()) end
-			end
-			if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
-				player:getTraits():remove("butterfingers");
-				if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
-			end
+	if getActivatedMods():contains('SuperbSurvivors') and self.character:isLocalPlayer() == false then -- checks if it's NPC doing stuff
+		--print("ETW Logger: SuperbSurvivors ISInventoryTransferAction.perform");
+		original_transfer_perform(self);
+	elseif self.character == getPlayer() and SBvars.InventoryTransferSystem == true then
+		--print("ETW Logger: ETW ISInventoryTransferAction.perform");
+		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
+		local player = self.character;
+		local item = self.item;
+		local itemWeight = item:getWeight();
+		local modData = player:getModData().EvolvingTraitsWorld.TransferSystem;
+		modData.ItemsTransferred = modData.ItemsTransferred + 1;
+		modData.WeightTransferred = modData.WeightTransferred + itemWeight;
+		--print("ETW Logger: Moving an item with weight of "..itemWeight);
+		--print("ETW Logger: Moved weight: "..modData.WeightTransferred..", Moved Items: "..modData.ItemsTransferred);
+		original_transfer_perform(self);
+		if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
+			player:getTraits():remove("Disorganized");
+			if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Disorganized"), false, HaloTextHelper.getColorGreen()) end
+		end
+		if not player:HasTrait("Organized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
+			player:getTraits():add("Organized");
+			if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Packmule"), true, HaloTextHelper.getColorGreen()) end
+		end
+		if player:HasTrait("AllThumbs") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.3 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.6 then
+			player:getTraits():remove("AllThumbs");
+			if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
+		end
+		if not player:HasTrait("Dextrous") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems then
+			player:getTraits():add("Dextrous");
+			if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Dexterous"), true, HaloTextHelper.getColorGreen()) end
+		end
+		if player:HasTrait("butterfingers") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 1.5 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 1.5 then
+			player:getTraits():remove("butterfingers");
+			if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
 		end
 	else
+		--print("ETW Logger: Other ISInventoryTransferAction.perform");
 		original_transfer_perform(self);
 	end
 end
