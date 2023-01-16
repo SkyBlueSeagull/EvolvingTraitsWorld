@@ -1,7 +1,3 @@
-v.2.1.6
-Moodles:
-	- New Bloodlust trait/moodle icon (courtesy of [url=https://steamcommunity.com/profiles/76561198027445715]Olipro[/url])
-	- Bloodlust moodle description clarification
+v.2.1.7
 Fixes:
-	- Sleep System math fix
-	- Bloodlust math fix (perk is now better)
+	- Sleep System math fix (didn't go through last patch)

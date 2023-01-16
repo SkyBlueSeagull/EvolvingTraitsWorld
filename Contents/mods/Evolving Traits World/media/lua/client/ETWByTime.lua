@@ -54,9 +54,9 @@ local function sleepSystem()
 		local hoursAwayFromPreferredHour = math.min(math.abs(currentPreferredTargetHour - timeOfDay), 24 - math.abs(timeOfDay - currentPreferredTargetHour));
 		if modData.CurrentlySleeping == false then modData.CurrentlySleeping = true end
 		if hoursAwayFromPreferredHour <= 6 then
-			modData.SleepHealthinessBar = math.min(200, (modData.SleepHealthinessBar + 1 / 6) * SBvars.SleepSystemMultiplier);
+			modData.SleepHealthinessBar = math.min(200, modData.SleepHealthinessBar + (1 / 6) * SBvars.SleepSystemMultiplier);
 		else
-			modData.SleepHealthinessBar = math.max(-200, (modData.SleepHealthinessBar - 1 / 6) * SBvars.SleepSystemMultiplier);
+			modData.SleepHealthinessBar = math.max(-200, modData.SleepHealthinessBar - (1 / 6) * SBvars.SleepSystemMultiplier);
 		end
 		ETWMoodles.sleepHealthMoodleUpdate(player, hoursAwayFromPreferredHour, false);
 	end
@@ -70,7 +70,7 @@ local function sleepSystem()
 	if not player:isAsleep() then
 		modData.HoursSinceLastSleep = modData.HoursSinceLastSleep + 1 / 6;
 		if modData.HoursSinceLastSleep >= 24 then
-			modData.SleepHealthinessBar = math.max(-200, (modData.SleepHealthinessBar - 1 / 6) * SBvars.SleepSystemMultiplier);
+			modData.SleepHealthinessBar = math.max(-200, modData.SleepHealthinessBar - (1 / 6) * SBvars.SleepSystemMultiplier);
 		end
 	end
 	if modData.SleepHealthinessBar > 100 then
