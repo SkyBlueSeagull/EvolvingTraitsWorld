@@ -7,9 +7,8 @@ local notification = function() return EvolvingTraitsWorld.settings.EnableNotifi
 local function fearOfLocations()
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld.LocationFearSystem;
-	local stress = player:getStats():getStress();
-	local unhappiness = player:getBodyDamage():getUnhappynessLevel();
-	--print("ETW Logger: stress: "..stress.." unhappiness:"..unhappiness); --stress is 0-1, unhappiness is 0-100
+	local stress = player:getStats():getStress(); -- 0-1
+	local unhappiness = player:getBodyDamage():getUnhappynessLevel(); -- 0-100
 	local SBCounter = SBvars.FearOfLocationsSystemCounter;
 	local upperCounterBoundary = SBCounter * 2;
 	local lowerCounterBoundary = -2 * SBCounter;
@@ -22,8 +21,7 @@ local function fearOfLocations()
 		local resultingCounter = modData.FearOfOutside - counterDecrease + 1; -- +1 from passive ticking of just being outside
 		resultingCounter = math.min(upperCounterBoundary, resultingCounter);
 		resultingCounter = math.max(lowerCounterBoundary, resultingCounter);
-		modData.FearOfOutside = resultingCounter;
-		--print("ETW Logger: modData.FearOfOutside: " .. modData.FearOfOutside);
+		--modData.FearOfOutside = resultingCounter; print("ETW Logger: modData.FearOfOutside: " .. modData.FearOfOutside);
 		if player:HasTrait("Agoraphobic") and modData.FearOfOutside >= SBCounter then
 			player:getTraits():remove("Agoraphobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_agoraphobic"), false, HaloTextHelper.getColorGreen()) end
@@ -37,7 +35,7 @@ local function fearOfLocations()
 		resultingCounter = math.min(upperCounterBoundary, resultingCounter);
 		resultingCounter = math.max(lowerCounterBoundary, resultingCounter);
 		modData.FearOfInside = resultingCounter;
-		--print("ETW Logger: modData.FearOfInside: " .. modData.FearOfInside);
+		print("ETW Logger: modData.FearOfInside: " .. modData.FearOfInside);
 		if player:HasTrait("Claustophobic") and modData.FearOfInside >= SBCounter then
 			player:getTraits():remove("Claustophobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_claustro"), false, HaloTextHelper.getColorGreen()) end

@@ -1,3 +1,7 @@
-v.2.1.5
-Mod Conflicts:
-	- Fixed Superb Survivors incompatibility (item transfer was bugged for NPCs).
+v.2.1.6
+Moodles:
+	- New Bloodlust trait/moodle icon (courtesy of [url=https://steamcommunity.com/profiles/76561198027445715]Olipro[/url])
+	- Bloodlust moodle description clarification
+Fixes:
+	- Sleep System math fix
+	- Bloodlust math fix (perk is now better)

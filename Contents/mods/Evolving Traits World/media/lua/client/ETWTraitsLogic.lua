@@ -10,12 +10,12 @@ local function onZombieKill(zombie)
 	if player:HasTrait("Bloodlust") and player:DistTo(zombie) <= 4 then
 		local bodydamage = player:getBodyDamage();
 		local stats = player:getStats();
-		local unhappiness = bodydamage:getUnhappynessLevel(); -- 0-1
+		local unhappiness = bodydamage:getUnhappynessLevel(); -- 0-100
 		local stress = stats:getStress(); -- 0-1
 		local panic = stats:getPanic(); -- 0-100
-		bodydamage:setUnhappynessLevel(math.max(0, unhappiness - 0.04));
+		bodydamage:setUnhappynessLevel(math.max(0, unhappiness - 4));
 		stats:setStress(math.max(0, stress - 0.04));
-		stats:setPanic(math.max(0, panic - 0.4));
+		stats:setPanic(math.max(0, panic - 4));
 		--print("ETW Logger: Bloodlust kill. Unhappiness:"..unhappiness.."->"..bodydamage:getUnhappynessLevel()..", stress: "..stress.."->"..stats:getStress()..", panic: "..panic.."->"..stats:getPanic());
 	end
 end
