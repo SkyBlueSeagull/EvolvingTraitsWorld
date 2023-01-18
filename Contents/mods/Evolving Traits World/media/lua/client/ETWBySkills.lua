@@ -3,7 +3,7 @@ local ETWActionsOverride = require "TimedActions/ETWActionsOverride";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
-
+local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 
 local function applyXPBoost(player, perk, boostLevel)
 	local newBoost = player:getXp():getPerkBoost(perk) + boostLevel;
@@ -66,14 +66,14 @@ local function traitsGainsBySkill(player, perk)
 	local firearmKills = killCountModData["Firearm"].count;
 
 	-- All Perks
-		-- Unlucky/Lucky / confirmed working
+		-- Unlucky/Lucky
 				if SBvars.LuckSystem == true and not player:HasTrait("Lucky") then
 					local totalPerkLevel = 0
 					local totalMaxPerkLevel = 0;
 					for i = 1, Perks.getMaxIndex() - 1 do
 						local selectedPerk = Perks.fromIndex(i)
 						if selectedPerk:getParent():getName() ~= "None" then
-							--print("ETW Logger: Perk: "..selectedPerk:getName()..", parent: "..selectedPerk:getParent():getName());
+							if debug() then print("ETW Logger: Perk: "..selectedPerk:getName()..", parent: "..selectedPerk:getParent():getName()) end
 							local perkLevel = player:getPerkLevel(selectedPerk)
 							totalPerkLevel = totalPerkLevel + perkLevel;
 							totalMaxPerkLevel = totalMaxPerkLevel + 10;
@@ -90,14 +90,14 @@ local function traitsGainsBySkill(player, perk)
 				end
 	-- Passive
 		-- Strength
-			-- Hoarder / confirmed working
+			-- Hoarder
 				if perk == "characterInitialization" or perk == Perks.Strength then
 					if SBvars.Hoarder == true and not player:HasTrait("Hoarder") and strength >= SBvars.HoarderSkill then
 						player:getTraits():add("Hoarder");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hoarder"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Gym Rat / confirmed working
+			-- Gym Rat
 				if perk == "characterInitialization" or perk == Perks.Strength or perk == Perks.Fitness then
 					if SBvars.GymRat == true and not player:HasTrait("GymRat") and (strength + fitness) >= SBvars.GymRatSkill then
 						player:getTraits():add("GymRat");
@@ -106,7 +106,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 	-- Agility
 		-- Springing
-			-- Runner / confirmed working
+			-- Runner
 				if perk == "characterInitialization" or perk == Perks.Sprinting then
 					if SBvars.Runner == true and not player:HasTrait("Jogger") and sprinting >= SBvars.RunnerSkill then
 						player:getTraits():add("Jogger");
@@ -126,7 +126,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Lightfooted
-			-- Light Step / confirmed working
+			-- Light Step
 				if perk == "characterInitialization" or perk == Perks.Lightfoot then
 					if SBvars.LightStep == true and not player:HasTrait("LightStep") and lightfooted >= SBvars.LightStepSkill then
 						player:getTraits():add("LightStep");
@@ -134,7 +134,7 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LightStep"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Gymnast / confirmed working
+			-- Gymnast
 				if perk == "characterInitialization" or perk == Perks.Lightfoot or perk == Perks.Nimble then
 					if SBvars.Gymnast == true and not player:HasTrait("Gymnast") and (lightfooted + nimble) >= SBvars.GymnastSkill then
 						player:getTraits():add("Gymnast");
@@ -145,13 +145,13 @@ local function traitsGainsBySkill(player, perk)
 				end
 			-- Clumsy
 				if perk == "characterInitialization" or perk == Perks.Lightfoot or perk == Perks.Sneak then
-					if SBvars.Gymnast == true and player:HasTrait("Clumsy") and (lightfooted + sneaking) >= SBvars.ClumsySkill then
+					if SBvars.Clumsy == true and player:HasTrait("Clumsy") and (lightfooted + sneaking) >= SBvars.ClumsySkill then
 						player:getTraits():remove("Clumsy");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_clumsy"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
 		-- Sneaking
-			-- Low Profile / confirmed working
+			-- Low Profile
 				if perk == "characterInitialization" or perk == Perks.Sneak then
 					if SBvars.LowProfile == true and not player:HasTrait("LowProfile") and axe >= SBvars.LowProfileSkill then
 						player:getTraits():add("LowProfile");
@@ -159,21 +159,21 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowProfile"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Conspicuous / confirmed working
+			-- Conspicuous
 				if perk == "characterInitialization" or perk == Perks.Sneak then
 					if SBvars.Conspicuous == true and player:HasTrait("Conspicuous") and sneaking >= SBvars.ConspicuousSkill then
 						player:getTraits():remove("Conspicuous");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Conspicuous"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Inconspicuous / confirmed working
+			-- Inconspicuous
 				if perk == "characterInitialization" or perk == Perks.Sneak then
 					if SBvars.Inconspicuous == true and not player:HasTrait("Inconspicuous") and sneaking >= SBvars.InconspicuousSkill then
 						player:getTraits():add("Inconspicuous");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Inconspicuous"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Hunter / confirmed working
+			-- Hunter
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Sneak or perk == Perks.Aiming or perk == Perks.Trapping or perk == Perks.SmallBlade then
 					local levels = sneaking + aiming + trapping + shortBlade;
 					if SBvars.Hunter == true and not player:HasTrait("Hunter") and sneaking >= 2 and aiming >= 2 and trapping >= 2 and shortBlade >= 2 and levels >= SBvars.HunterSkill and (shortBladeKills + firearmKills) >= SBvars.HunterKills then
@@ -192,7 +192,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 	-- Combat
 		-- Axe
-			-- Brawler / confirmed working 
+			-- Brawler 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Axe or perk == Perks.Blunt then
 					if SBvars.Brawler == true and not player:HasTrait("Brawler") and (axe + longBlunt) >= SBvars.BrawlerSkill and (axeKills + longBluntKills) >= SBvars.BrawlerKills then
 						player:getTraits():add("Brawler");
@@ -201,7 +201,7 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_BarFighter"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Axe Thrower / confirmed working 
+			-- Axe Thrower 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Axe then
 					if SBvars.AxeThrower == true and not player:HasTrait("AxeThrower") and axe >= SBvars.AxeThrowerSkill and axeKills >= SBvars.AxeThrowerKills then
 						player:getTraits():add("AxeThrower");
@@ -210,7 +210,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Long Blunt
-			-- Baseball Player / confirmed working
+			-- Baseball Player
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Blunt then
 					if SBvars.BaseballPlayer == true and not player:HasTrait("BaseballPlayer") and longBlunt >= SBvars.BaseballPlayerSkill and longBluntKills >= SBvars.BaseballPlayerKills then
 						player:getTraits():add("BaseballPlayer");
@@ -219,7 +219,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Short Blunt
-			-- Stick Fighter / confirmed working 
+			-- Stick Fighter 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.SmallBlunt then
 					if SBvars.StickFighter == true and not player:HasTrait("StickFighter") and shortBlunt >= SBvars.StickFighterSkill and shortBluntKills >= SBvars.StickFighterKills then
 						player:getTraits():add("StickFighter");
@@ -228,7 +228,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Long Blade
-			-- Kenshi / confirmed working 
+			-- Kenshi 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.LongBlade then
 					if SBvars.Kenshi == true and not player:HasTrait("Kenshi") and longBlade >= SBvars.KenshiSkill and longBladeKills >= SBvars.KenshiKills then
 						player:getTraits():add("Kenshi");
@@ -237,7 +237,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Short Blade
-			-- Knife Fighter / confirmed working 
+			-- Knife Fighter 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.ShortBlade then
 					if SBvars.KnifeFighter == true and not player:HasTrait("KnifeFighter") and shortBlade >= SBvars.KnifeFighterSkill and shortBladeKills >= SBvars.KnifeFighterKills then
 						player:getTraits():add("KnifeFighter");
@@ -246,7 +246,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Spear
-			-- Sojutsu / confirmed working 
+			-- Sojutsu 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Spear then
 					if SBvars.Sojutsu == true and not player:HasTrait("Sojutsu") and spear >= SBvars.SojutsuSkill and spearKills >= SBvars.SojutsuKills then
 						player:getTraits():add("Sojutsu");
@@ -255,7 +255,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Maintenance
-			-- Restoration Expert / confirmed working
+			-- Restoration Expert
 				if perk == "characterInitialization" or perk == Perks.Maintenance then
 					if SBvars.RestorationExpert == true and not player:HasTrait("RestorationExpert") and maintenance >= SBvars.RestorationExpertSkill then
 						player:getTraits():add("RestorationExpert");
@@ -263,7 +263,7 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_RestorationExpert"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Handy / confirmed working
+			-- Handy
 				if perk == "characterInitialization" or perk == Perks.Maintenance or perk == Perks.Woodwork then
 					if SBvars.Handy == true and not player:HasTrait("Handy") and (maintenance + carpentry) >= SBvars.HandySkill then
 						player:getTraits():add("Handy");
@@ -272,7 +272,7 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_handy"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Slow Learner / confirmed working
+			-- Slow Learner
 				if perk == "characterInitialization" or perk == Perks.Maintenance or perk == Perks.Woodwork or perk == Perks.Cooking or perk == Perks.Farming or perk == Perks.Doctor or perk == Perks.Electricity or perk == Perks.MetalWelding or perk == Perks.Mechanics or perk == Perks.Tailoring then
 					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring;
 					if SBvars.SlowLearner == true and player:HasTrait("SlowLearner") and levels >= SBvars.SlowLearnerSkill then
@@ -280,7 +280,7 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_SlowLearner"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Fast Learner / confirmed working
+			-- Fast Learner
 				if perk == "characterInitialization" or perk == Perks.Maintenance or perk == Perks.Woodwork or perk == Perks.Cooking or perk == Perks.Farming or perk == Perks.Doctor or perk == Perks.Electricity or perk == Perks.MetalWelding or perk == Perks.Mechanics or perk == Perks.Tailoring then
 					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring;
 					if SBvars.FastLearner == true and not player:HasTrait("FastLearner") and levels >= SBvars.FastLearnerSkill then
@@ -290,7 +290,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 	-- Crafting
 		-- Carpentry
-			-- Furniture Assembler / confirmed working 
+			-- Furniture Assembler 
 				if perk == "characterInitialization" or perk == Perks.Woodwork then
 					if SBvars.FurnitureAssembler == true and not player:HasTrait("FurnitureAssembler") and carpentry >= SBvars.FurnitureAssemblerSkill then
 						player:getTraits():add("FurnitureAssembler");
@@ -299,7 +299,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Cooking
-			-- Home Cook / confirmed working 
+			-- Home Cook 
 				if perk == "characterInitialization" or perk == Perks.Cooking then
 					if SBvars.HomeCook == true and not player:HasTrait("HomeCook") and cooking >= SBvars.HomeCookSkill then
 						player:getTraits():add("HomeCook");
@@ -308,7 +308,7 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_HomeCook"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
-			-- Cook / confirmed working
+			-- Cook
 				if perk == "characterInitialization" or perk == Perks.Cooking then
 					if SBvars.Cook == true and not player:HasTrait("Cook") and cooking >= SBvars.CookSkill then
 						player:getTraits():add("Cook");				
@@ -327,7 +327,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Farming
-			-- Gardener / confirmed working
+			-- Gardener
 				if perk == "characterInitialization" or perk == Perks.Farming then
 					if SBvars.Gardener == true and not player:HasTrait("Gardener") and farming >= SBvars.GardenerSkill then
 						player:getTraits():add("Gardener");
@@ -338,7 +338,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- First Aid
-			-- First Aider / confirmed working
+			-- First Aider
 				if perk == "characterInitialization" or perk == Perks.Doctor then
 					if SBvars.FirstAid == true and not player:HasTrait("FirstAid") and firstAid >= SBvars.FirstAidSkill then
 						player:getTraits():add("FirstAid");
@@ -347,7 +347,7 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Electrical
-			-- AVClub / confirmed working
+			-- AVClub
 				if perk == "characterInitialization" or perk == Perks.Electricity then
 					if SBvars.AVClub == true and not player:HasTrait("AVClub") and electrical >= SBvars.AVClubSkill then
 						player:getTraits():add("AVClub");
@@ -365,21 +365,21 @@ local function traitsGainsBySkill(player, perk)
 					end
 				end
 		-- Metalworking
-			-- Bodywork Enthusiast / confirmed working
+			-- Bodywork Enthusiast
 				if perk == "characterInitialization" or perk == Perks.MetalWelding  or perk == Perks.Mechanics then
 					if SBvars.BodyworkEnthusiast == true and not player:HasTrait("BodyWorkEnthusiast") then
 						ETWActionsOverride.bodyworkEnthusiastCheck();
 					end
 				end
 		-- Mechanics
-			-- Amateur Mechanic / confirmed working
+			-- Amateur Mechanic
 				if perk == "characterInitialization" or perk == Perks.Mechanics then
 					if SBvars.Mechanics == true and not player:HasTrait("Mechanics") and mechanics >= SBvars.MechanicsSkill then
 						ETWActionsOverride.mechanicsCheck();
 					end
 				end
 		-- Tailoring
-			-- Sewer / confirmed working
+			-- Sewer
 				if perk == "characterInitialization" or perk == Perks.Tailoring then
 					if SBvars.Sewer == true and not player:HasTrait("Tailor") and tailoring >= SBvars.SewerSkill then
 						player:getTraits():add("Tailor");
@@ -389,7 +389,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 	-- Firearms
 		-- Aiming
-			-- Gun Enthusiast / confirmed working
+			-- Gun Enthusiast
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Aiming or perk == Perks.Reloading then
 					if SBvars.GunEnthusiast == true and not player:HasTrait("GunEnthusiast") and (aiming + reloading) >= SBvars.GunEnthusiastSkill and firearmKills >= SBvars.GunEnthusiastKills then
 						player:getTraits():add("GunEnthusiast");
@@ -400,7 +400,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 	-- Survival
 		-- Fishing
-			-- Angler / confirmed working
+			-- Angler
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Fishing then
 					if SBvars.Fishing == true and not player:HasTrait("Fishing") and fishing >= SBvars.FishingSkill then
 						player:getTraits():add("Fishing");

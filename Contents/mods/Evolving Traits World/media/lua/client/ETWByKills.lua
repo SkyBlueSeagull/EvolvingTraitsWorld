@@ -4,9 +4,9 @@ local ETWMoodles = require "ETWMoodles";
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
+local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 
 local function bloodlustKill(zombie)
-	-- confirmed working
 	if SBvars.Bloodlust == true then
 		local player = getPlayer();
 		local bloodlust = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
@@ -15,10 +15,10 @@ local function bloodlustKill(zombie)
 			bloodlust.LastKillTimestamp = player:getHoursSurvived();
 			if bloodlust.BloodlustMeter <= 36 then
 				bloodlust.BloodlustMeter = bloodlust.BloodlustMeter + math.min(1 / distance, 1) * SBvars.BloodlustMeterFillMultiplier;
-				--print("ETW Logger: BloodlustMeter="..bloodlust.BloodlustMeter);
+				if debug() then print("ETW Logger: BloodlustMeter="..bloodlust.BloodlustMeter) end
 			else
 				bloodlust.BloodlustMeter = bloodlust.BloodlustMeter + math.min(1 / distance, 1) * SBvars.BloodlustMeterFillMultiplier * 0.1;
-				--print("ETW Logger: BloodlustMeter (soft-capped)="..bloodlust.BloodlustMeter);
+				if debug() then print("ETW Logger: BloodlustMeter (soft-capped)="..bloodlust.BloodlustMeter) end
 			end
 			ETWMoodles.bloodlustMoodleUpdate(player, false);
 		end
@@ -26,7 +26,6 @@ local function bloodlustKill(zombie)
 end
 
 local function bloodlustTime()
-	-- confirmed working
 	if SBvars.Bloodlust == true then
 		local player = getPlayer();
 		local modData = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
@@ -34,31 +33,31 @@ local function bloodlustTime()
 		ETWMoodles.bloodlustMoodleUpdate(player, false);
 		-- Bloodlust Progress when no perk
 		if not player:HasTrait("Bloodlust") then
-			--print("ETW Log: Bloodlust Meter (perk is not present): "..modData.BloodlustMeter);
+			if debug() then print("ETW Log: Bloodlust Meter (perk is not present): "..modData.BloodlustMeter) end
 			if modData.BloodlustMeter >= 18 then
 				-- gain if above 50%
 				modData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, modData.BloodlustProgress + modData.BloodlustMeter * 0.1);
-				--print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress);
+				if debug() then print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress) end
 				if modData.BloodlustProgress >= SBvars.BloodlustProgress then
 					player:getTraits():add("Bloodlust");
 					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), true, HaloTextHelper.getColorGreen()) end
 				end
 			else
 				modData.BloodlustProgress = math.max(0, modData.BloodlustProgress - (3.6 - modData.BloodlustMeter * 0.1));
-				--print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress);
+				if debug() then print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress) end
 			end
 		end
 		-- Bloodlust Progress when perk is present
 		if player:HasTrait("Bloodlust") then
-			--print("ETW Log: Bloodlust Meter (perk is present): "..modData.BloodlustMeter);
+			if debug() then print("ETW Log: Bloodlust Meter (perk is present): "..modData.BloodlustMeter) end
 			if modData.BloodlustMeter >= 18 then
 				-- gain progress if above 50%
 				modData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, modData.BloodlustProgress + modData.BloodlustMeter * 0.1);
-				--print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (trait)="..modData.BloodlustProgress);
+				if debug() then print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (trait)="..modData.BloodlustProgress) end
 			else
 				-- lose progress when below 50%
 				modData.BloodlustProgress = math.max(0, modData.BloodlustProgress - (3.6 - modData.BloodlustMeter * 0.1));
-				--print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (trait)="..modData.BloodlustProgress);
+				if debug() then print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (trait)="..modData.BloodlustProgress) end
 				if modData.BloodlustProgress <= SBvars.BloodlustProgress / 2 then
 					player:getTraits():remove("Bloodlust");
 					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), false, HaloTextHelper.getColorRed()) end
@@ -69,7 +68,6 @@ local function bloodlustTime()
 end
 
 local function eagleEyed(wielder, character, handWeapon, damage)
-	-- confirmed working
 	if wielder == getPlayer() and character:isZombie() and SBvars.EagleEyed == true and not wielder:HasTrait("EagleEyed") then
 		local player = wielder;
 		local zombie = character;
@@ -77,7 +75,7 @@ local function eagleEyed(wielder, character, handWeapon, damage)
 		local distance = player:DistTo(zombie);
 		if distance >= SBvars.EagleEyedDistance and zHealth <= damage then
 			player:getModData().EvolvingTraitsWorld.EagleEyedKills = player:getModData().EvolvingTraitsWorld.EagleEyedKills + 1;
-			--print("ETW Logger: Caught a kill on following distance: "..distance..", current eagle eyed kills:"..player:getModData().EvolvingTraitsWorld.EagleEyedKills);
+			if debug() then print("ETW Logger: Caught a kill on following distance: "..distance..", current eagle eyed kills:"..player:getModData().EvolvingTraitsWorld.EagleEyedKills) end
 			if player:getModData().EvolvingTraitsWorld.EagleEyedKills >= SBvars.EagleEyedKills then
 				player:getTraits():add("EagleEyed");
 				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_eagleeyed"), true, HaloTextHelper.getColorGreen()) end
@@ -87,7 +85,6 @@ local function eagleEyed(wielder, character, handWeapon, damage)
 end
 
 local function braverySystem(zombie)
-	-- confirmed working
 	local player = getPlayer();
 	local totalKills = player:getZombieKills();
 	local braveryKills = SBvars.BraverySystemKills;
@@ -104,13 +101,11 @@ local function braverySystem(zombie)
 		{ trait = "Brave", threshold = braveryKills * 0.6, add = true },
 		{ trait = "Desensitized", threshold = braveryKills, add = true }
 	}
-
 	for i, info in ipairs(traitInfo) do
 		local trait = info.trait
 		local threshold = info.threshold
 		local remove = info.remove
 		local add = info.add
-
 		if (totalKills + meleeKills) >= threshold then
 			if player:HasTrait(trait) and remove then
 				player:getTraits():remove(trait)

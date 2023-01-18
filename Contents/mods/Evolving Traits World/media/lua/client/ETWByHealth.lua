@@ -3,19 +3,19 @@ require "ETWModData";
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
+local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 
 local function coldTraits()
-	-- confirmed working
 	local player = getPlayer();
 	local coldStrength = player:getBodyDamage():getColdStrength() / 100;
 	local modData = player:getModData().EvolvingTraitsWorld.ColdSystem;
 	if coldStrength > 0 and modData.CurrentlySick == false then modData.CurrentlySick = true end
 	if modData.CurrentlySick == true then
 		modData.CurrentColdCounterContribution = modData.CurrentColdCounterContribution + coldStrength / 60;
-		--print("ETW Logger: CurrentColdCounterContribution = "..modData.CurrentColdCounterContribution);
+		if debug() then print("ETW Logger: CurrentColdCounterContribution = "..modData.CurrentColdCounterContribution) end
 		if coldStrength == 0 then
 			modData.CurrentColdCounterContribution = math.min(10, modData.CurrentColdCounterContribution);
-			--print("ETW Logger: Healthy now, CurrentColdCounterContribution = "..modData.CurrentColdCounterContribution);
+			if debug() then print("ETW Logger: Healthy now, CurrentColdCounterContribution = "..modData.CurrentColdCounterContribution) end
 			modData.CurrentlySick = false;
 			if modData.CurrentColdCounterContribution == 10 then
 				modData.ColdsWeathered = modData.ColdsWeathered + 1
@@ -36,7 +36,7 @@ end
 local function foodSicknessTraits()
 	local player = getPlayer();
 	local foodSicknessStrength = player:getBodyDamage():getFoodSicknessLevel() / 100;
-	--print("ETW Logger: foodSicknessStrength="..foodSicknessStrength);
+	if debug() then print("ETW Logger: foodSicknessStrength="..foodSicknessStrength) end
 	local modData = player:getModData().EvolvingTraitsWorld;
 	modData.FoodSicknessWeathered = modData.FoodSicknessWeathered + foodSicknessStrength;
 	if player:HasTrait("WeakStomach") and modData.FoodSicknessWeathered >= SBvars.FoodSicknessSystemCounter / 2 then
@@ -56,7 +56,7 @@ local function weightSystem()
 	local weight = player:getNutrition():getWeight();
 	local stress = player:getStats():getStress();
 	local unhappiness = player:getBodyDamage():getUnhappynessLevel();
-	--print("ETW Logger: stress: "..stress.." unhappiness:"..unhappiness); -- stress is 0-1, unhappiness is 0-100
+	if debug() then print("ETW Logger: stress: "..stress.." unhappiness:"..unhappiness) end -- stress is 0-1, unhappiness is 0-100
 	if weight >= 100 or weight <= 65 then
 		if not player:HasTrait("SlowHealer") and startingTraits.FastHealer ~= true then
 			player:getTraits():add("SlowHealer");
@@ -159,8 +159,8 @@ local function asthmaticTrait()
 	if running or sprinting and temperature <= 10 then
 		local counterIncrease = temperatureMultiplier * (outside and 1.2 or 1) * (smoker and 1.5 or 0.8) * (asthmatic and 1.5 or 0.8) * (sprinting and 1.5 or 1);
 		modData.AsthmaticCounter = modData.AsthmaticCounter + counterIncrease;
-		--print("ETW Logger: counterIncrease: "..counterIncrease);
-		--print("ETW Logger: modData.AsthmaticCounter: "..modData.AsthmaticCounter);
+		if debug() then print("ETW Logger: counterIncrease: "..counterIncrease) end
+		if debug() then print("ETW Logger: modData.AsthmaticCounter: "..modData.AsthmaticCounter) end
 		if modData.AsthmaticCounter >= SBvars.AsthmaticCounter and not player:HasTrait("Asthmatic") then
 			player:getTraits():add("Asthmatic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Asthmatic"), true, HaloTextHelper.getColorRed()) end
@@ -172,7 +172,7 @@ local function asthmaticTrait()
 	if not running and not sprinting and temperature >= 0 then
 		local counterDecrease = (1 + player:getPerkLevel(Perks.Fitness) * 0.1) * (smoker and 0.5 or 1) * (asthmatic and 0.5 or 1) * endurance;
 		modData.AsthmaticCounter = modData.AsthmaticCounter - counterDecrease;
-		--print("ETW Logger: modData.AsthmaticCounter: "..modData.AsthmaticCounter);
+		if debug() then print("ETW Logger: modData.AsthmaticCounter: "..modData.AsthmaticCounter) end
 	end
 end
 

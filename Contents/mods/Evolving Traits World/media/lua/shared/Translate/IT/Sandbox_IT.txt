@@ -84,9 +84,9 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorld_FastLearnerSkill_tooltip = "Manutenzione + Carpenteria + Cucina + Coltivazione + Pronto Soccorso + Elettrica + Lavorazione Metalli + Meccanica + Sartoria",
 
 	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystem = "Sistema di paura localizzata",
-	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounter_tooltip = "Contarore = quantit‡ di minuti che devi trascorrere all'esterno/interno per perdere il rispettivo tratto, agorafobico o claustrofobico. Stare all'esterno/interno quando sei stressato o infelice diminuir‡ il livello del contatore. Raggiungere il valore impostato nel contatore ti far‡ GUADAGNARE il tratto appropriato. Raggiungere il valore +contatore eliminer‡ il tratto appropriato, trovandosi tra -contatore e +contatore . Il limite inferiore Ë -2x del contatore, il limite superiore Ë 2x del valore impostato.",
+	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounter_tooltip = "Contarore = quantit‡ di minuti che devi trascorrere all'interno/esterno per perdere il rispettivo tratto, agorafobico o claustrofobico. Stare all'interno/esterno quando sei stressato o infelice far‡ diminuire il contatore. Raggiungere il valore del contatore ti far‡ GUADAGNARE il tratto appropriato. Raggiungere il valore +contatore eliminer‡ il tratto appropriato, trovarsi tra -contatore e +contatore non far‡ ottenere nulla. Il limite inferiore Ë -2x del contatore, il limite superiore Ë 2x del valore impostato qui.",
 	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounterLoseMultiplier = "Moltiplicatore diminuitivo del contatore di paura localizzata",
-	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounterLoseMultiplier_tooltip = "La velocit‡ con cui diminuisce il contatore quando sei infelice (50%+) o stressato (50%+). Considerando che sarai pi˘ spesso normale che infelice o stressato, ti consiglio di non impostarlo su un valore troppo basso. La formula per quanto il contatore diminuisce ogni minuto Ë (1 + infelicit‡(0-1) + stress(0-1)) * moltiplicatore, quindi minimo perdi l' 1,5 * moltiplicatore, al massimo perdi 2 * moltiplicatore.",
+	Sandbox_EvolvingTraitsWorld_FearOfLocationsSystemCounterLoseMultiplier_tooltip = "La velocit‡ con cui diminuisce il contatore quando sei infelice (50%+) o stressato (50%+). Considerando che sarai pi˘ spesso normale che infelice o stressato, ti consiglio di non impostarlo su un valore troppo basso. La formula per quanto il contatore diminuisce ogni minuto Ë 1 * (1 + infelicit‡(0-1)) + (1 * stress(0-1)) * moltiplicatore, quindi minimo perdi 0 * moltiplicatore, e al massimo perdi 4 * moltiplicatore.",
 	
 	Sandbox_EvolvingTraitsWorld_FirstAid = "Soccorritore",
 	Sandbox_EvolvingTraitsWorld_FirstAidSkill = "Abilit‡ richiesta per Soccorritore",
@@ -181,7 +181,7 @@ Sandbox_IT = {
 
 	Sandbox_EvolvingTraitsWorld_RainSystem = "Rain System",
 	Sandbox_EvolvingTraitsWorld_RainSystemCounter = "Contatore del sistema di pioggia",
-		Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "Ottieni 1 * IntensitaDiPioggia ogni minuto che trascorri sotto la pioggia. Se hai oltre il 25% di panico invece, perdi 1 * Intensit‡DiPioggia * PercentualeDiPanico * MoltiplicatoreDiminuitivoDelSistemaDiPioggia. I limiti max e min del contatore sono -contatore e 2*contatore. Quando sei sotto lo 0, ottieni Pluviofobia, quando raggiungi il contatore, ottieni Pluviofilia. Nel mezzo, non ottieni nulla.",
+	Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "Ottieni 1 * IntensitaDiPioggia ogni minuto che trascorri sotto la pioggia. Se hai oltre il 25% di panico invece, perdi 1 * Intensit‡DiPioggia * PercentualeDiPanico * MoltiplicatoreDiminuitivoDelSistemaDiPioggia. I limiti max e min del contatore sono -2contatore e 2*contatore. Quando sei sotto -contatore, ottieni Pluviofobia, quando raggiungi il contatore, ottieni Pluviofilia. Nel mezzo, non ottieni nulla.",
 		Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier = "Moltiplicatore diminuitivo del Sistema di pioggia",
 	Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier_tooltip = "Definisce la velocit‡ o la lentezza con cui riduci il contatore del sistema di pioggia, spiegato nel tooltip del contatore del sistema di pioggia",
 	Sandbox_EvolvingTraitsWorld_PluviophileMultiplier = "Moltiplicatore dell'effetto di pluviofilia",
@@ -231,4 +231,19 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorld_WeightSystem_tooltip = "Descrivere qui le condizioni in cui perdi/acquisisci i tratti richiederebbe molto spazio, quindi controlla il documento Google per i dettagli (link nella descrizione della pagina della mod sul workshop). Tratti interessati che possono essere acquisiti/persi dinamicamente: Assetato/Poca Sete, Insaziabile/Poco Appetito, Pelle Spessa/Sottile, Cura Lenta/Veloce.<br>IMPORTANTE: se scegli uno di questi tratti in creazione, sia negativo che positivo, sar‡ permanente sul tuo personaggio.",
 	Sandbox_EvolvingTraitsWorld_WeightSystemSkill = "Requisiti passivi per il Sistema di peso ",
 	Sandbox_EvolvingTraitsWorld_WeightSystemSkill_tooltip = "Quanti livelli in Forza + Forma Fisica devi avere per ottenere Pelle spessa e Cura Veloce (questa Ë solo una condizione ma ce ne sono altre, controlla ancora una volta il documento Google)",
+	
+	Sandbox_EvolvingTraitsWorldSimplePerks = "Evolving Traits World - Punti Semplici",
+    Sandbox_EvolvingTraitsWorldComplexPerks = "Evolving Traits World - Punti Avanzati",
+
+	Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay = "Erbe per Perdere Erborista",
+	Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay_tooltip = "Quante erbe vengono rimosse dal contatore ogni giorno che non se ne raccolgono tramite Ricerca Cibo. Scendere a met‡ contatore rimuover‡ il tratto, quindi dovrai guadagnarlo di nuovo.",
+	
+	Sandbox_EvolvingTraitsWorld_FogSystem = "Sistema di nebbia",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounter = "Contatore del sistema di nebbia",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounter_tooltip = "Ottieni IntensitaNebbia * MoltiplicatoreDiAumentoDelSistemaDiIntensit‡DiNebbia ogni minuto che trascorri nella nebbia. Al contrario, perdi Instensit‡DiNebbia * Panico * 0.9 * MoltiplicatoreDiAumentoDelSistemaDiIntensit‡DiNebbia con condizioni opposte. I limiti massimo e minimo del contatore sono -2*contatore e 2*contatore. Quando sei sotto-contatore, ottieni Nebulofobia, quando raggiungi il contatore, ottieni Nebulofilia. Nel mezzo, non ottieni nulla.",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier = "Moltiplicatore del contatore di aumento della nebbia",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier_tooltip = "Regola la velocit‡ con cui aumenta il tuo contatore, trovi i dettagli nella descrizione del contatore del sistema di nebbia",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounterDecreaseMultiplier = "Moltiplicatore del contatore di diminuzione della nebbia",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounterDecreaseMultiplier_tooltip = "Regola la velocit‡ con cui diminuisce il tuo contatore, trovi i dettagli nella descrizione del contatore del sistema di nebbia",
+	
 }

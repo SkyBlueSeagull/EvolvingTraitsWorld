@@ -46,4 +46,12 @@ UI_IT = {
 	UI_EvolvingTraitsWorld_Options_EnableSmokerMoodle_tooltip = "Mostra se stai per ottenere o perdere il tratto Fumatore.",
 	UI_EvolvingTraitsWorld_Options_SmokerMoodleVisibilityValue = "Quando viene mostrato il Moodle Fumatore",
 	UI_EvolvingTraitsWorld_Options_SmokerMoodleVisibilityValue_tooltip = "Questa opzione controlla quando si presenta il Moodle. Impostandolo al 20%, ad esempio, farà apparire il moodle quando sei al 20% di distanza dal guadagnare o perdere Fumatore. L'impostazione su 100 lascerà sempre il Moodle Fumatore. Limitato dalle impostazioni sandbox, quindi se le impostazioni sandbox consentono un massimo del 40% e qui imposti il 60%, verrà comunque visualizzato solo al 40%. Tuttavia, se ad esempio il server ha il 70% e desideri mostrare molto meno, puoi abbassare il valore, ad esempio, al 20%.",
+	
+	UI_EvolvingTraitsWorld_Options_GatherDebug = "Raccogliere i dati di debug",
+	UI_EvolvingTraitsWorld_Options_GatherDebug_tooltip = "Abilita la stampa dei Log in console.txt. Utile per scopi di debug, permette anche di trovare dati sui contatori interni. Ctrl+F inserendo 'ETW' Per trovare i Log.",
+	
+	UI_trait_Homichlophile = "Nebulofilia",
+	UI_trait_HomichlophileDesc = "Ami la nebbia, qualcosa in essa ti fa sentire a tuo agio. Diventi più calmo mentre sei in giro col tempo nebbioso. Perdi lentamente lo stress e il panico a seconda dell'intensità della nebbia.",
+	UI_trait_Homichlophobia = "Nebulofobia",
+	UI_trait_HomichlophobiaDesc = "Detesti la nebbia, qualcosa in essa ti fa sentire allarmato e stressato. Ti senti a disagio mentre sei in giro col tempo nebbioso. Guadagni lentamente stress e panico a seconda dell'intensità della nebbia (limitata al 50%).",
 }

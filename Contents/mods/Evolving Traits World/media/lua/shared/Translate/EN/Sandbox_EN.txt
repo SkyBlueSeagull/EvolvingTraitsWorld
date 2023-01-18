@@ -1,7 +1,8 @@
 Sandbox_EN = {
 	note_to_LANGUAGE_translators = "Make sure file is saved in <ENCODING> encoding, so game display correct characters"
 
-	Sandbox_EvolvingTraitsWorld = "Evolving Traits World - Singular Perks",
+	Sandbox_EvolvingTraitsWorldSimplePerks = "Evolving Traits World - Simple Perks",
+	Sandbox_EvolvingTraitsWorldComplexPerks = "Evolving Traits World - Complex Perks",
 	Sandbox_EvolvingTraitsWorldSystems = "Evolving Traits World - Systems",
 	Sandbox_EvolvingTraitsWorldTraitsSettings = "Evolving Traits World - Traits",
 	Sandbox_EvolvingTraitsWorldMoodles = "Evolving Traits World - Moodles",
@@ -92,6 +93,14 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_FirstAid = "First Aider",
 	Sandbox_EvolvingTraitsWorld_FirstAidSkill = "First Aider First Aid Skill requirement",
 
+	Sandbox_EvolvingTraitsWorld_FogSystem = "Fog System",
+	Sandbox_EvolvingTraitsWorld_FogSystemCounter = "Fog System Counter",
+	Sandbox_EvolvingTraitsWorld_FogSystemCounter_tooltip = "You get fogIntensity * FogSystemCounterIncreaseMultiplier every minute you spend in fog. You also lose fogIntensity * panic * 0.9 * FogSystemCounterDecreaseMultiplier at same time. Counter max and min boundaries are -2*counter and 2*counter. When being under -counter, you gain Homichlophobia, when reaching counter, you gain Homichlophile. When in between, you get nothing.",
+	Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier = "Fog Counter Increase Multiplier",
+    Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier_tooltip = "Adjusts how fast your counter increases, details in tooltip of Fog System Counter",
+	Sandbox_EvolvingTraitsWorld_FogSystemCounterDecreaseMultiplier = "Fog Counter Decrease Multiplier",
+	Sandbox_EvolvingTraitsWorld_FogSystemCounterDecreaseMultiplier_tooltip = "Adjusts how fast your counter decreases, details in tooltip of Fog System Counter",
+
 	Sandbox_EvolvingTraitsWorld_FoodSicknessSystem = "Food Sickness System",
 	Sandbox_EvolvingTraitsWorld_FoodSicknessSystemCounter = "Food Sickness Counter",
 	Sandbox_EvolvingTraitsWorld_FoodSicknessSystemCounter_tooltip = "How much food sickness you have to accumulate to lose/gain Food Sickness related traits, Weak Stomach and Iron Gut. Sickness can be between 0 and 1, where at one you can actually die. Each minute, your current sickness is added to counter, simple as that.",
@@ -127,6 +136,8 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_HearingSystemSkill_tooltip = "How many levels in Agility + Combat (without Maintenance) you have to get to lose/get hearing perks (Hard Of Hearing and Keen Hearing). You lose Hard of Hearing when passing half of required levels, and obtain Keen Hearing when hitting the set number.",
 
 	Sandbox_EvolvingTraitsWorld_Herbalist = "Herbalist",
+	Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay = "Herbalist herbs decay",
+    Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay_tooltip = "How many herbs are removed from the counter each day. Dropping down to half a counter will remove the trait, so you'll have to earn it again.",
 	Sandbox_EvolvingTraitsWorld_HerbalistHerbsPicked = "Herbalist herbs picked",
 	Sandbox_EvolvingTraitsWorld_HerbalistHerbsPicked_tooltip = "How many herbs you have to pick up (from foraging) to gain the trait",
 
@@ -182,7 +193,7 @@ Sandbox_EN = {
 
 	Sandbox_EvolvingTraitsWorld_RainSystem = "Rain System",
 	Sandbox_EvolvingTraitsWorld_RainSystemCounter = "Rain System Counter",
-	Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "You get 1 * rainIntensity every minute you spend in rain. If you have above 25% panic, instead you lose 1 * rainIntensity * panicPercentage * RainSystemDecreaseMultiplier. Counter max and min boundaries are -counter and 2*counter. When being under 0, you gain Pluviophobia, when reaching counter, you gain Pluviophile. When in between, you get nothing.",
+	Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "You get 1 * rainIntensity every minute you spend in rain. If you have above 25% panic, instead you lose 1 * rainIntensity * panicPercentage * RainSystemDecreaseMultiplier. Counter max and min boundaries are -2*counter and 2*counter. When being under -counter, you gain Pluviophobia, when reaching counter, you gain Pluviophile. When in between, you get nothing.",
 	Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier = "Rain System Decrease Multiplier",
 	Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier_tooltip = "Defines how fast or slow you decrease your Rain System Counter, explained in Rain System Counter tooltip",
 	Sandbox_EvolvingTraitsWorld_PluviophileMultiplier = "Pluviophile effect multiplier",

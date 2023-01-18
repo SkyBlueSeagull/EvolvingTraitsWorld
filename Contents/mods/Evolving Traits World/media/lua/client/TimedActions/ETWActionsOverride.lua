@@ -1,6 +1,7 @@
 ETWActionsOverride = {};
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
+local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 
 local function applyXPBoost(player, perk, boostLevel)
 	local newBoost = player:getXp():getPerkBoost(perk) + boostLevel;
@@ -19,7 +20,6 @@ local function addRecipe (player, recipe)
 end
 
 function ETWActionsOverride.bodyworkEnthusiastCheck()
-	-- confirmed working
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
 	local level = player:getPerkLevel(Perks.MetalWelding) + player:getPerkLevel(Perks.Mechanics);
@@ -39,7 +39,6 @@ function ETWActionsOverride.bodyworkEnthusiastCheck()
 end
 
 function ETWActionsOverride.mechanicsCheck()
-	-- confirmed working
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
 	if player:getPerkLevel(Perks.Mechanics) >= SBvars.BodyworkEnthusiastSkill and modData.VehiclePartRepairs >= SBvars.MechanicsRepairs then
@@ -73,12 +72,12 @@ function ISFixAction:perform()
 end
 
 local original_transfer_perform = ISInventoryTransferAction.perform;
-function ISInventoryTransferAction:perform() -- confirmed working
+function ISInventoryTransferAction:perform()
 	if getActivatedMods():contains('SuperbSurvivors') and self.character:isLocalPlayer() == false then -- checks if it's NPC doing stuff
-		--print("ETW Logger: SuperbSurvivors ISInventoryTransferAction.perform");
+		if debug() then print("ETW Logger: SuperbSurvivors ISInventoryTransferAction.perform") end
 		original_transfer_perform(self);
 	elseif self.character == getPlayer() and SBvars.InventoryTransferSystem == true then
-		--print("ETW Logger: ETW ISInventoryTransferAction.perform");
+		if debug() then print("ETW Logger: ETW ISInventoryTransferAction.perform") end
 		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 		local player = self.character;
 		local item = self.item;
@@ -86,8 +85,8 @@ function ISInventoryTransferAction:perform() -- confirmed working
 		local modData = player:getModData().EvolvingTraitsWorld.TransferSystem;
 		modData.ItemsTransferred = modData.ItemsTransferred + 1;
 		modData.WeightTransferred = modData.WeightTransferred + itemWeight;
-		--print("ETW Logger: Moving an item with weight of "..itemWeight);
-		--print("ETW Logger: Moved weight: "..modData.WeightTransferred..", Moved Items: "..modData.ItemsTransferred);
+		if debug() then print("ETW Logger: Moving an item with weight of "..itemWeight) end
+		if debug() then print("ETW Logger: Moved weight: "..modData.WeightTransferred..", Moved Items: "..modData.ItemsTransferred) end
 		original_transfer_perform(self);
 		if player:HasTrait("Disorganized") and modData.WeightTransferred >= SBvars.InventoryTransferSystemWeight * 0.6 and modData.ItemsTransferred >= SBvars.InventoryTransferSystemItems * 0.3 then
 			player:getTraits():remove("Disorganized");
@@ -110,7 +109,7 @@ function ISInventoryTransferAction:perform() -- confirmed working
 			if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AllThumbs"), false, HaloTextHelper.getColorGreen()) end
 		end
 	else
-		--print("ETW Logger: Other ISInventoryTransferAction.perform");
+		if debug() then print("ETW Logger: Other ISInventoryTransferAction.perform") end
 		original_transfer_perform(self);
 	end
 end
@@ -132,7 +131,7 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 	local player = getPlayer();
 	if not _discardItems then
 		for item in iterList(_items) do
-			--print("ETW Logger: picking up item: "..item:getFullType());
+			if debug() then print("ETW Logger: picking up foraging item: "..item:getFullType()) end
 			local herbs = {
 				-- Medical herbs
 				"Base.Plantain",
@@ -160,7 +159,7 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 			}
 			for _, herb in pairs(herbs) do
 				if herb == item:getFullType() then
-					--print("ETW Logger: picking up herbs: "..item:getFullType())
+					if debug() then print("ETW Logger: picking up herbs: "..item:getFullType()) end
 					local modData = player:getModData().EvolvingTraitsWorld;
 					modData.HerbsPickedUp = modData.HerbsPickedUp + 1;
 					if not player:HasTrait("Herbalist") and modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then

@@ -1,6 +1,7 @@
 require "ETWModOptions";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
+local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 
 local function checkStartingDTConflictingTrait(startingTraits, player, trait)
 	if player:getModData().DTKillscheck2 == nil then
@@ -78,6 +79,8 @@ local function createModData(playerIndex, player)
 	checkStartingTrait(startingTraits, player, "Herbalist");
 	checkStartingTrait(startingTraits, player, "Pluviophile");
 	checkStartingTrait(startingTraits, player, "Pluviophobia");
+	checkStartingTrait(startingTraits, player, "Homichlophobia");
+	checkStartingTrait(startingTraits, player, "Homichlophile");
 
 	if modData.HerbsPickedUp == nil and startingTraits.Herbalist == true then -- start at full counter if they have the trait
 		modData.HerbsPickedUp = SBvars.HerbalistHerbsPicked;
@@ -91,7 +94,12 @@ local function createModData(playerIndex, player)
 	end
 	modData.RainCounter = modData.RainCounter or 0;
 
-	modData.OutdoorsmanCounter = nil; -- v.2.0.0 - remove this later, this is only for cleaning up
+	if modData.FogCounter == nil and startingTraits.Homichlophile == true then -- start at full counter if they have the trait
+		modData.FogCounter = SBvars.FogSystemCounter * 2;
+	elseif modData.FogCounter == nil and startingTraits.Homichlophobia == true then
+		modData.FogCounter = SBvars.FogSystemCounter * -2;
+	end
+	modData.FogCounter = modData.FogCounter or 0;
 
 	modData.OutdoorsmanSystem = modData.OutdoorsmanSystem or {};
 	local outdoorsmanSystem = modData.OutdoorsmanSystem;
@@ -117,9 +125,7 @@ local function createModData(playerIndex, player)
 	if sleepSystem.CurrentlySleeping == nil then
 		sleepSystem.CurrentlySleeping = false;
 	end
-	sleepSystem.WentToSleepAt = nil; -- v.2.0.0 - remove this later, this is only for cleaning up
 	sleepSystem.HoursSinceLastSleep = sleepSystem.HoursSinceLastSleep or 0;
-	sleepSystem.Last100PreferredHour = nil; -- v.2.0.0 - remove this later, this is only for cleaning up
 	sleepSystem.LastMidpoint = sleepSystem.LastMidpoint or 4;
 	if sleepSystem.SleepHealthinessBar == nil and startingTraits.NeedsLessSleep == true then
 		sleepSystem.SleepHealthinessBar = 200;

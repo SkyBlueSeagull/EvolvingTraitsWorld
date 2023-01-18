@@ -320,9 +320,3 @@ function TraitFactory.addTrait(type, name, ...)
 	end
 	return old_addTrait(type, name, ...)
 end
-
---local traitList = TraitFactory.getTraits()
---for i = 1, traitList:size() do
---	local trait = traitList:get(i - 1)
---	BaseGameCharacterDetails.SetTraitDescription(trait)
---end

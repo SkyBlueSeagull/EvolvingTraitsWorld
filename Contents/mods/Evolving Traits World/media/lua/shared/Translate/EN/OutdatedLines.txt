@@ -1,7 +1,28 @@
-New/changed lines since v.2.1.2
+New/changed lines since v.2.1.7
 
 Moodles_EN.txt
+	changed:
+
+	new:
+
 
 Sandbox_EN.txt
+	changed:
+		Sandbox_EvolvingTraitsWorld_RainSystemCounter_tooltip = "You get 1 * rainIntensity every minute you spend in rain. If you have above 25% panic, instead you lose 1 * rainIntensity * panicPercentage * RainSystemDecreaseMultiplier. Counter max and min boundaries are -2*counter and 2*counter. When being under -counter, you gain Pluviophobia, when reaching counter, you gain Pluviophile. When in between, you get nothing.",
+	new:
+		Sandbox_EvolvingTraitsWorldSimplePerks = "Evolving Traits World - Simple Perks",
+		Sandbox_EvolvingTraitsWorldComplexPerks = "Evolving Traits World - Complex Perks",
+
+		Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay = "Herbalist herbs decay",
+		Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay_tooltip = "How many herbs are removed from the counter each day. Dropping down to half a counter will remove the trait, so you'll have to earn it again.",
 
 UI_EN.txt
+	changed:
+
+	new:
+		UI_EvolvingTraitsWorld_Options_GatherDebug = "Gather Debug Data",
+		UI_EvolvingTraitsWorld_Options_GatherDebug_tooltip = "Enables prints into console.txt. Useful for debug purposes, also allows you to find data about internal counters. Ctrl+F for 'ETW' to find the loggers.",
+		UI_trait_Homichlophile = "Homichlophile",
+		UI_trait_HomichlophileDesc = "You like the fog, something about it makes you feel cosy. You get calmer while you're outside in foggy weather. You slowly lose stress and panic depending on fog intensity.",
+		UI_trait_Homichlophobia = "Homichlophobia",
+		UI_trait_HomichlophobiaDesc = "You hate the fog, something about it makes you feel alarmed and stressed. You get uneasy while you're outside in foggy weather. You slowly gain stress and panic depending on fog intensity (capped at 50%).",

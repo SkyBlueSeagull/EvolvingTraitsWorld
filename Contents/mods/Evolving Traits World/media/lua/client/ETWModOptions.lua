@@ -4,6 +4,7 @@ EvolvingTraitsWorld.settings = EvolvingTraitsWorld.SETTINGS or {};
 if ModOptions and ModOptions.getInstance then
 	local function onModOptionsApply(optionValues)
 		local SmokerMoodleVisibilityValues = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+		EvolvingTraitsWorld.settings.GatherDebug = optionValues.settings.options.GatherDebug;
 		EvolvingTraitsWorld.settings.EnableNotifications = optionValues.settings.options.EnableNotifications;
 		EvolvingTraitsWorld.settings.EnableBloodLustMoodle = optionValues.settings.options.EnableBloodLustMoodle;
 		EvolvingTraitsWorld.settings.EnableSleepHealthMoodle = optionValues.settings.options.EnableSleepHealthMoodle;
@@ -12,6 +13,13 @@ if ModOptions and ModOptions.getInstance then
 	end
 	local SETTINGS = {
 		options_data = {
+			GatherDebug = {
+				name = "UI_EvolvingTraitsWorld_Options_GatherDebug",
+				tooltip = "UI_EvolvingTraitsWorld_Options_GatherDebug_tooltip",
+				default = true,
+				OnApplyMainMenu = onModOptionsApply,
+				OnApplyInGame = onModOptionsApply,
+			},
 			EnableNotifications = {
 				name = "UI_EvolvingTraitsWorld_Options_EnableNotifications",
 				tooltip = "UI_EvolvingTraitsWorld_Options_EnableNotifications_tooltip",

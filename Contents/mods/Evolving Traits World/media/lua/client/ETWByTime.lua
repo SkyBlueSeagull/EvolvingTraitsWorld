@@ -4,37 +4,39 @@ local ETWMoodles = require "ETWMoodles";
 local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
+local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 
 local function catEyes()
-	-- confirmed working
 	local player = getPlayer();
 	local nightStrength = getClimateManager():getNightStrength()
-	local playerNum = player:getPlayerNum();
-	local checkedSquares = 0;
-	local squaresVisible = 0;
-	local darknessLevel = 0;
-	local square;
-	local plX, plY, plZ = player:getX(), player:getY(), player:getZ();
-	local radius = 30;
-	local modData = player:getModData().EvolvingTraitsWorld;
-	for x = -radius, radius do
-		for y = -radius, radius do
-			square = getCell():getGridSquare(plX + x, plY + y, plZ);
-			checkedSquares = checkedSquares + 1;
-			if square and square:isCanSee(playerNum) then
-				local squareDarknessLevel = nightStrength * (1 - square:getLightLevel(playerNum)) * 0.01 * (square:isInARoom() and player:isInARoom() and 2 or 1);
-				squaresVisible = squaresVisible + 1;
-				darknessLevel = darknessLevel + squareDarknessLevel;
-				modData.CatEyesCounter = modData.CatEyesCounter + squareDarknessLevel;
+	if nightStrength > 0 then
+		local playerNum = player:getPlayerNum();
+		local checkedSquares = 0;
+		local squaresVisible = 0;
+		local darknessLevel = 0;
+		local square;
+		local plX, plY, plZ = player:getX(), player:getY(), player:getZ();
+		local radius = 30;
+		local modData = player:getModData().EvolvingTraitsWorld;
+		for x = -radius, radius do
+			for y = -radius, radius do
+				square = getCell():getGridSquare(plX + x, plY + y, plZ);
+				checkedSquares = checkedSquares + 1;
+				if square and square:isCanSee(playerNum) then
+					local squareDarknessLevel = nightStrength * (1 - square:getLightLevel(playerNum)) * 0.01 * (square:isInARoom() and player:isInARoom() and 2 or 1);
+					squaresVisible = squaresVisible + 1;
+					darknessLevel = darknessLevel + squareDarknessLevel;
+					modData.CatEyesCounter = modData.CatEyesCounter + squareDarknessLevel;
+				end
 			end
 		end
-	end
-	--print("ETW Logger: Checked squares: "..checkedSquares..", visible squares: "..squaresVisible.." with total darkness level of "..darknessLevel);
-	--print("ETW Logger: CatEyesCounter: "..modData.CatEyesCounter);
-	if not player:HasTrait("NightVision") and modData.CatEyesCounter >= SBvars.CatEyesCounter then
-		player:getTraits():add("NightVision");
-		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_NightVision"), true, HaloTextHelper.getColorGreen()) end
-		Events.EveryOneMinute.Remove(catEyes);
+		if debug() then print("ETW Logger: Checked squares: "..checkedSquares..", visible squares: "..squaresVisible.." with total darkness level of "..darknessLevel) end
+		if debug() then print("ETW Logger: CatEyesCounter: "..modData.CatEyesCounter) end
+		if not player:HasTrait("NightVision") and modData.CatEyesCounter >= SBvars.CatEyesCounter then
+			player:getTraits():add("NightVision");
+			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_NightVision"), true, HaloTextHelper.getColorGreen()) end
+			Events.EveryOneMinute.Remove(catEyes);
+		end
 	end
 end
 
@@ -64,8 +66,7 @@ local function sleepSystem()
 		ETWMoodles.sleepHealthMoodleUpdate(nil, nil, true);
 		modData.CurrentlySleeping = false;
 		modData.HoursSinceLastSleep = 0;
-		--print("ETW Logger: AVG from: modData.Last100PreferredHour"..currentPreferredTargetHour);
-		--print("ETW Logger: SleepHealthinessBar: "..modData.SleepHealthinessBar);
+		if debug() then print("ETW Logger: SleepHealthinessBar: "..modData.SleepHealthinessBar) end
 	end
 	if not player:isAsleep() then
 		modData.HoursSinceLastSleep = modData.HoursSinceLastSleep + 1 / 6;
@@ -93,7 +94,7 @@ local function sleepSystem()
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_MoreSleep"), true, HaloTextHelper.getColorGreen()) end
 		end
 	end
-	--print("ETW Logger: modData.SleepHealthinessBar: "..modData.SleepHealthinessBar);
+	if debug() then print("ETW Logger: modData.SleepHealthinessBar: "..modData.SleepHealthinessBar) end
 end
 
 local function smoker()
@@ -101,15 +102,15 @@ local function smoker()
 	local modData = player:getModData().EvolvingTraitsWorld.SmokeSystem; -- SmokingAddiction MinutesSinceLastSmoke
 	local timeSinceLastSmoke = player:getTimeSinceLastSmoke() * 60;
 	modData.MinutesSinceLastSmoke = modData.MinutesSinceLastSmoke + 1;
-	--print("ETW Logger: timeSinceLastSmoke: "..timeSinceLastSmoke);
-	--print("ETW Logger: modData.MinutesSinceLastSmoke: "..modData.MinutesSinceLastSmoke);
+	if debug() then print("ETW Logger: timeSinceLastSmoke: "..timeSinceLastSmoke) end
+	if debug() then print("ETW Logger: modData.MinutesSinceLastSmoke: "..modData.MinutesSinceLastSmoke) end
 	local stress = player:getStats():getStress(); -- stress is 0-1
 	local panic = player:getStats():getPanic(); -- 0-100
 	local addictionDecay = SBvars.SmokingAddictionDecay * ( 0.0167 / 10 * (1 + stress) * (1 + panic / 100));
 	modData.SmokingAddiction = math.max(0, modData.SmokingAddiction - addictionDecay);
 	ETWMoodles.smokerMoodleUpdate(player, modData.SmokingAddiction);
-	--print("ETW Logger: addictionDecay: "..addictionDecay);
-	--print("ETW Logger: modData.SmokingAddiction: "..modData.SmokingAddiction);
+	if debug() then print("ETW Logger: smoking addictionDecay: "..addictionDecay) end
+	if debug() then print("ETW Logger: modData.SmokingAddiction: "..modData.SmokingAddiction) end
 	if modData.SmokingAddiction >= SBvars.SmokerCounter and not player:HasTrait("Smoker") then
 		player:getTraits():add("Smoker")
 		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Smoker"), true, HaloTextHelper.getColorRed()) end
@@ -123,7 +124,7 @@ local function herbalist()
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
 	modData.HerbsPickedUp = math.max(0, modData.HerbsPickedUp - 1);
-	print("ETW Logger: modData.HerbsPickedUp: "..modData.HerbsPickedUp);
+	if debug() then print("ETW Logger: modData.HerbsPickedUp: "..modData.HerbsPickedUp) end
 	if modData.HerbsPickedUp < SBvars.HerbalistHerbsPicked / 2 and player:HasTrait("Herbalist") then
 		player:getTraits():remove("Herbalist");
 		player:getKnownRecipes():remove("Herbalist");

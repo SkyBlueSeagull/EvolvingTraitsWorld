@@ -1,9 +1,9 @@
-[h1]What is this?[/h1]
+[h1]Welcome to the world of Evolving Traits[/h1]
 This mod allows you to get really ripped in PZ and see an actual character progression besides getting your skills from lvl 0 to lvl10. You'll be able to purge the majority of negative traits and earn a lot of positive ones. That would help you to go from your average Joe to actual GigaChad in-game. You repair a lot of cars? You get better at it. You train yourself to take long-range kills with proper rifles? Why wouldn't it warranty getting Eagle-Eyed? You pickup thousands of plants through your lifetime and still can't call yourself Herbalist? Yea, that doesn't sound right to me. You maintain great sleeping schedule but for some reason you still need same amount of sleep as when you were sleeping whenever? Not anymore. Welcome to the Dynamic Traits World, ladies and gentlemen!
 
 [h1]Features[/h1]
 [list]
-[*] 70+ dynamic perks (vanilla + added by the mod), full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
+[*] 70+ dynamic traits (vanilla + added by the mod), full list on [url=https://docs.google.com/spreadsheets/d/1405szVLTetMioT0P8ddvPUJTv6VyLtTEvWxyn0cuZjI/edit?usp=sharing]this spreadsheet[/url].
 [*] [h3][b]FULL sandbox customization[/b]. Choose which perks you want to be dynamic, choose how fast you get them, choose how fast you lose them, customize anything with more than 130 sandbox options. Nothing is forced upon player, if you like 1% of the mod, you can literally set it up so you get to use that 1% and nothing else.[/h3]
 [*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay! Can be enabled without enabling main mod, so if you don't like main features added by this mod and just want to see which traits are dynamic in your game with SOTO/MST/MT/DT - you can do that.
 [*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.

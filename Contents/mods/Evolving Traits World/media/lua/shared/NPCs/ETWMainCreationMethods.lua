@@ -57,6 +57,9 @@ local function addTraits()
 	HomeCook:addXPBoost(Perks.Cooking, 1);
 	HomeCook:getFreeRecipes():add("Make Cake Batter");
 
+	local Homichlophobia = createTrait("Homichlophobia", -1);
+	local Homichlophile = createTrait("Homichlophile", 1);
+
 	local Kenshi = createTrait("Kenshi", 4);
 	Kenshi:addXPBoost(Perks.LongBlade, 1);
 
@@ -90,6 +93,7 @@ local function addTraits()
 	TraitFactory.setMutualExclusive("GymRat", "Obese");
 	TraitFactory.setMutualExclusive("GymRat", "Very Underweight");
 	TraitFactory.setMutualExclusive("Pluviophobia", "Pluviophile");
+	TraitFactory.setMutualExclusive("Homichlophobia", "Homichlophile");
 
 	TraitFactory.sortList();
 
