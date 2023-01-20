@@ -97,7 +97,7 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_FogSystemCounter = "Fog System Counter",
 	Sandbox_EvolvingTraitsWorld_FogSystemCounter_tooltip = "You get fogIntensity * FogSystemCounterIncreaseMultiplier every minute you spend in fog. You also lose fogIntensity * panic * 0.9 * FogSystemCounterDecreaseMultiplier at same time. Counter max and min boundaries are -2*counter and 2*counter. When being under -counter, you gain Homichlophobia, when reaching counter, you gain Homichlophile. When in between, you get nothing.",
 	Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier = "Fog Counter Increase Multiplier",
-    Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier_tooltip = "Adjusts how fast your counter increases, details in tooltip of Fog System Counter",
+	Sandbox_EvolvingTraitsWorld_FogSystemCounterIncreaseMultiplier_tooltip = "Adjusts how fast your counter increases, details in tooltip of Fog System Counter",
 	Sandbox_EvolvingTraitsWorld_FogSystemCounterDecreaseMultiplier = "Fog Counter Decrease Multiplier",
 	Sandbox_EvolvingTraitsWorld_FogSystemCounterDecreaseMultiplier_tooltip = "Adjusts how fast your counter decreases, details in tooltip of Fog System Counter",
 
@@ -137,7 +137,7 @@ Sandbox_EN = {
 
 	Sandbox_EvolvingTraitsWorld_Herbalist = "Herbalist",
 	Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay = "Herbalist herbs decay",
-    Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay_tooltip = "How many herbs are removed from the counter each day. Dropping down to half a counter will remove the trait, so you'll have to earn it again.",
+	Sandbox_EvolvingTraitsWorld_HerbalistHerbsDecay_tooltip = "How many herbs are removed from the counter each day. Dropping down to half a counter will remove the trait, so you'll have to earn it again.",
 	Sandbox_EvolvingTraitsWorld_HerbalistHerbsPicked = "Herbalist herbs picked",
 	Sandbox_EvolvingTraitsWorld_HerbalistHerbsPicked_tooltip = "How many herbs you have to pick up (from foraging) to gain the trait",
 
@@ -151,6 +151,11 @@ Sandbox_EN = {
 
 	Sandbox_EvolvingTraitsWorld_HomeCook = "Home Cook",
 	Sandbox_EvolvingTraitsWorld_HomeCookSkill = "Home Cook Skill requirement",
+
+	Sandbox_EvolvingTraitsWorld_HomichlophileMultiplier = "Homichlophile Multiplier",
+	Sandbox_EvolvingTraitsWorld_HomichlophileMultiplier_multiplier = "How much Homichlophile affects player. Formula for tress and panic decrease every minute you're in fog: 4% * fogIntensity * Homichlophile Multiplier. Fog intensity is between 0 and 1, so you'll rarely see full 4% decrease",
+	Sandbox_EvolvingTraitsWorld_HomichlophobiaMultiplier = "Homichlophobia Multiplier",
+	Sandbox_EvolvingTraitsWorld_HomichlophobiaMultiplier_multiplier = "How much Homichlophobia affects player. Formula for tress and panic increase every minute you're in fog: 4% * fogIntensity * Homichlophobia Multiplier. Fog intensity is between 0 and 1, so you'll rarely see full 4% increase",
 
 	Sandbox_EvolvingTraitsWorld_Hunter = "Hunter",
 	Sandbox_EvolvingTraitsWorld_HunterSkill = "Hunter Skill requirement",

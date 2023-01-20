@@ -285,6 +285,24 @@ option EvolvingTraitsWorld.HoarderWeight
 	page = EvolvingTraitsWorldTraitsSettings,
 	translation = EvolvingTraitsWorld_HoarderWeight,
 }
+option EvolvingTraitsWorld.HomichlophileMultiplier
+{
+	type = double,
+	min = 0,
+	max = 100,
+	default = 1,
+	page = EvolvingTraitsWorldTraitsSettings,
+	translation = EvolvingTraitsWorld_HomichlophileMultiplier,
+}
+option EvolvingTraitsWorld.HomichlophobiaMultiplier
+{
+	type = double,
+	min = 0,
+	max = 100,
+	default = 1,
+	page = EvolvingTraitsWorldTraitsSettings,
+	translation = EvolvingTraitsWorld_HomichlophobiaMultiplier,
+}
 option EvolvingTraitsWorld.PluviophileMultiplier
 {
 	type = double,

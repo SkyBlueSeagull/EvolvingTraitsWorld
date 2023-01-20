@@ -1,13 +1,3 @@
-v.3.0.0 - Sandbox and Debug polishing
-General:
-	- Added ModOptions option to printout debug information to console.txt, this is going to help with fixing stuff, additionally you can see there all internal counters. Ctrl+F for "ETW" to find all the loggers.
-	- Sandbox pages got a bit of restructuring. Everything that requires just some skill levels and maybe additional thing or two now can be found on "Simple Perks" page, more complex stuff like Smoker or Herbalist or Cat Eyes is now on "Complex Perks" page.
-	- Sandbox options added for Herbalist decay rate.
-	- Code optimization for Cat Eyes, Pluviophile, Pluviophobia, Outdoorsman
-	- New traits: Homichlophile, Homichlophobia - love and fear of fog. Dynamic options are present in sandbox, as always.
-	- Fear of Locations system math change, now there's no jump from 0 to 1 as soon as you got even a bit of stress or unhappiness.
-	- Rain Traits math change, now it's more consistent with the rest of the systems.
+v.3.0.1
 Fixes:
-	- Clumsy was connected to incorrect sandbox option.
-Translations:
-	- Updated ITA to 3.0.0
+	- Fixed fog traits trying to use non-existing sandbox variables. Check "Traits" sandbox page to see 2 new sandbox vars.
