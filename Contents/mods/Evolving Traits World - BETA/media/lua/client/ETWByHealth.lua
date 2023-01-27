@@ -158,6 +158,7 @@ local function asthmaticTrait()
 	local upperBoundary = 2 * SBvars.AsthmaticCounter;
 	if (running or sprinting) and (temperature <= 10 or smoker) then
 		local counterIncrease = temperatureMultiplier * (outside and 1.2 or 1) * (smoker and 1.5 or 0.8) * (asthmatic and 1.5 or 0.8) * (sprinting and 1.5 or 1);
+		counterIncrease = counterIncrease * ((SBvars.AffinitySystem and modData.StartingTraits.Asthmatic) and SBvars.AffinitySystemGainMultiplier or 1);
 		modData.AsthmaticCounter = math.min(upperBoundary, modData.AsthmaticCounter + counterIncrease);
 		if debug() then print("ETW Logger: counterIncrease: "..counterIncrease) end
 		if debug() then print("ETW Logger: modData.AsthmaticCounter: "..modData.AsthmaticCounter) end
@@ -171,6 +172,7 @@ local function asthmaticTrait()
 	end
 	if not running and not sprinting and temperature >= 0 then
 		local counterDecrease = (1 + player:getPerkLevel(Perks.Fitness) * 0.1) * (smoker and 0.5 or 1) * (asthmatic and 0.5 or 1) * endurance;
+		counterDecrease = counterDecrease * ((SBvars.AffinitySystem and modData.StartingTraits.Asthmatic) and SBvars.AffinitySystemLoseDivider or 1);
 		modData.AsthmaticCounter = math.max(lowerBoundary, modData.AsthmaticCounter - counterDecrease);
 		if debug() then print("ETW Logger: counterDecrease: "..counterDecrease) end
 		if debug() then print("ETW Logger: modData.AsthmaticCounter: "..modData.AsthmaticCounter) end
@@ -185,7 +187,7 @@ local function initializeEvents(playerIndex, player)
 	Events.EveryTenMinutes.Remove(weightSystem);
 	if SBvars.WeightSystem == true then Events.EveryTenMinutes.Add(weightSystem) end
 	Events.EveryOneMinute.Remove(asthmaticTrait);
-	if SBvars.Asthmatic == true and player:getModData().EvolvingTraitsWorld.StartingTraits.Asthmatic == false then Events.EveryOneMinute.Add(asthmaticTrait) end
+	if SBvars.Asthmatic == true then Events.EveryOneMinute.Add(asthmaticTrait) end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);

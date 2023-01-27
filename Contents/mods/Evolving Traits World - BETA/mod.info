@@ -1,0 +1,10 @@
+name=Evolving Traits World (ETW) - BETA
+poster=poster.png
+require=MoodleFramework,KillCount,modoptions
+url=https://steamcommunity.com/sharedfiles/filedetails/?id=2914075159
+id=EvolvingTraitsWorldBeta
+versionMin=41.78
+modversion=4.0.0_beta
+icon=icon.png
+description=This is BETA version of upcoming changes. This is made to allow people to test new upcoming changes to help with catching bugs. DO NOT use this and normal mod - "Evolving Traits World (ETW)" at same time.
+authors=MusicManiac

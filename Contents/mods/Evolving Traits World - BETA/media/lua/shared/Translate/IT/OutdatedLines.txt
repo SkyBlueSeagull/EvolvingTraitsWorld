@@ -1,0 +1,26 @@
+Current Translation version: v.3.0.1
+
+New/changed lines since v.3.0.1
+
+Moodles_EN.txt
+	changed:
+
+	new:
+
+
+Sandbox_EN.txt
+	changed:
+		Sandbox_EvolvingTraitsWorld_HomichlophileMultiplier = "Homichlophile effect Multiplier",
+		Sandbox_EvolvingTraitsWorld_HomichlophobiaMultiplier = "Homichlophobia effect Multiplier",
+	new:
+		Sandbox_EvolvingTraitsWorld_AffinitySystem = "Affinity System",
+		Sandbox_EvolvingTraitsWorld_AffinitySystem_tooltip = "Defines if Affinity System is enabled for some traits tied to systems and some complex ones (for example, weight Fear of Locations system, Herbalist, or Sleep System. Check which Systems and Traits are a subject to Affinity system in Google sheets).<br>Affinity system makes it easier to hold onto traits you picked on character creation, both negative and positive. With it enabled, you halve (modifiable) the speed at which you lose these traits, and double (also modifiable) the speed at which you earn these traits.",
+		Sandbox_EvolvingTraitsWorld_AffinitySystemLoseDivider = "Affinity System Divider",
+		Sandbox_EvolvingTraitsWorld_AffinitySystemLoseDivider_tooltip = "How much harder it is to lose perks that have Affinity System functionality (only affects perks you started with!). Setting it to 1, would mean that it doesn't make it harder to lose. Setting it to 2 means it'll be twice as fast to lose them. Setting to 1.5 would make it 50% faster, and so on. So if you start with positive trait that you can lose, it'll be much harder to lose it. But it also affects negative traits!",
+		Sandbox_EvolvingTraitsWorld_AffinitySystemLoseMultiplier = "Affinity System Multiplier",
+		Sandbox_EvolvingTraitsWorld_AffinitySystemLoseMultiplier_tooltip = "How much easier it is to gain perks that have Affinity System functionality (only affects perks you started with!). Setting it to 1, would mean that it doesn't make it easier to gain. Setting it to 2 means it'll take twice as fast to gain them. Setting to 1.5 would make it 50% faster, and so on. So if you start with positive dynamic trait and later lose it, you'll get it back much faster. But it also affects negative traits!",
+
+UI_EN.txt
+	changed:
+
+	new:

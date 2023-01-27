@@ -21,7 +21,7 @@ Installation instructions can be found in [url=https://steamcommunity.com/worksh
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2792245343]More Simple Traits (MST)[/url] - my submod shows which traits are dynamic from it.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2812583527]Literacy Mod[/url] - my submod shows which traits are dynamic from it. (upcoming update, Literacy is not dynamic yet)
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2760950740]Explorer Trait[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2863908612]SixthSense[/url] - my submod marks the traits being dynamic.
-[*] Literally anything else: should be compatible.
+[*] Literally anything else: should be compatible. Resolved mod conflicts include popular mods like: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1905148104]Superb Survivors![/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2719327441]Snake's Mod Pack 41.77[/url]
 [/list]
 
 [h1]Recommended Mods[/h1]
