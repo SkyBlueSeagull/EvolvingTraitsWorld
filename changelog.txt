@@ -1,3 +1,4 @@
-v.4.0.1
+v.4.0.2
+
 Fixes:
-	- Fixed error in ETWByTime.lua trying to access incorrect value in table.
+	- Fixed error in ETWFunctionsOverride.lua trying to access incorrect value in table.

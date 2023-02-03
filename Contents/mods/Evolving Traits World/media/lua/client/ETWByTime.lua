@@ -49,9 +49,9 @@ end
 
 local function sleepSystem()
 	local player = getPlayer();
-	local modData = player:getModData();
+	local modData = player:getModData().EvolvingTraitsWorld;
 	local startingTraitsModData = modData.StartingTraits;
-	local sleepModData = modData.EvolvingTraitsWorld.SleepSystem;
+	local sleepModData = modData.SleepSystem;
 	local timeOfDay = getGameTime():getTimeOfDay();
 	local currentPreferredTargetHour = sleepModData.LastMidpoint;
 	if player:isAsleep() then
