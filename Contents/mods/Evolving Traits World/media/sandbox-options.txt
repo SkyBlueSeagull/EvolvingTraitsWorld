@@ -5,7 +5,31 @@ option EvolvingTraitsWorld.SYSTEMS
 	translation = ---------------------------------------------SYSTEMS-------------------------------------------------------------------,
 }
 
-
+option EvolvingTraitsWorld.AffinitySystem
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_AffinitySystem,
+}
+option EvolvingTraitsWorld.AffinitySystemLoseDivider
+{
+	type = double,
+	min = 1,
+	max = 100,
+	default = 2,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_AffinitySystemLoseDivider,
+}
+option EvolvingTraitsWorld.AffinitySystemGainMultiplier
+{
+	type = double,
+	min = 1,
+	max = 100,
+	default = 2,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_AffinitySystemGainMultiplier,
+}
 option EvolvingTraitsWorld.BraverySystem
 {
 	type = boolean,

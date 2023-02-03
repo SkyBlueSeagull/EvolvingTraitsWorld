@@ -1,4 +1,5 @@
-if getActivatedMods():contains('EvolvingTraitsWorldBeta') then
+if getActivatedMods():contains('EvolvingTraitsWorld') and getActivatedMods():contains('EvolvingTraitsWorldBeta') then
+	print("ETW Logger: player is trying to use both BETA and main branch");
 	error("YOU LOADED MAIN MOD AND BETA BRANCH OF THE MOD AT THE SAME TIME, ENABLE ONLY 1!!!");
 end
 
@@ -10,27 +11,15 @@ local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
 local function checkStartingDTConflictingTrait(startingTraits, player, trait)
 	if player:getModData().DTKillscheck2 == nil then
 		-- migration from DT to ETW
-		if trait == "Claustophobic" then
-			if startingTraits.Claustrophobic == nil then
-				startingTraits.Claustrophobic = player:HasTrait(trait);
-			end
-		elseif trait == "HeartyAppitite" then
-			if startingTraits.HeartyAppetite == nil then
-				startingTraits.HeartyAppetite = player:HasTrait(trait);
-			end
-		elseif trait == "Thinskinned" then
-			if startingTraits.ThinSkinned == nil then
-				startingTraits.ThinSkinned = player:HasTrait(trait);
-			end
+		if trait == "HeartyAppitite" and startingTraits.HeartyAppetite == nil then
+			startingTraits.HeartyAppetite = player:HasTrait(trait);
+		elseif trait == "Thinskinned" and startingTraits.ThinSkinned == nil then
+			startingTraits.ThinSkinned = player:HasTrait(trait);
 		elseif startingTraits[trait] == nil then
 			startingTraits[trait] = player:HasTrait(trait);
 		end
 	else
-		if trait == "Claustophobic" then
-			if startingTraits.Claustrophobic == nil then
-				startingTraits.Claustrophobic = player:HasTrait(trait);
-			end
-		elseif trait == "HeartyAppitite" then
+		if trait == "HeartyAppitite" then
 			if startingTraits.HeartyAppetite == nil then
 				startingTraits.HeartyAppetite = false;
 			end
@@ -45,7 +34,9 @@ local function checkStartingDTConflictingTrait(startingTraits, player, trait)
 end
 
 local function checkStartingTrait(startingTraits, player, trait)
-	if startingTraits[trait] == nil then
+	if trait == "Claustophobic" and startingTraits.Claustrophobic == nil then
+		startingTraits.Claustrophobic = player:HasTrait(trait);
+	elseif startingTraits[trait] == nil then
 		startingTraits[trait] = player:HasTrait(trait);
 	end
 end
@@ -57,9 +48,7 @@ local function createModData(playerIndex, player)
 	modData.VehiclePartRepairs = modData.VehiclePartRepairs or 0;
 	modData.EagleEyedKills = modData.EagleEyedKills or 0;
 	modData.CatEyesCounter = modData.CatEyesCounter or 0;
-	modData.LocationFearCounter = nil; -- v.2.0.0 cleaning up, remove it later
 	modData.FoodSicknessWeathered = modData.FoodSicknessWeathered or 0;
-	modData.AsthmaticCounter = modData.AsthmaticCounter or 0;
 
 	modData.StartingTraits = modData.StartingTraits or {};
 	local startingTraits = modData.StartingTraits;
@@ -71,12 +60,11 @@ local function createModData(playerIndex, player)
 	checkStartingDTConflictingTrait(startingTraits, player, "FastHealer");
 	checkStartingDTConflictingTrait(startingTraits, player, "Thinskinned");
 	checkStartingDTConflictingTrait(startingTraits, player, "ThickSkinned");
-	checkStartingDTConflictingTrait(startingTraits, player, "Outdoorsman");
-	checkStartingDTConflictingTrait(startingTraits, player, "NeedsLessSleep");
-	checkStartingDTConflictingTrait(startingTraits, player, "NeedsMoreSleep");
 	checkStartingDTConflictingTrait(startingTraits, player, "Agoraphobic");
-	checkStartingDTConflictingTrait(startingTraits, player, "Claustophobic");
-	checkStartingDTConflictingTrait(startingTraits, player, "Asthmatic");
+	checkStartingTrait(startingTraits, player, "Claustophobic");
+	checkStartingTrait(startingTraits, player, "Asthmatic");
+	checkStartingTrait(startingTraits, player, "NeedsLessSleep");
+	checkStartingTrait(startingTraits, player, "NeedsMoreSleep");
 	checkStartingTrait(startingTraits, player, "Bloodlust");
 	checkStartingTrait(startingTraits, player, "Smoker");
 	checkStartingTrait(startingTraits, player, "Outdoorsman");
@@ -86,19 +74,24 @@ local function createModData(playerIndex, player)
 	checkStartingTrait(startingTraits, player, "Homichlophobia");
 	checkStartingTrait(startingTraits, player, "Homichlophile");
 
-	if modData.HerbsPickedUp == nil and startingTraits.Herbalist == true then -- start at full counter if they have the trait
+	if modData.AsthmaticCounter == nil and startingTraits.Asthmatic == true then -- start at full counter if they start with the trait
+		modData.AsthmaticCounter = SBvars.AsthmaticCounter * 2;
+	end
+	modData.AsthmaticCounter = modData.AsthmaticCounter or 0;
+
+	if modData.HerbsPickedUp == nil and startingTraits.Herbalist == true then -- start at full counter if they start with the trait
 		modData.HerbsPickedUp = SBvars.HerbalistHerbsPicked;
 	end
 	modData.HerbsPickedUp = modData.HerbsPickedUp or 0;
 
-	if modData.RainCounter == nil and startingTraits.Pluviophile == true then -- start at full counter if they have the trait
+	if modData.RainCounter == nil and startingTraits.Pluviophile == true then -- start at full counter if they start with the trait
 		modData.RainCounter = SBvars.RainSystemCounter * 2;
 	elseif modData.RainCounter == nil and startingTraits.Pluviophobia == true then
 		modData.RainCounter = SBvars.RainSystemCounter * -2;
 	end
 	modData.RainCounter = modData.RainCounter or 0;
 
-	if modData.FogCounter == nil and startingTraits.Homichlophile == true then -- start at full counter if they have the trait
+	if modData.FogCounter == nil and startingTraits.Homichlophile == true then -- start at full counter if they start with the trait
 		modData.FogCounter = SBvars.FogSystemCounter * 2;
 	elseif modData.FogCounter == nil and startingTraits.Homichlophobia == true then
 		modData.FogCounter = SBvars.FogSystemCounter * -2;
@@ -107,7 +100,7 @@ local function createModData(playerIndex, player)
 
 	modData.OutdoorsmanSystem = modData.OutdoorsmanSystem or {};
 	local outdoorsmanSystem = modData.OutdoorsmanSystem;
-	if outdoorsmanSystem.OutdoorsmanCounter == nil and startingTraits.Outdoorsman == true then -- start at full counter if they have the trait
+	if outdoorsmanSystem.OutdoorsmanCounter == nil and startingTraits.Outdoorsman == true then -- start at full counter if they start with the trait
 		outdoorsmanSystem.OutdoorsmanCounter = SBvars.OutdoorsmanCounter * 10;
 	end
 	outdoorsmanSystem.OutdoorsmanCounter = outdoorsmanSystem.OutdoorsmanCounter or 0;
@@ -115,14 +108,14 @@ local function createModData(playerIndex, player)
 
 	modData.LocationFearSystem = modData.LocationFearSystem or {};
 	local locationFearSystem = modData.LocationFearSystem;
-	if locationFearSystem.FearOfInside == nil and startingTraits.Claustrophobic == true then -- start at full counter if they have the trait
+	if locationFearSystem.FearOfInside == nil and startingTraits.Claustrophobic == true then -- start at full counter if they start with the trait
 		locationFearSystem.FearOfInside = SBvars.FearOfLocationsSystemCounter * -2;
 	end
-	if locationFearSystem.FearOfOutside == nil and startingTraits.Agoraphobic == true then -- start at full counter if they have the trait
+	if locationFearSystem.FearOfOutside == nil and startingTraits.Agoraphobic == true then -- start at full counter if they start with the trait
 		locationFearSystem.FearOfOutside = SBvars.FearOfLocationsSystemCounter * -2;
 	end
-	locationFearSystem.FearOfInside = locationFearSystem.FearOfInside or 0; -- use existing value or start at 0 cuz they don't have the trait
-	locationFearSystem.FearOfOutside = locationFearSystem.FearOfOutside or 0; -- use existing value or start at 0 cuz they don't have the trait
+	locationFearSystem.FearOfInside = locationFearSystem.FearOfInside or 0;
+	locationFearSystem.FearOfOutside = locationFearSystem.FearOfOutside or 0;
 
 	modData.SleepSystem = modData.SleepSystem or {};
 	local sleepSystem = modData.SleepSystem;

@@ -19,10 +19,14 @@ local function rainTraits()
 		local lowerBoundary = -SBCounter * 2;
 		local upperBoundary = SBCounter * 2;
 		if panic <= 25 then
+			rainGain = rainGain / ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophobia) and SBvars.AffinitySystemLoseDivider or 1);
+			rainGain = rainGain * ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophile) and SBvars.AffinitySystemGainMultiplier or 1);
 			if debug() then print("ETW Logger: rainTraits rainGain="..rainGain..". RainCounter=" .. modData.RainCounter) end
 			modData.RainCounter = math.min(upperBoundary, modData.RainCounter + rainGain);
 		else
 			local rainDecrease = rainGain * panic / 100 * SBvars.RainSystemCounterMultiplier;
+			rainDecrease = rainDecrease / ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophile) and SBvars.AffinitySystemLoseDivider or 1);
+			rainDecrease = rainDecrease * ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophobia) and SBvars.AffinitySystemGainMultiplier or 1);
 			if debug() then print("ETW Logger: rainTraits rainDecrease="..rainDecrease..". RainCounter=" .. modData.RainCounter) end
 			modData.RainCounter = math.max(lowerBoundary, modData.RainCounter - rainDecrease);
 		end
@@ -46,10 +50,14 @@ local function fogTraits()
 	local player = getPlayer();
 	local fogIntensity = getClimateManager():getFogIntensity();
 	if fogIntensity > 0 and player:isOutside() and player:getVehicle() == nil then
+		local modData = player:getModData().EvolvingTraitsWorld;
 		local panic = player:getStats():getPanic(); -- 0-100
 		local fogGain = fogIntensity * SBvars.FogSystemCounterIncreaseMultiplier;
+		fogGain = fogGain / ((SBvars.AffinitySystem and modData.StartingTraits.Homichlophobia) and SBvars.AffinitySystemLoseDivider or 1);
+		fogGain = fogGain * ((SBvars.AffinitySystem and modData.StartingTraits.Homichlophile) and SBvars.AffinitySystemGainMultiplier or 1);
 		local fogDecrease = fogIntensity * (panic / 100) * 0.9 * SBvars.FogSystemCounterDecreaseMultiplier;
-		local modData = player:getModData().EvolvingTraitsWorld;
+		fogDecrease = fogDecrease / ((SBvars.AffinitySystem and modData.StartingTraits.Homichlophile) and SBvars.AffinitySystemLoseDivider or 1);
+		fogDecrease = fogDecrease * ((SBvars.AffinitySystem and modData.StartingTraits.Homichlophobia) and SBvars.AffinitySystemGainMultiplier or 1);
 		local SBCounter = SBvars.FogSystemCounter
 		local lowerBoundary = -SBCounter * 2;
 		local upperBoundary = SBCounter * 2;

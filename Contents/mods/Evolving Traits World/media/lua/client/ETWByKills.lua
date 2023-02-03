@@ -26,39 +26,45 @@ local function bloodlustKill(zombie)
 end
 
 local function bloodlustTime()
+	-- TODO: bad coding practice: 2 instances of same code, fix later
 	if SBvars.Bloodlust == true then
 		local player = getPlayer();
-		local modData = player:getModData().EvolvingTraitsWorld.BloodlustSystem;
-		modData.BloodlustMeter = math.max(modData.BloodlustMeter - 1, 0);
+		local modData = player:getModData().EvolvingTraitsWorld;
+		local bloodlustModData = modData.BloodlustSystem;
+		bloodlustModData.BloodlustMeter = math.max(bloodlustModData.BloodlustMeter - 1, 0);
 		ETWMoodles.bloodlustMoodleUpdate(player, false);
 		-- Bloodlust Progress when no perk
 		if not player:HasTrait("Bloodlust") then
-			if debug() then print("ETW Log: Bloodlust Meter (perk is not present): "..modData.BloodlustMeter) end
-			if modData.BloodlustMeter >= 18 then
+			if debug() then print("ETW Log: Bloodlust Meter (perk is not present): ".. bloodlustModData.BloodlustMeter) end
+			if bloodlustModData.BloodlustMeter >= 18 then
 				-- gain if above 50%
-				modData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, modData.BloodlustProgress + modData.BloodlustMeter * 0.1);
-				if debug() then print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress) end
-				if modData.BloodlustProgress >= SBvars.BloodlustProgress then
+				local bloodLustProgressIncrease = bloodlustModData.BloodlustMeter * 0.1 * ((SBvars.AffinitySystem and modData.StartingTraits.Bloodlust) and SBvars.AffinitySystemGainMultiplier or 1);
+				bloodlustModData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, bloodlustModData.BloodlustProgress + bloodLustProgressIncrease);
+				if debug() then print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (no trait)=".. bloodlustModData.BloodlustProgress) end
+				if bloodlustModData.BloodlustProgress >= SBvars.BloodlustProgress then
 					player:getTraits():add("Bloodlust");
 					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), true, HaloTextHelper.getColorGreen()) end
 				end
 			else
-				modData.BloodlustProgress = math.max(0, modData.BloodlustProgress - (3.6 - modData.BloodlustMeter * 0.1));
-				if debug() then print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (no trait)="..modData.BloodlustProgress) end
+				local bloodLustProgressDecrease = bloodlustModData.BloodlustMeter * 0.1 / ((SBvars.AffinitySystem and modData.StartingTraits.Bloodlust) and SBvars.AffinitySystemLoseDivider or 1);
+				bloodlustModData.BloodlustProgress = math.max(0, bloodlustModData.BloodlustProgress - (3.6 - bloodLustProgressDecrease));
+				if debug() then print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (no trait)=".. bloodlustModData.BloodlustProgress) end
 			end
 		end
 		-- Bloodlust Progress when perk is present
 		if player:HasTrait("Bloodlust") then
-			if debug() then print("ETW Log: Bloodlust Meter (perk is present): "..modData.BloodlustMeter) end
-			if modData.BloodlustMeter >= 18 then
+			if debug() then print("ETW Log: Bloodlust Meter (perk is present): ".. bloodlustModData.BloodlustMeter) end
+			if bloodlustModData.BloodlustMeter >= 18 then
 				-- gain progress if above 50%
-				modData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, modData.BloodlustProgress + modData.BloodlustMeter * 0.1);
-				if debug() then print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (trait)="..modData.BloodlustProgress) end
+				local bloodLustProgressIncrease = bloodlustModData.BloodlustMeter * 0.1 * ((SBvars.AffinitySystem and modData.StartingTraits.Bloodlust) and SBvars.AffinitySystemGainMultiplier or 1);
+				bloodlustModData.BloodlustProgress = math.min(SBvars.BloodlustProgress * 2, bloodlustModData.BloodlustProgress + bloodLustProgressIncrease);
+				if debug() then print("ETW Logger: BloodlustMeter is above 50%, BloodlustProgress (trait)=".. bloodlustModData.BloodlustProgress) end
 			else
 				-- lose progress when below 50%
-				modData.BloodlustProgress = math.max(0, modData.BloodlustProgress - (3.6 - modData.BloodlustMeter * 0.1));
-				if debug() then print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (trait)="..modData.BloodlustProgress) end
-				if modData.BloodlustProgress <= SBvars.BloodlustProgress / 2 then
+				local bloodLustProgressDecrease = bloodlustModData.BloodlustMeter * 0.1 / ((SBvars.AffinitySystem and modData.StartingTraits.Bloodlust) and SBvars.AffinitySystemLoseDivider or 1);
+				bloodlustModData.BloodlustProgress = math.max(0, bloodlustModData.BloodlustProgress - (3.6 - bloodLustProgressDecrease));
+				if debug() then print("ETW Logger: BloodlustMeter is below 50%, BloodlustProgress (trait)=".. bloodlustModData.BloodlustProgress) end
+				if bloodlustModData.BloodlustProgress <= SBvars.BloodlustProgress / 2 then
 					player:getTraits():remove("Bloodlust");
 					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Bloodlust"), false, HaloTextHelper.getColorRed()) end
 				end

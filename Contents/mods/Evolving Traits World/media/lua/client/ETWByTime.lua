@@ -49,37 +49,65 @@ end
 
 local function sleepSystem()
 	local player = getPlayer();
-	local modData = player:getModData().EvolvingTraitsWorld.SleepSystem;
+	local modData = player:getModData();
+	local startingTraitsModData = modData.StartingTraits;
+	local sleepModData = modData.EvolvingTraitsWorld.SleepSystem;
 	local timeOfDay = getGameTime():getTimeOfDay();
-	local currentPreferredTargetHour = modData.LastMidpoint;
+	local currentPreferredTargetHour = sleepModData.LastMidpoint;
 	if player:isAsleep() then
 		local hoursAwayFromPreferredHour = math.min(math.abs(currentPreferredTargetHour - timeOfDay), 24 - math.abs(timeOfDay - currentPreferredTargetHour));
-		if modData.CurrentlySleeping == false then modData.CurrentlySleeping = true end
+		if sleepModData.CurrentlySleeping == false then sleepModData.CurrentlySleeping = true end
 		if hoursAwayFromPreferredHour <= 6 then
-			modData.SleepHealthinessBar = math.min(200, modData.SleepHealthinessBar + (1 / 6) * SBvars.SleepSystemMultiplier);
+			local sleepHealthinessBarIncreaseMultiplier = SBvars.SleepSystemMultiplier;
+			if SBvars.AffinitySystem then
+				if startingTraitsModData.NeedsLessSleep then
+					sleepHealthinessBarIncreaseMultiplier = sleepHealthinessBarIncreaseMultiplier * SBvars.AffinitySystemGainMultiplier;
+				elseif startingTraitsModData.NeedsMoreSleep then
+					sleepHealthinessBarIncreaseMultiplier = sleepHealthinessBarIncreaseMultiplier / SBvars.AffinitySystemLoseDivider;
+				end
+			end
+			local sleepHealthinessBarIncrease = (1 / 6) * sleepHealthinessBarIncreaseMultiplier;
+			sleepModData.SleepHealthinessBar = math.min(200, sleepModData.SleepHealthinessBar + sleepHealthinessBarIncrease);
 		else
-			modData.SleepHealthinessBar = math.max(-200, modData.SleepHealthinessBar - (1 / 6) * SBvars.SleepSystemMultiplier);
+			local sleepHealthinessBarDecreaseMultiplier = SBvars.SleepSystemMultiplier;
+			if SBvars.AffinitySystem then
+				if startingTraitsModData.NeedsLessSleep then
+					sleepHealthinessBarDecreaseMultiplier = sleepHealthinessBarDecreaseMultiplier / SBvars.AffinitySystemGainMultiplier;
+				elseif startingTraitsModData.NeedsMoreSleep then
+					sleepHealthinessBarDecreaseMultiplier = sleepHealthinessBarDecreaseMultiplier * SBvars.AffinitySystemLoseDivider;
+				end
+			end
+			local sleepHealthinessBarDecrease = (1 / 6) * sleepHealthinessBarDecreaseMultiplier;
+			sleepModData.SleepHealthinessBar = math.max(-200, sleepModData.SleepHealthinessBar - sleepHealthinessBarDecrease);
 		end
 		ETWMoodles.sleepHealthMoodleUpdate(player, hoursAwayFromPreferredHour, false);
 	end
-	if not player:isAsleep() and modData.CurrentlySleeping == true then
+	if not player:isAsleep() and sleepModData.CurrentlySleeping == true then
 		ETWMoodles.sleepHealthMoodleUpdate(nil, nil, true);
-		modData.CurrentlySleeping = false;
-		modData.HoursSinceLastSleep = 0;
-		if debug() then print("ETW Logger: SleepHealthinessBar: "..modData.SleepHealthinessBar) end
+		sleepModData.CurrentlySleeping = false;
+		sleepModData.HoursSinceLastSleep = 0;
+		if debug() then print("ETW Logger: SleepHealthinessBar: ".. sleepModData.SleepHealthinessBar) end
 	end
 	if not player:isAsleep() then
-		modData.HoursSinceLastSleep = modData.HoursSinceLastSleep + 1 / 6;
-		if modData.HoursSinceLastSleep >= 24 then
-			modData.SleepHealthinessBar = math.max(-200, modData.SleepHealthinessBar - (1 / 6) * SBvars.SleepSystemMultiplier);
+		sleepModData.HoursSinceLastSleep = sleepModData.HoursSinceLastSleep + 1 / 6;
+		if sleepModData.HoursSinceLastSleep >= 24 then
+			local sleepHealthinessBarIncreaseMultiplier = SBvars.SleepSystemMultiplier;
+			if SBvars.AffinitySystem then
+				if startingTraitsModData.NeedsLessSleep then
+					sleepHealthinessBarIncreaseMultiplier = sleepHealthinessBarIncreaseMultiplier / SBvars.AffinitySystemGainMultiplier;
+				elseif startingTraitsModData.NeedsMoreSleep then
+					sleepHealthinessBarIncreaseMultiplier = sleepHealthinessBarIncreaseMultiplier * SBvars.AffinitySystemLoseDivider;
+				end
+			end
+			sleepModData.SleepHealthinessBar = math.max(-200, sleepModData.SleepHealthinessBar - (1 / 6) * SBvars.SleepSystemMultiplier);
 		end
 	end
-	if modData.SleepHealthinessBar > 100 then
+	if sleepModData.SleepHealthinessBar > 100 then
 		if not player:HasTrait("NeedsLessSleep") then
 			player:getTraits():add("NeedsLessSleep")
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LessSleep"), true, HaloTextHelper.getColorGreen()) end
 		end
-	elseif modData.SleepHealthinessBar < -100 then
+	elseif sleepModData.SleepHealthinessBar < -100 then
 		if not player:HasTrait("NeedsMoreSleep") then
 			player:getTraits():add("NeedsMoreSleep")
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_MoreSleep"), true, HaloTextHelper.getColorRed()) end
@@ -94,27 +122,31 @@ local function sleepSystem()
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_MoreSleep"), true, HaloTextHelper.getColorGreen()) end
 		end
 	end
-	if debug() then print("ETW Logger: modData.SleepHealthinessBar: "..modData.SleepHealthinessBar) end
+	if debug() then print("ETW Logger: modData.SleepHealthinessBar: ".. sleepModData.SleepHealthinessBar) end
 end
 
 local function smoker()
 	local player = getPlayer();
-	local modData = player:getModData().EvolvingTraitsWorld.SmokeSystem; -- SmokingAddiction MinutesSinceLastSmoke
+	local modData = player:getModData().EvolvingTraitsWorld;
+	local smokerModData = modData.SmokeSystem; -- SmokingAddiction MinutesSinceLastSmoke
 	local timeSinceLastSmoke = player:getTimeSinceLastSmoke() * 60;
-	modData.MinutesSinceLastSmoke = modData.MinutesSinceLastSmoke + 1;
+	smokerModData.MinutesSinceLastSmoke = smokerModData.MinutesSinceLastSmoke + 1;
 	if debug() then print("ETW Logger: timeSinceLastSmoke: "..timeSinceLastSmoke) end
-	if debug() then print("ETW Logger: modData.MinutesSinceLastSmoke: "..modData.MinutesSinceLastSmoke) end
+	if debug() then print("ETW Logger: modData.MinutesSinceLastSmoke: ".. smokerModData.MinutesSinceLastSmoke) end
 	local stress = player:getStats():getStress(); -- stress is 0-1
 	local panic = player:getStats():getPanic(); -- 0-100
 	local addictionDecay = SBvars.SmokingAddictionDecay * ( 0.0167 / 10 * (1 + stress) * (1 + panic / 100));
-	modData.SmokingAddiction = math.max(0, modData.SmokingAddiction - addictionDecay);
-	ETWMoodles.smokerMoodleUpdate(player, modData.SmokingAddiction);
+	if SBvars.AffinitySystem and modData.StartingTraits.Smoker then
+		addictionDecay = addictionDecay / SBvars.AffinitySystemLoseDivider;
+	end
+	smokerModData.SmokingAddiction = math.max(0, smokerModData.SmokingAddiction - addictionDecay);
+	ETWMoodles.smokerMoodleUpdate(player, smokerModData.SmokingAddiction);
 	if debug() then print("ETW Logger: smoking addictionDecay: "..addictionDecay) end
-	if debug() then print("ETW Logger: modData.SmokingAddiction: "..modData.SmokingAddiction) end
-	if modData.SmokingAddiction >= SBvars.SmokerCounter and not player:HasTrait("Smoker") then
+	if debug() then print("ETW Logger: modData.SmokingAddiction: ".. smokerModData.SmokingAddiction) end
+	if smokerModData.SmokingAddiction >= SBvars.SmokerCounter and not player:HasTrait("Smoker") then
 		player:getTraits():add("Smoker")
 		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Smoker"), true, HaloTextHelper.getColorRed()) end
-	elseif modData.SmokingAddiction <= SBvars.SmokerCounter / 2 and player:HasTrait("Smoker") then
+	elseif smokerModData.SmokingAddiction <= SBvars.SmokerCounter / 2 and player:HasTrait("Smoker") then
 		player:getTraits():remove("Smoker")
 		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Smoker"), false, HaloTextHelper.getColorGreen()) end
 	end
@@ -123,7 +155,7 @@ end
 local function herbalist()
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
-	modData.HerbsPickedUp = math.max(0, modData.HerbsPickedUp - 1);
+	modData.HerbsPickedUp = math.max(0, modData.HerbsPickedUp - ((SBvars.AffinitySystem and modData.StartingTraits.Herbalist) and 1 / SBvars.AffinitySystemLoseDivider or 1));
 	if debug() then print("ETW Logger: modData.HerbsPickedUp: "..modData.HerbsPickedUp) end
 	if modData.HerbsPickedUp < SBvars.HerbalistHerbsPicked / 2 and player:HasTrait("Herbalist") then
 		player:getTraits():remove("Herbalist");

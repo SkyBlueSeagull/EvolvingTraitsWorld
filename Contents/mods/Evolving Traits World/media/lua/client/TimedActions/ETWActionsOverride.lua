@@ -161,7 +161,7 @@ function forageSystem.addOrDropItems(_character, _inventory, _items, _discardIte
 				if herb == item:getFullType() then
 					if debug() then print("ETW Logger: picking up herbs: "..item:getFullType()) end
 					local modData = player:getModData().EvolvingTraitsWorld;
-					modData.HerbsPickedUp = modData.HerbsPickedUp + 1;
+					modData.HerbsPickedUp = modData.HerbsPickedUp + ((SBvars.AffinitySystem and modData.StartingTraits.Herbalist) and 1 * SBvars.AffinitySystemGainMultiplier or 1);
 					if not player:HasTrait("Herbalist") and modData.HerbsPickedUp >= SBvars.HerbalistHerbsPicked then
 						local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 						player:getTraits():add("Herbalist");

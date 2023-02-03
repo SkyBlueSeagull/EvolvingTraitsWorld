@@ -19,14 +19,13 @@ Installation instructions can be found in [url=https://steamcommunity.com/worksh
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1299328280]More Traits[/url] - my submod shows which traits are dynamic from it, additionally makes Butterfingers dynamic.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2840805724]Simple Overhaul: Traits and Occupations (SOTO)[/url] - my submod shows which traits are dynamic from it.
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2792245343]More Simple Traits (MST)[/url] - my submod shows which traits are dynamic from it.
-[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2812583527]Literacy Mod[/url] - my submod shows which traits are dynamic from it. (upcoming update, Literacy is not dynamic yet)
 [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2760950740]Explorer Trait[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2863908612]SixthSense[/url] - my submod marks the traits being dynamic.
 [*] Literally anything else: should be compatible. Resolved mod conflicts include popular mods like: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1905148104]Superb Survivors![/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2719327441]Snake's Mod Pack 41.77[/url]
 [/list]
 
 [h1]Recommended Mods[/h1]
 [list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2694448564]Mod Manager[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2725216703]Mad Manager: Server[/url] - for the love of god, use these and not vanilla mod manager
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2694448564]Mod Manager[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2725216703]Mod Manager: Server[/url] - for the love of god, use these and not vanilla mod manager
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2854030563]Moodle Quarters[/url] - so you can clearly see which stage your moodle is in right now
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2763647806]Clear description for Moodles[/url] - so you know what your moodles do
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2685168362]More Description for Traits[/url] - so you can read what your traits do

@@ -7,6 +7,13 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorldMoodles = "Evolving Traits World - Moodles",
 	Sandbox_EvolvingTraitsWorldSimplePerks = "Evolving Traits World - Punti Semplici",
 	Sandbox_EvolvingTraitsWorldComplexPerks = "Evolving Traits World - Punti Avanzati",
+
+	Sandbox_EvolvingTraitsWorld_AffinitySystem = "Sistema di Affinità",
+	Sandbox_EvolvingTraitsWorld_AffinitySystem_tooltip = "Definisce se il Sistema di Affinità è abilitato per alcuni tratti legati ad altri sistemi complessi (ad esempio, il Sistema Paura dei Luoghi, Erborista o il Sistema del Sonno. Controlla quali sistemi e tratti sono soggetti al Sistema di affinità nei fogli di Google) <br>Il Sistema di Affinità rende più facile mantenere i tratti che hai scelto durante la creazione del personaggio, sia negativi che positivi. Con esso abilitato, dimezzi (in modo personalizzabile) la velocità con cui perdi questi tratti e raddoppi (anche questo personalizzabile) la velocità con cui guadagni questi tratti.",
+	Sandbox_EvolvingTraitsWorld_AffinitySystemLoseDivider = "Divisore del Sistema di Affinità",
+	Sandbox_EvolvingTraitsWorld_AffinitySystemLoseDivider_tooltip = "Quanto è più difficile perdere i tratti che hanno funzionalità col Sistema di Affinità (riguarda solo i tratti con cui hai iniziato!). Impostandolo su 1, significherebbe che non rende più difficile perderli. Impostandolo su 2 significa che sarà due volte più veloce perderli. L'impostazione a 1,5 lo renderebbe più veloce del 50% e così via. Quindi, se inizi con un tratto positivo che puoi perdere, sarà molto più difficile perderlo. Ma influisce anche sui tratti negativi!",
+	Sandbox_EvolvingTraitsWorld_AffinitySystemLoseMultiplier = "Moltiplicatore del Sistema di Affinità",
+	Sandbox_EvolvingTraitsWorld_AffinitySystemLoseMultiplier_tooltip = "Quanto è più facile ottenere tratti che hanno funzionalità col sistema di affinità (riguarda solo i tratti con cui hai iniziato!). Impostandolo su 1, significherebbe che non rende più facile guadagnarli. Impostandolo su 2 significa che ci vorrà il doppio della velocità per ottenerli. L'impostazione a 1,5 lo renderebbe più veloce del 50% e così via. Quindi, se inizi con un tratto dinamico positivo e poi lo perdi, lo riacquisterai molto più velocemente. Ma influisce anche sui tratti negativi!",
 	
 	Sandbox_EvolvingTraitsWorld_Mechanics = "Meccanico Dilettante",
 	Sandbox_EvolvingTraitsWorld_MechanicsSkill = "Abilità richiesta per Meccanico Dilettante",
@@ -152,9 +159,9 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorld_HomeCook = "Appassionato di Cucina",
 	Sandbox_EvolvingTraitsWorld_HomeCookSkill = "Abilità richiesta per Appassionato di Cucina",
 
-	Sandbox_EvolvingTraitsWorld_HomichlophileMultiplier = "Moltiplicatore di Nebulofilia",
+	Sandbox_EvolvingTraitsWorld_HomichlophileMultiplier = "Moltiplicatore dell'effetto di Nebulofilia",
 	Sandbox_EvolvingTraitsWorld_HomichlophileMultiplier_multiplier = "Quanto influisce sul giocatore la Nebulofilia. La formula per ridurre lo stress e il panico ogni minuto che sei nella nebbia: 4% * IntensitàNebbia * Moltiplicatore di Nebulofilia. L'intensità della nebbia è compresa tra 0 e 1, quindi raramente vedrai una diminuzione completa del 4%",
-	Sandbox_EvolvingTraitsWorld_HomichlophobiaMultiplier = "Moltiplicatore di Nebulofobia",
+	Sandbox_EvolvingTraitsWorld_HomichlophobiaMultiplier = "Moltiplicatore dell'effetto di Nebulofobia",
 	Sandbox_EvolvingTraitsWorld_HomichlophobiaMultiplier_multiplier = "Quanto influisce sul giocatore la Nebulofobia. La formula per lo stress e il panico aumenta ogni minuto che sei nella nebbia: 4% * Intensità Nebbia * Moltiplicatore di Nebulofobia. L'intensità della nebbia è compresa tra 0 e 1, quindi raramente vedrai un aumento completo del 4%.",
 
 

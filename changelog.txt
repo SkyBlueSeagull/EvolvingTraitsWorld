@@ -1,17 +1,11 @@
-v.3.0.2
+v.4.0.0
 
-Fixes:
-	- Fixed Asthmatic not increasing counter if you have smoker and run in 10+ degrees. Now it does, as intended.
-	- Fixed Asthmatic counter values being able to go outside intended boundaries.
-	- Starting with Bloodlust will now set your Bloodlust Meter to 50% (Bloodlust Progress is different thing and still set at 100% if you start with it).
-	- Fixed FearOfOutside counter not changing unless players had debug enabled (oups).
-	- Some code polishing.
-
-New Beta branch of the mod has been added, since now that mod have decent amount of users, major additions will be rolled out on beta branch first. Please use [url=https://steamcommunity.com/workshop/filedetails/discussion/2914075159/3762229314889979925/]this discussion[/url] for everything that's related to Beta branch. I expect Beta branch to be merged onto main branch after 1 week or so, as I hope some people will use it and catch possible errors.
-
-v.4.0.0-beta
-Possible issues if you use Beta branch:
-	- Affinity system halts existing progress of gaining/losing perks.
 General:
 	- Added Affinity System - Affects some traits tied to systems and some complex ones (for example, weight Fear of Locations system, Herbalist, or Sleep System. Check which Systems and Traits are a subject to Affinity system in Google sheets). Affinity system makes it easier to hold onto traits you picked on character creation, both negative and positive. With it enabled, you halve (modifiable) the speed at which you lose these traits, and double (also modifiable) the speed at which you earn these traits.
-	- Asthmatic is no longer permanent at if picked at character creation, now it's meant to be used with Affinity System enabled.
+    - Asthmatic is no longer permanent at if picked at character creation, now it's meant to be used with Affinity System enabled.
+Fixes:
+	- Due to some Stress calculations on game side, all my stress adding/removing was broken if player had Smoker trait. Now it's fixed. Includes Bloodlust, Pluviophobia / Pluviophile, Homichlophile / Homichlophobia
+Translations:
+	- Updated ITA to 4.0.0
+
+Be advised that beta branch has been merged to main branch and deleted.
