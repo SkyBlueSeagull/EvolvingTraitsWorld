@@ -1,11 +1,3 @@
-v.4.0.0
-
-General:
-	- Added Affinity System - Affects some traits tied to systems and some complex ones (for example, weight Fear of Locations system, Herbalist, or Sleep System. Check which Systems and Traits are a subject to Affinity system in Google sheets). Affinity system makes it easier to hold onto traits you picked on character creation, both negative and positive. With it enabled, you halve (modifiable) the speed at which you lose these traits, and double (also modifiable) the speed at which you earn these traits.
-    - Asthmatic is no longer permanent at if picked at character creation, now it's meant to be used with Affinity System enabled.
+v.4.0.1
 Fixes:
-	- Due to some Stress calculations on game side, all my stress adding/removing was broken if player had Smoker trait. Now it's fixed. Includes Bloodlust, Pluviophobia / Pluviophile, Homichlophile / Homichlophobia
-Translations:
-	- Updated ITA to 4.0.0
-
-Be advised that beta branch has been merged to main branch and deleted.
+	- Fixed error in ETWByTime.lua trying to access incorrect value in table.
