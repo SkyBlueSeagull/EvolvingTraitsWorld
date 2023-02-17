@@ -128,11 +128,13 @@ local function braverySystem(zombie)
 end
 
 local function initializeKills(playerIndex, player)
-	ETWMoodles.bloodlustMoodleUpdate(player);
-	Events.OnZombieDead.Remove(bloodlustKill);
-	Events.OnZombieDead.Add(bloodlustKill);
-	Events.EveryHours.Remove(bloodlustTime);
-	Events.EveryHours.Add(bloodlustTime);
+	if not getActivatedMods():contains("EvolvingTraitsWorldDisableBloodlust") then
+		ETWMoodles.bloodlustMoodleUpdate(player);
+		Events.OnZombieDead.Remove(bloodlustKill);
+		Events.OnZombieDead.Add(bloodlustKill);
+		Events.EveryHours.Remove(bloodlustTime);
+		Events.EveryHours.Add(bloodlustTime);
+	end
 	Events.OnWeaponHitCharacter.Remove(eagleEyed);
 	if SBvars.EagleEyed == true and not player:HasTrait("EagleEyed") then Events.OnWeaponHitCharacter.Add(eagleEyed) end
 	Events.OnZombieDead.Remove(braverySystem);

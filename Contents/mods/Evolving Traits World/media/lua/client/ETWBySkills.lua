@@ -25,6 +25,7 @@ local function traitsGainsBySkill(player, perk)
 	if player:getModData().EvolvingTraitsWorld == nil then return end
 	player = getPlayer();
 	local modData = player:getModData();
+	local activatedMods = getActivatedMods();
 
 	-- locals for perk levels
 	local strength = player:getPerkLevel(Perks.Strength);
@@ -92,14 +93,14 @@ local function traitsGainsBySkill(player, perk)
 		-- Strength
 			-- Hoarder
 				if perk == "characterInitialization" or perk == Perks.Strength then
-					if SBvars.Hoarder == true and not player:HasTrait("Hoarder") and strength >= SBvars.HoarderSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableHoarder") and SBvars.Hoarder == true and not player:HasTrait("Hoarder") and strength >= SBvars.HoarderSkill then
 						player:getTraits():add("Hoarder");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Hoarder"), true, HaloTextHelper.getColorGreen()) end
 					end
 				end
 			-- Gym Rat
 				if perk == "characterInitialization" or perk == Perks.Strength or perk == Perks.Fitness then
-					if SBvars.GymRat == true and not player:HasTrait("GymRat") and (strength + fitness) >= SBvars.GymRatSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableGymRat") and SBvars.GymRat == true and not player:HasTrait("GymRat") and (strength + fitness) >= SBvars.GymRatSkill then
 						player:getTraits():add("GymRat");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_GymRat"), true, HaloTextHelper.getColorGreen()) end
 					end
@@ -128,7 +129,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Lightfooted
 			-- Light Step
 				if perk == "characterInitialization" or perk == Perks.Lightfoot then
-					if SBvars.LightStep == true and not player:HasTrait("LightStep") and lightfooted >= SBvars.LightStepSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableLightStep") and SBvars.LightStep == true and not player:HasTrait("LightStep") and lightfooted >= SBvars.LightStepSkill then
 						player:getTraits():add("LightStep");
 						applyXPBoost(player, Perks.Lightfoot, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LightStep"), true, HaloTextHelper.getColorGreen()) end
@@ -153,7 +154,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Sneaking
 			-- Low Profile
 				if perk == "characterInitialization" or perk == Perks.Sneak then
-					if SBvars.LowProfile == true and not player:HasTrait("LowProfile") and axe >= SBvars.LowProfileSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableLowProfile") and SBvars.LowProfile == true and not player:HasTrait("LowProfile") and axe >= SBvars.LowProfileSkill then
 						player:getTraits():add("LowProfile");
 						applyXPBoost(player, Perks.Sneak, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowProfile"), true, HaloTextHelper.getColorGreen()) end
@@ -203,7 +204,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 			-- Axe Thrower 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Axe then
-					if SBvars.AxeThrower == true and not player:HasTrait("AxeThrower") and axe >= SBvars.AxeThrowerSkill and axeKills >= SBvars.AxeThrowerKills then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableAxeThrower") and SBvars.AxeThrower == true and not player:HasTrait("AxeThrower") and axe >= SBvars.AxeThrowerSkill and axeKills >= SBvars.AxeThrowerKills then
 						player:getTraits():add("AxeThrower");
 						applyXPBoost(player, Perks.Axe, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_AxeThrower"), true, HaloTextHelper.getColorGreen()) end
@@ -221,7 +222,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Short Blunt
 			-- Stick Fighter 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.SmallBlunt then
-					if SBvars.StickFighter == true and not player:HasTrait("StickFighter") and shortBlunt >= SBvars.StickFighterSkill and shortBluntKills >= SBvars.StickFighterKills then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableStickFighter") and SBvars.StickFighter == true and not player:HasTrait("StickFighter") and shortBlunt >= SBvars.StickFighterSkill and shortBluntKills >= SBvars.StickFighterKills then
 						player:getTraits():add("StickFighter");
 						applyXPBoost(player, Perks.SmallBlunt, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_StickFighter"), true, HaloTextHelper.getColorGreen()) end
@@ -230,7 +231,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Long Blade
 			-- Kenshi 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.LongBlade then
-					if SBvars.Kenshi == true and not player:HasTrait("Kenshi") and longBlade >= SBvars.KenshiSkill and longBladeKills >= SBvars.KenshiKills then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableKenshi") and SBvars.Kenshi == true and not player:HasTrait("Kenshi") and longBlade >= SBvars.KenshiSkill and longBladeKills >= SBvars.KenshiKills then
 						player:getTraits():add("Kenshi");
 						applyXPBoost(player, Perks.LongBlade, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Kenshi"), true, HaloTextHelper.getColorGreen()) end
@@ -239,7 +240,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Short Blade
 			-- Knife Fighter 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.ShortBlade then
-					if SBvars.KnifeFighter == true and not player:HasTrait("KnifeFighter") and shortBlade >= SBvars.KnifeFighterSkill and shortBladeKills >= SBvars.KnifeFighterKills then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableKnifeFighter") and SBvars.KnifeFighter == true and not player:HasTrait("KnifeFighter") and shortBlade >= SBvars.KnifeFighterSkill and shortBladeKills >= SBvars.KnifeFighterKills then
 						player:getTraits():add("KnifeFighter");
 						applyXPBoost(player, Perks.ShortBlade, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_KnifeFighter"), true, HaloTextHelper.getColorGreen()) end
@@ -248,7 +249,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Spear
 			-- Sojutsu 
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Spear then
-					if SBvars.Sojutsu == true and not player:HasTrait("Sojutsu") and spear >= SBvars.SojutsuSkill and spearKills >= SBvars.SojutsuKills then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableSojutsu") and SBvars.Sojutsu == true and not player:HasTrait("Sojutsu") and spear >= SBvars.SojutsuSkill and spearKills >= SBvars.SojutsuKills then
 						player:getTraits():add("Sojutsu");
 						applyXPBoost(player, Perks.Spear, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Sojutsu"), true, HaloTextHelper.getColorGreen()) end
@@ -257,7 +258,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Maintenance
 			-- Restoration Expert
 				if perk == "characterInitialization" or perk == Perks.Maintenance then
-					if SBvars.RestorationExpert == true and not player:HasTrait("RestorationExpert") and maintenance >= SBvars.RestorationExpertSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableRestorationExpert") and SBvars.RestorationExpert == true and not player:HasTrait("RestorationExpert") and maintenance >= SBvars.RestorationExpertSkill then
 						player:getTraits():add("RestorationExpert");
 						applyXPBoost(player, Perks.Maintenance, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_RestorationExpert"), true, HaloTextHelper.getColorGreen()) end
@@ -292,7 +293,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Carpentry
 			-- Furniture Assembler 
 				if perk == "characterInitialization" or perk == Perks.Woodwork then
-					if SBvars.FurnitureAssembler == true and not player:HasTrait("FurnitureAssembler") and carpentry >= SBvars.FurnitureAssemblerSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableFurnitureAssembler") and SBvars.FurnitureAssembler == true and not player:HasTrait("FurnitureAssembler") and carpentry >= SBvars.FurnitureAssemblerSkill then
 						player:getTraits():add("FurnitureAssembler");
 						applyXPBoost(player, Perks.Woodwork, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FurnitureAssembler"), true, HaloTextHelper.getColorGreen()) end
@@ -301,7 +302,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Cooking
 			-- Home Cook 
 				if perk == "characterInitialization" or perk == Perks.Cooking then
-					if SBvars.HomeCook == true and not player:HasTrait("HomeCook") and cooking >= SBvars.HomeCookSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableHomeCook") and SBvars.HomeCook == true and not player:HasTrait("HomeCook") and cooking >= SBvars.HomeCookSkill then
 						player:getTraits():add("HomeCook");
 						addRecipe(player, "Make Cake Batter");
 						applyXPBoost(player, Perks.Cooking, 1);
@@ -349,7 +350,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Electrical
 			-- AVClub
 				if perk == "characterInitialization" or perk == Perks.Electricity then
-					if SBvars.AVClub == true and not player:HasTrait("AVClub") and electrical >= SBvars.AVClubSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableAVClub") and SBvars.AVClub == true and not player:HasTrait("AVClub") and electrical >= SBvars.AVClubSkill then
 						player:getTraits():add("AVClub");
 						addRecipe(player, "Make Remote Controller V1");
 						addRecipe(player, "Make Remote Controller V2");
@@ -367,7 +368,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Metalworking
 			-- Bodywork Enthusiast
 				if perk == "characterInitialization" or perk == Perks.MetalWelding  or perk == Perks.Mechanics then
-					if SBvars.BodyworkEnthusiast == true and not player:HasTrait("BodyWorkEnthusiast") then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableBodyWorkEnthusiast") and SBvars.BodyworkEnthusiast == true and not player:HasTrait("BodyWorkEnthusiast") then
 						ETWActionsOverride.bodyworkEnthusiastCheck();
 					end
 				end
@@ -391,7 +392,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Aiming
 			-- Gun Enthusiast
 				if perk == "characterInitialization" or perk == "kill" or perk == Perks.Aiming or perk == Perks.Reloading then
-					if SBvars.GunEnthusiast == true and not player:HasTrait("GunEnthusiast") and (aiming + reloading) >= SBvars.GunEnthusiastSkill and firearmKills >= SBvars.GunEnthusiastKills then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableGunEnthusiast") and SBvars.GunEnthusiast == true and not player:HasTrait("GunEnthusiast") and (aiming + reloading) >= SBvars.GunEnthusiastSkill and firearmKills >= SBvars.GunEnthusiastKills then
 						player:getTraits():add("GunEnthusiast");
 						applyXPBoost(player, Perks.Aiming, 1);
 						applyXPBoost(player, Perks.Reloading, 1);

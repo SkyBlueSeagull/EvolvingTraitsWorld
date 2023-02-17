@@ -96,14 +96,7 @@ local function oneMinuteUpdate()
 		-- pending SOTO/MST update first
 		checkWeightLimit(player)
 	end
-	checkWeightLimit(player)
-
-	local climateManager = getClimateManager();
-	local rainIntensity = climateManager:getRainIntensity();
-	if rainIntensity > 0 and player:isOutside() then rainTraits(player, rainIntensity) end
-
-	local fogIntensity = climateManager:getFogIntensity();
-	if fogIntensity > 0 and player:isOutside() then fogTraits(player, fogIntensity)	end
+	if not getActivatedMods():contains("EvolvingTraitsWorldDisableHoarder") then checkWeightLimit(player) end
 end
 
 local function initializeTraitsLogic(playerIndex, player)

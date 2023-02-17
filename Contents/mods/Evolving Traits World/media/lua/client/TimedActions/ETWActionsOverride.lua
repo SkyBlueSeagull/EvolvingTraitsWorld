@@ -41,7 +41,7 @@ end
 function ETWActionsOverride.mechanicsCheck()
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
-	if player:getPerkLevel(Perks.Mechanics) >= SBvars.BodyworkEnthusiastSkill and modData.VehiclePartRepairs >= SBvars.MechanicsRepairs then
+	if player:getPerkLevel(Perks.Mechanics) >= SBvars.MechanicsSkill and modData.VehiclePartRepairs >= SBvars.MechanicsRepairs then
 		player:getTraits():add("Mechanics");
 		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
 		applyXPBoost(player, Perks.Mechanics, 1);
@@ -61,9 +61,9 @@ function ISFixAction:perform()
 		vehiclePartCondition = part:getCondition();
 	end
 	original_fix_perform(self);
-	if self.vehiclePart and ((SBvars.BodyworkEnthusiast == true and not player:HasTrait("Mechanics")) or (SBvars.BodyWorkEnthusiast == true and not player:HasTrait("BodyWorkEnthusiast"))) then
+	if self.vehiclePart and ((SBvars.Mechanics == true and not player:HasTrait("Mechanics")) or (SBvars.BodyWorkEnthusiast == true and not player:HasTrait("BodyWorkEnthusiast"))) then
 		modData.VehiclePartRepairs = modData.VehiclePartRepairs + (self.vehiclePart:getCondition() - vehiclePartCondition);
-		ETWActionsOverride.bodyworkEnthusiastCheck();
+		if not getActivatedMods():contains("EvolvingTraitsWorldDisableBodyWorkEnthusiast") then ETWActionsOverride.bodyworkEnthusiastCheck() end
 		ETWActionsOverride.mechanicsCheck();
 	end
 	if player:HasTrait("RestorationExpert") then

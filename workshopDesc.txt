@@ -8,6 +8,7 @@ This mod allows you to get really ripped in PZ and see an actual character progr
 [*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay! Can be enabled without enabling main mod, so if you don't like main features added by this mod and just want to see which traits are dynamic in your game with SOTO/MST/MT/DT - you can do that.
 [*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.
 [*] Client-sided moodles configuration available with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown.
+[*]Don't like some/all traits added by this mod but only want to have vanilla traits dynamic? Also possible, with help of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2934686936]this mod[/url].
 [/list]
 
 [h1]Compatibility and Installation[/h1]

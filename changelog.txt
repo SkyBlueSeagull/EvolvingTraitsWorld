@@ -1,4 +1,7 @@
-v.4.0.2
+v.4.1.0
 
+General:
+	- You can now disable perks you don't like completely with the help of this mod: [url=https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=2934686936]Evolving Traits World (ETW) - Disable Selected Traits[/url] (should be helpful for server admins who like the mod but want to disable a perk or two)
 Fixes:
-	- Fixed error in ETWFunctionsOverride.lua trying to access incorrect value in table.
+	- Fixed Mechanic skill stuff.
+	- Removed some un-needed code.
