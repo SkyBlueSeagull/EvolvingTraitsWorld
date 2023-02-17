@@ -1,4 +1,7 @@
+REMINDER: Don't forget to update mod.info with new mod version
+
 v.4.x.x
+
 General:
 	-
 Moodles:
