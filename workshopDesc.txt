@@ -8,7 +8,7 @@ This mod allows you to get really ripped in PZ and see an actual character progr
 [*] QOL (Quality of Life) submod - mark all traits that are dynamic so in character creating you can see which perks are obtainable during gameplay! Can be enabled without enabling main mod, so if you don't like main features added by this mod and just want to see which traits are dynamic in your game with SOTO/MST/MT/DT - you can do that.
 [*] For new traits (aka not vanilla game), customization is also present. Want Hoarder perk to give you more carry weight per point of STR? Go adjust it in Sandbox. Want to be even happier under rain with Pluviophile? Sandbox it is.
 [*] Client-sided moodles configuration available with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url]. Choose which moodles you want to be shown.
-[*]Don't like some/all traits added by this mod but only want to have vanilla traits dynamic? Also possible, with help of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2934686936]this mod[/url].
+[*]Don't like some/all traits added by this mod but only want to have vanilla traits dynamic? Also possible, with help of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2934686936]Evolving Traits World (ETW) - Disable Selected Traits[/url].
 [/list]
 
 [h1]Compatibility and Installation[/h1]
@@ -41,6 +41,7 @@ If you want to submit translation files, the easiest way to do it would be on Gi
 Huge thanks to [url=https://steamcommunity.com/profiles/76561198012326036]Chuckleberry Finn[/url], [url=https://steamcommunity.com/profiles/76561198042464272]albion[/url] and few others ([url=https://steamcommunity.com/profiles/76561199042257388]Glytch3r[/url], [url=https://steamcommunity.com/profiles/76561198017173991]DeltaMango[/url], Anonymous, [url=https://steamcommunity.com/profiles/76561197988519654]Nuzzleskatev[/url], [url=https://steamcommunity.com/profiles/76561198168480115]Browser8[/url]) from official PZ discord's #mod_development channel for answering like a hundred of questions :)
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2730251452]Expanded Taits[/url] and it's author, [url=https://steamcommunity.com/profiles/76561197982774396]Draco[/url] as the majority of their perks were absorbed by this mod
 UattO - Italian translation
+[h3]Looking for more translators[/h3]
 
 [h1]Afterword and Permission[/h1]
 If you like this mod, check out collection on top of page for other mods I made or collaborated on! Rate ups are appreciated, and if you wanna send me a coffee, that's a real homie move and you can do it here:

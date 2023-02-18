@@ -154,7 +154,7 @@ local function traitsGainsBySkill(player, perk)
 		-- Sneaking
 			-- Low Profile
 				if perk == "characterInitialization" or perk == Perks.Sneak then
-					if not activatedMods:contains("EvolvingTraitsWorldDisableLowProfile") and SBvars.LowProfile == true and not player:HasTrait("LowProfile") and axe >= SBvars.LowProfileSkill then
+					if not activatedMods:contains("EvolvingTraitsWorldDisableLowProfile") and SBvars.LowProfile == true and not player:HasTrait("LowProfile") and sneaking >= SBvars.LowProfileSkill then
 						player:getTraits():add("LowProfile");
 						applyXPBoost(player, Perks.Sneak, 1);
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_LowProfile"), true, HaloTextHelper.getColorGreen()) end
