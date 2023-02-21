@@ -133,8 +133,9 @@ local function smoker()
 	smokerModData.MinutesSinceLastSmoke = smokerModData.MinutesSinceLastSmoke + 1;
 	if debug() then print("ETW Logger: timeSinceLastSmoke: "..timeSinceLastSmoke) end
 	if debug() then print("ETW Logger: modData.MinutesSinceLastSmoke: ".. smokerModData.MinutesSinceLastSmoke) end
-	local stress = player:getStats():getStress(); -- stress is 0-1
-	local panic = player:getStats():getPanic(); -- 0-100
+	local stats = player:getStats();
+	local stress = stats:getStress(); -- stress is 0-1
+	local panic = stats:getPanic(); -- 0-100
 	local addictionDecay = SBvars.SmokingAddictionDecay * ( 0.0167 / 10 * (1 + stress) * (1 + panic / 100));
 	if SBvars.AffinitySystem and modData.StartingTraits.Smoker then
 		addictionDecay = addictionDecay / SBvars.AffinitySystemLoseDivider;
@@ -147,6 +148,7 @@ local function smoker()
 		player:getTraits():add("Smoker")
 		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Smoker"), true, HaloTextHelper.getColorRed()) end
 	elseif smokerModData.SmokingAddiction <= SBvars.SmokerCounter / 2 and player:HasTrait("Smoker") then
+		stats:setStressFromCigarettes(0);
 		player:getTraits():remove("Smoker")
 		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Smoker"), false, HaloTextHelper.getColorGreen()) end
 	end

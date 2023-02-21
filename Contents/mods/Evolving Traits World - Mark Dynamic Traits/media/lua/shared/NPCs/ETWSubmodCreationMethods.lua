@@ -39,7 +39,7 @@ if getActivatedMods():contains('EvolvingTraitsWorld') or getActivatedMods():cont
 	altNames.FirstAid = true;
 	altNames.Fishing = true;
 	altNames.Gardener = true;
-	altNames.Graceful = true;
+	--altNames.Graceful = true;
 	altNames.Gymnast = true;
 	altNames.Handy = true;
 	altNames.HardOfHearing = true;
