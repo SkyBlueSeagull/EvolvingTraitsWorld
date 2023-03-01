@@ -1,7 +1,4 @@
-v.4.1.2
+v.4.1.3
 
-General:
-	- Adjusted smoker default values, so it's faster to lose smoker. "Smoking Addiction Decay Multiplier" Default value 1 -> 8, Max value 100 -> 1000.
 Fixes:
-	- Fixed Smoker leaving stress from cigarettes on your character upon losing the trait
-	- Removed Graceful from submod marking it dynamic while it's not (I'll make it dynamic, just a bit later). It still will be marked with D if you have SOTO running, 'cuz SOTO makes it dynamic too.
+	- Fix for error that is thrown on server-side when someone tries to smoke. Credits to [url=https://steamcommunity.com/profiles/76561198276941338]Burryaga[/url]
