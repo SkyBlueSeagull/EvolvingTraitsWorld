@@ -1,0 +1,19 @@
+Current Translation version: v.4.1.5
+
+New/changed lines since v.4.1.5
+
+Moodles_EN.txt
+	changed:
+
+	new:
+
+
+Sandbox_EN.txt
+	changed:
+
+	new:
+
+UI_EN.txt
+	changed:
+		UI_trait_HoarderDesc = "You have trouble throwing anything away and tend to carry a lot of stuff with you.<br> You can carry additional load per each point of Strength",
+	new:
