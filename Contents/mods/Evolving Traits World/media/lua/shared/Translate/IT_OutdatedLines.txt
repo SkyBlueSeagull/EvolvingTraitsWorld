@@ -1,6 +1,4 @@
-Current Translation version: v.4.1.5
-
-New/changed lines since v.4.1.5
+New/changed lines since v.4.2.0
 
 Moodles_EN.txt
 	changed:

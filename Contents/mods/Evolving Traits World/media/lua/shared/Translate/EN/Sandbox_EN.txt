@@ -29,6 +29,10 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_AVClub = "AV Club Member",
 	Sandbox_EvolvingTraitsWorld_AVClubSkill = "AV Club Member Electrical Skill Requirement",
 
+	Sandbox_EvolvingTraitsWorld_Axeman = "Axeman",
+	Sandbox_EvolvingTraitsWorld_AxemanTrees = "Axeman Axe trees requirement",
+	Sandbox_EvolvingTraitsWorld_AxemanTrees_tooltip = "How many trees you have to cut down to get Axeman.",
+
 	Sandbox_EvolvingTraitsWorld_AxeThrower = "Axe Thrower",
 	Sandbox_EvolvingTraitsWorld_AxeThrowerSkill = "Axe Thrower Axe Skill requirement",
 	Sandbox_EvolvingTraitsWorld_AxeThrowerKills = "Axe Thrower Kills with Axes requirement",
@@ -63,6 +67,10 @@ Sandbox_EN = {
 	Sandbox_EvolvingTraitsWorld_BrawlerSkill_tooltip = "Axe + Long Blunt",
 	Sandbox_EvolvingTraitsWorld_BrawlerKills = "Brawler Kills requirement",
 	Sandbox_EvolvingTraitsWorld_BrawlerKills_tooltip = "Axe + Long Blunt",
+
+	Sandbox_EvolvingTraitsWorld_Burglar = "Burglar",
+	Sandbox_EvolvingTraitsWorld_BurglarSkill = "Burglar Skill requirement",
+	Sandbox_EvolvingTraitsWorld_BurglarSkill_tooltip = "Mechanics + Electrical + Nimble. Please note that You need to have at least 2 levels in each of Mechanics and Electrical",
 
 	Sandbox_EvolvingTraitsWorld_CatEyes = "Cat Eyes",
 	Sandbox_EvolvingTraitsWorld_CatEyesCounter = "Cat Eyes Counter",
@@ -120,6 +128,10 @@ Sandbox_EN = {
 
 	Sandbox_EvolvingTraitsWorld_Gardener = "Gardener",
 	Sandbox_EvolvingTraitsWorld_GardenerSkill = "Gardener Farming Skill requirement",
+
+	Sandbox_EvolvingTraitsWorld_Graceful = "Graceful",
+	Sandbox_EvolvingTraitsWorld_GracefulSkill = "Graceful Skill requirement",
+	Sandbox_EvolvingTraitsWorld_GracefulSkill_tooltip = "Nimble + Sneaking + Lightfooted",
 
 	Sandbox_EvolvingTraitsWorld_GunEnthusiast = "Gun Enthusiast",
 	Sandbox_EvolvingTraitsWorld_GunEnthusiastSkill = "Gun Enthusiast Skill requirement",
@@ -215,6 +227,8 @@ Sandbox_EN = {
 
 	Sandbox_EvolvingTraitsWorld_RestorationExpert = "Restoration Expert",
 	Sandbox_EvolvingTraitsWorld_RestorationExpertSkill = "Restoration Expert Maintenance Skill requirement",
+	Sandbox_EvolvingTraitsWorld_RestorationExpertChance = "Restoration Expert %",
+	Sandbox_EvolvingTraitsWorld_RestorationExpertChance_tooltip = "% to not increase amount of times item was repaired after repair.",
 
 	Sandbox_EvolvingTraitsWorld_Sewer = "Sewer",
 	Sandbox_EvolvingTraitsWorld_SewerSkill = "Sewer Tailoring Skill requirement",

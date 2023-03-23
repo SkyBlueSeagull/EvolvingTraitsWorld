@@ -30,6 +30,10 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorld_AVClub = "Membro dell'AV Club",
 	Sandbox_EvolvingTraitsWorld_AVClubSkill = "Abilità richiesta per Membro dell'AV Club",
 
+	Sandbox_EvolvingTraitsWorld_Axeman = "Abile con ascia",
+    Sandbox_EvolvingTraitsWorld_AxemanTrees = "Requisito du alberi tagliati per Abile con ascia",
+    Sandbox_EvolvingTraitsWorld_AxemanTrees_tooltip = "Quanti alberi devi abbattere per ottenere Abile con ascia.",
+
 	Sandbox_EvolvingTraitsWorld_AxeThrower = "Lanciatore di Asce",
 	Sandbox_EvolvingTraitsWorld_AxeThrowerSkill = "Abilità richiesta per Lanciatore di Asce",
 	Sandbox_EvolvingTraitsWorld_AxeThrowerKills = "Quante uccisioni servono per diventare Lanciatore di Asce",
@@ -64,6 +68,10 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorld_BrawlerSkill_tooltip = "Ascia + Contundente",
 	Sandbox_EvolvingTraitsWorld_BrawlerKills = "Quante uccisioni servono per diventare Attaccabrighe",
 	Sandbox_EvolvingTraitsWorld_BrawlerKills_tooltip = "Ascia + Contundente",
+
+	Sandbox_EvolvingTraitsWorld_Burglar = "Ladro",
+    Sandbox_EvolvingTraitsWorld_BurglarSkill = "Requisito di abilità per Ladro",
+    Sandbox_EvolvingTraitsWorld_BurglarSkill_tooltip = "Meccanica + Elettrica + Agilità",
 
 	Sandbox_EvolvingTraitsWorld_CatEyes = "Occhi di Gatto",
 	Sandbox_EvolvingTraitsWorld_CatEyesCounter = "Contatore per Occhi di Gatto",
@@ -120,6 +128,10 @@ Sandbox_IT = {
 
 	Sandbox_EvolvingTraitsWorld_Gardener = "Giardiniere",
 	Sandbox_EvolvingTraitsWorld_GardenerSkill = "Abilità di Coltivazione per Giardiniere",
+
+	Sandbox_EvolvingTraitsWorld_Graceful = "Aggraziato",
+	Sandbox_EvolvingTraitsWorld_GracefulSkill = "Requisito abilità per grazioso",
+	Sandbox_EvolvingTraitsWorld_GracefulSkill_tooltip = "Agilità + Furtività + Passo Leggero",
 
 	Sandbox_EvolvingTraitsWorld_GunEnthusiast = "Appassionato di Armi",
 	Sandbox_EvolvingTraitsWorld_GunEnthusiastSkill = "Abilità richeste per Appassionato di Armi",
@@ -217,6 +229,8 @@ Sandbox_IT = {
 
 	Sandbox_EvolvingTraitsWorld_RestorationExpert = "Esperto di Restauro",
 	Sandbox_EvolvingTraitsWorld_RestorationExpertSkill = "Abilità di Manutenzione richiesta per Esperto di Restauro",
+	Sandbox_EvolvingTraitsWorld_RestorationExpertChance = "Restauratore %",
+	Sandbox_EvolvingTraitsWorld_RestorationExpertChance_tooltip = "% per non aumentare il numero di volte in cui l'oggetto è stato riparato dopo ogni riparazione.",
 
 	Sandbox_EvolvingTraitsWorld_Sewer = "Sarto",
 	Sandbox_EvolvingTraitsWorld_SewerSkill = "Abilità di Sartoria richiesta per Sarto",

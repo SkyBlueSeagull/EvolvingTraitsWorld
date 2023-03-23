@@ -1,5 +1,7 @@
-v.4.1.5
+v.4.2.0_blaze_it
 
-Translations:
-	- Added Spanish translation, thanks to [url=https://steamcommunity.com/profiles/76561198331608167]Akillez[/url]
-	- Fixed incorrect line in RU and IT translations for Hoarder perk.
+General:
+	- Restoration Expert now has % setting to trigger. [1-100]. Default is 75%. Make sure to change it, if you want it to be 100% (or anything else).
+	- Added Axeman, Burglar and Graceful.
+Fixes:
+	- "Hunter Skill level" sandbox option adjusted to have minimum value of 8.

@@ -49,6 +49,7 @@ local function createModData(playerIndex, player)
 	modData.EagleEyedKills = modData.EagleEyedKills or 0;
 	modData.CatEyesCounter = modData.CatEyesCounter or 0;
 	modData.FoodSicknessWeathered = modData.FoodSicknessWeathered or 0;
+	modData.TreesChopped = modData.TreesChopped or 0;
 
 	modData.StartingTraits = modData.StartingTraits or {};
 	local startingTraits = modData.StartingTraits;

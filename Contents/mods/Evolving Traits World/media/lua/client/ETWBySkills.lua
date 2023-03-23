@@ -151,6 +151,22 @@ local function traitsGainsBySkill(player, perk)
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_clumsy"), false, HaloTextHelper.getColorGreen()) end
 					end
 				end
+			-- Graceful
+				if perk == "characterInitialization" or perk == Perks.Nimble or perk == Perks.Sneak or perk == Perks.Lightfoot then
+					local levels = nimble + sneaking + lightfooted;
+					if SBvars.Graceful == true and not player:HasTrait("Graceful") and levels >= SBvars.GracefulSkill then
+						player:getTraits():add("Graceful");
+						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_graceful"), true, HaloTextHelper.getColorGreen()) end
+					end
+				end
+		-- Nimble
+			if perk == "characterInitialization" or perk == Perks.Nimble or perk == Perks.Mechanics or perk == Perks.Electricity then
+				local levels = nimble + mechanics + electrical;
+				if SBvars.Burglar == true and not player:HasTrait("Burglar") and electrical >= 2 and mechanics >= 2 and levels >= SBvars.BurglarSkill then
+					player:getTraits():add("Burglar");
+					if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Burglar"), true, HaloTextHelper.getColorGreen()) end
+				end
+			end
 		-- Sneaking
 			-- Low Profile
 				if perk == "characterInitialization" or perk == Perks.Sneak then

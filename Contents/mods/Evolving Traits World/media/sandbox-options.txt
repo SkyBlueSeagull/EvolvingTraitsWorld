@@ -345,6 +345,15 @@ option EvolvingTraitsWorld.PluviophobiaMultiplier
 	page = EvolvingTraitsWorldTraitsSettings,
 	translation = EvolvingTraitsWorld_PluviophileMultiplier,
 }
+option EvolvingTraitsWorld.RestorationExpertChance
+{
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 75,
+	page = EvolvingTraitsWorldTraitsSettings,
+	translation = EvolvingTraitsWorld_RestorationExpertChance,
+}
 
 option EvolvingTraitsWorld.COMPLEX_PERKS
 {
@@ -580,6 +589,22 @@ option EvolvingTraitsWorld.AVClubSkill
 	page = EvolvingTraitsWorldSimplePerks,
 	translation = EvolvingTraitsWorld_AVClubSkill,
 }
+option EvolvingTraitsWorld.Axeman
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSimplePerks,
+	translation = EvolvingTraitsWorld_Axeman,
+}
+option EvolvingTraitsWorld.AxemanTrees
+{
+	type = integer,
+	min = 0,
+	max = 500000,
+	default = 500,
+	page = EvolvingTraitsWorldSimplePerks,
+	translation = EvolvingTraitsWorld_AxemanTrees,
+}
 option EvolvingTraitsWorld.AxeThrower
 {
 	type = boolean,
@@ -679,6 +704,22 @@ option EvolvingTraitsWorld.BrawlerKills
 	default = 600,
 	page = EvolvingTraitsWorldSimplePerks,
 	translation = EvolvingTraitsWorld_BrawlerKills,
+}
+option EvolvingTraitsWorld.Burglar
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSimplePerks,
+	translation = EvolvingTraitsWorld_Burglar,
+}
+option EvolvingTraitsWorld.BurglarSkill
+{
+	type = integer,
+	min = 4,
+	max = 30,
+	default = 7,
+	page = EvolvingTraitsWorldSimplePerks,
+	translation = EvolvingTraitsWorld_BurglarSkill,
 }
 option EvolvingTraitsWorld.Clumsy
 {
@@ -791,6 +832,22 @@ option EvolvingTraitsWorld.GardenerSkill
 	default = 4,
 	page = EvolvingTraitsWorldSimplePerks,
 	translation = EvolvingTraitsWorld_GardenerSkill,
+}
+option EvolvingTraitsWorld.Graceful
+{
+	type = boolean,
+	default = true,
+	page = EvolvingTraitsWorldSimplePerks,
+	translation = EvolvingTraitsWorld_Graceful,
+}
+option EvolvingTraitsWorld.GracefulSkill
+{
+	type = integer,
+	min = 0,
+	max = 30,
+	default = 9,
+	page = EvolvingTraitsWorldSimplePerks,
+	translation = EvolvingTraitsWorld_GracefulSkill,
 }
 option EvolvingTraitsWorld.GunEnthusiast
 {
@@ -923,7 +980,7 @@ option EvolvingTraitsWorld.Hunter
 option EvolvingTraitsWorld.HunterSkill
 {
 	type = integer,
-	min = 0,
+	min = 8,
 	max = 40,
 	default = 24,
 	page = EvolvingTraitsWorldSimplePerks,

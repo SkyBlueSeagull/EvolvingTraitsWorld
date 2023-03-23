@@ -1,0 +1,32 @@
+Current Translation version: v.4.1.5
+
+New/changed lines since v.4.1.5
+
+Moodles.txt
+	changed:
+
+	new:
+
+
+Sandbox.txt
+	changed:
+
+	new:
+		Sandbox_EvolvingTraitsWorld_Axeman = "Axeman",
+		Sandbox_EvolvingTraitsWorld_AxemanTrees = "Axeman Axe trees requirement",
+		Sandbox_EvolvingTraitsWorld_AxemanTrees_tooltip = "How many trees you have to cut down to get Axeman.",
+
+		Sandbox_EvolvingTraitsWorld_Burglar = "Burglar",
+		Sandbox_EvolvingTraitsWorld_BurglarSkill = "Burglar Skill requirement",
+		Sandbox_EvolvingTraitsWorld_BurglarSkill_tooltip = "Mechanics + Electrical + Nimble",
+
+		Sandbox_EvolvingTraitsWorld_Graceful = "Graceful",
+    	Sandbox_EvolvingTraitsWorld_GracefulSkill = "Graceful Skill requirement",
+    	Sandbox_EvolvingTraitsWorld_GracefulSkill_tooltip = "Nimble + Sneaking + Lightfooted",
+
+		Sandbox_EvolvingTraitsWorld_RestorationExpertChance = "Restoration Expert %",
+        Sandbox_EvolvingTraitsWorld_RestorationExpertChance_tooltip = "% to not increase amount of times item was repaired after repair.",
+UI.txt
+	changed:
+		UI_trait_RestorationExpertDesc = "You know how to restore old items to pristine condition. You have a chance to not gain penalties for multiple repairs.<br>+1 Maintenance",
+	new:

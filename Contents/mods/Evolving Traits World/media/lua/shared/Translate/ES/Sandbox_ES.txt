@@ -29,6 +29,10 @@ Sandbox_ES = {
 	Sandbox_EvolvingTraitsWorld_AVClub = "Miembro del club de A/V",
 	Sandbox_EvolvingTraitsWorld_AVClubSkill = "Miembro del club de A/V Requisito de habilidad de Electrónica",
 
+	Sandbox_EvolvingTraitsWorld_Axeman = "Señor de las hachas",
+	Sandbox_EvolvingTraitsWorld_AxemanTrees = "Señor de las hachas Requisito de arboles",
+	Sandbox_EvolvingTraitsWorld_AxemanTrees_tooltip = "Cuantos arboles debes talar para conseguir Señor de las hachas.",
+
 	Sandbox_EvolvingTraitsWorld_AxeThrower = "Lanzador de hachas",
 	Sandbox_EvolvingTraitsWorld_AxeThrowerSkill = "Lanzador de hachas Requisito de habilidad de Hacha",
 	Sandbox_EvolvingTraitsWorld_AxeThrowerKills = "Lanzador de hachas Requisito de asesinatos con hacha",
@@ -63,6 +67,10 @@ Sandbox_ES = {
 	Sandbox_EvolvingTraitsWorld_BrawlerSkill_tooltip = "Hacha + Arma larga contundente",
 	Sandbox_EvolvingTraitsWorld_BrawlerKills = "Requisito de asesinatos de Luchador",
 	Sandbox_EvolvingTraitsWorld_BrawlerKills_tooltip = "Hacha + Arma larga contundente",
+
+	Sandbox_EvolvingTraitsWorld_Burglar = "Ladrón",
+	Sandbox_EvolvingTraitsWorld_BurglarSkill = "Ladrón Requisito de habilidad",
+	Sandbox_EvolvingTraitsWorld_BurglarSkill_tooltip = "Mecánica + Electrónica + Destreza",
 
 	Sandbox_EvolvingTraitsWorld_CatEyes = "Ojos de gato",
 	Sandbox_EvolvingTraitsWorld_CatEyesCounter = "Contador de ojos de gato",
@@ -120,6 +128,10 @@ Sandbox_ES = {
 
 	Sandbox_EvolvingTraitsWorld_Gardener = "Jardinero",
 	Sandbox_EvolvingTraitsWorld_GardenerSkill = "Jardinero Requisito de habilidad de Agricultura",
+
+	Sandbox_EvolvingTraitsWorld_Graceful = "Agraciado",
+	Sandbox_EvolvingTraitsWorld_GracefulSkill = "Agraciado Requisito de habilidad",
+	Sandbox_EvolvingTraitsWorld_GracefulSkill_tooltip = "Destreza + Sigilo + Pies ligeros",
 
 	Sandbox_EvolvingTraitsWorld_GunEnthusiast = "Aficionado de las armas",
 	Sandbox_EvolvingTraitsWorld_GunEnthusiastSkill = "Aficionado de las armas Requisitos de habilidad",
@@ -215,6 +227,8 @@ Sandbox_EvolvingTraitsWorld_RainSystemCounterMultiplier = "Multiplicador de dism
 
 	Sandbox_EvolvingTraitsWorld_RestorationExpert = "Experto en restauración",
 	Sandbox_EvolvingTraitsWorld_RestorationExpertSkill = "Experto en restauración Requisito de habilidad de Mantenimiento",
+	Sandbox_EvolvingTraitsWorld_RestorationExpertChance = "Porcentaje de Experto en restauración",
+	Sandbox_EvolvingTraitsWorld_RestorationExpertChance_tooltip = "Porcentaje requerido para no aumentar la cantidad de veces que se reparó el artículo después de la reparación.",
 
 	Sandbox_EvolvingTraitsWorld_Sewer = "Costurero",
 	Sandbox_EvolvingTraitsWorld_SewerSkill = "Costurero Requisito de habilidad de Sastrería",

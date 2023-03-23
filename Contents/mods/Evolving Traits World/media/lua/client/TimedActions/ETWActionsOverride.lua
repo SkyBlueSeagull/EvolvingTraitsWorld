@@ -67,8 +67,26 @@ function ISFixAction:perform()
 		ETWActionsOverride.mechanicsCheck();
 	end
 	if player:HasTrait("RestorationExpert") then
-		self.item:setHaveBeenRepaired(self.item:getHaveBeenRepaired() - 1);
+		local chance = SBvars.RestorationExpertChance - 1;
+		if ZombRand(100) <= chance then
+			self.item:setHaveBeenRepaired(self.item:getHaveBeenRepaired() - 1);
+		end
 	end
+end
+
+local original_chop_perform = ISChopTreeAction.perform;
+function ISChopTreeAction:perform()
+	if debug() then print("ETW Logger: ETW ISChopTreeAction:perform") end
+	local player = self.character;
+	local modData = player:getModData().EvolvingTraitsWorld;
+	modData.TreesChopped = modData.TreesChopped + 1;
+	if debug() then print("ETW Logger: modData.TreesChopped = "..modData.TreesChopped) end
+	if not player:HasTrait("Axeman") and modData.TreesChopped >= SBvars.AxemanTrees then
+		player:getTraits():add("Axeman");
+		local notification = EvolvingTraitsWorld.settings.EnableNotifications;
+		if notification == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_axeman"), true, HaloTextHelper.getColorGreen()) end
+	end
+	original_chop_perform(self);
 end
 
 local original_transfer_perform = ISInventoryTransferAction.perform;

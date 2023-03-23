@@ -24,9 +24,11 @@ if getActivatedMods():contains('EvolvingTraitsWorld') or getActivatedMods():cont
 	altNames.AdrenalineJunkie = true;
 	altNames.Agoraphobic = true;
 	altNames.AllThumbs = true;
+	altNames.Axeman = true;
 	altNames.BaseballPlayer = true;
 	altNames.Brave = true;
 	altNames.Brawler = true;
+	altNames.Burgler = true;
 	altNames.Claustophobic = true;
 	altNames.Clumsy = true;
 	altNames.Conspicuous = true;
@@ -39,7 +41,7 @@ if getActivatedMods():contains('EvolvingTraitsWorld') or getActivatedMods():cont
 	altNames.FirstAid = true;
 	altNames.Fishing = true;
 	altNames.Gardener = true;
-	--altNames.Graceful = true;
+	altNames.Graceful = true;
 	altNames.Gymnast = true;
 	altNames.Handy = true;
 	altNames.HardOfHearing = true;

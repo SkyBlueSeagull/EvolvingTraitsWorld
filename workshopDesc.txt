@@ -39,6 +39,13 @@ If you want to submit translation files, the easiest way to do it would be on Gi
 
 [h1]Credits and Translations[/h1]
 List of credits, contributors and translators can be found in [url=https://steamcommunity.com/workshop/filedetails/discussion/2914075159/3785877016603169742/]this discussion[/url] (hitting description limit so had to move it).
+Currently mod supports following languages:
+[list]
+[*]English
+[*]Italiano / Italian
+[*]Español / Spanish
+[*]Русский / Russian
+[/list]
 
 [h1]Afterword and Permission[/h1]
 If you like this mod, check out collection on top of page for other mods I made or collaborated on! Rate ups are appreciated, and if you wanna send me a coffee, that's a real homie move and you can do it here:
