@@ -14,6 +14,9 @@ Sandbox.txt
 		Sandbox_EvolvingTraitsWorld_AxemanTrees = "Axeman Axe trees requirement",
 		Sandbox_EvolvingTraitsWorld_AxemanTrees_tooltip = "How many trees you have to cut down to get Axeman.",
 
+		Sandbox_EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks = "Bravery System Removes Other Fear Perks",
+		Sandbox_EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks_tooltip = "If enabled, getting desensitized through Bravery system will also remove other fear perks like Pluviophile, Homichlophobia, Agoraphobic, Claustrophobic and prevent you from gaining them.",
+
 		Sandbox_EvolvingTraitsWorld_Burglar = "Burglar",
 		Sandbox_EvolvingTraitsWorld_BurglarSkill = "Burglar Skill requirement",
 		Sandbox_EvolvingTraitsWorld_BurglarSkill_tooltip = "Mechanics + Electrical + Nimble",

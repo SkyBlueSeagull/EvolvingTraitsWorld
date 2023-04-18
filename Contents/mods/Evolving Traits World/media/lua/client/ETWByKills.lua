@@ -98,7 +98,7 @@ local function braverySystem(zombie)
 	local fireKills = killCountModData["Fire"].count;
 	local vehiclesKills = killCountModData["Vehicles"].count;
 	local explosivesKills = killCountModData["Explosives"].count;
-	local meleeKills = totalKills - fireKills - vehiclesKills - explosivesKills;
+	local meleeKills = (totalKills - fireKills - vehiclesKills - explosivesKills) * 2;
 	local traitInfo = {
 		{ trait = "Cowardly", threshold = braveryKills * 0.1, remove = true },
 		{ trait = "Hemophobic", threshold = braveryKills * 0.2, remove = true },
@@ -115,12 +115,30 @@ local function braverySystem(zombie)
 		if (totalKills + meleeKills) >= threshold then
 			if player:HasTrait(trait) and remove then
 				player:getTraits():remove(trait)
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. trait), false, HaloTextHelper.getColorRed()) end
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. trait), false, HaloTextHelper.getColorGreen()) end
 			elseif not player:HasTrait(trait) and add then
 				player:getTraits():add(trait)
-				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. (trait == "Brave" and "brave" or trait)), true, HaloTextHelper.getColorRed()) end
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. (trait == "Brave" and "brave" or trait)), true, HaloTextHelper.getColorGreen()) end
 				if trait == "Desensitized" then
 					Events.OnZombieDead.Remove(braverySystem);
+					if SBvars.BraverySystemRemovesOtherFearPerks == true then
+						if player:HasTrait("Agoraphobic") then
+							player:getTraits():remove("Agoraphobic");
+							if notification() == true then HaloTextHelper.addTextWithArrow(player, "UI_trait_agoraphobic", false, HaloTextHelper.getColorGreen()) end
+						end
+						if player:HasTrait("Claustophobic") then
+							player:getTraits():remove("Claustophobic");
+							if notification() == true then HaloTextHelper.addTextWithArrow(player, "UI_trait_claustro", false, HaloTextHelper.getColorGreen()) end
+						end
+						if player:HasTrait("Pluviophobia") then
+							player:getTraits():remove("Pluviophobia");
+							if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Pluviophobia"), false, HaloTextHelper.getColorGreen()) end
+						end
+						if player:HasTrait("Homichlophobia") then
+							player:getTraits():remove("Homichlophobia");
+							if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Homichlophobia"), false, HaloTextHelper.getColorGreen()) end
+						end
+					end
 				end
 			end
 		end

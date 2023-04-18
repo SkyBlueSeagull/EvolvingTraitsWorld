@@ -4,6 +4,7 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
+local desensitized = function(player) return player:HasTrait("Desensitized") and SBvars.BraverySystemRemovesOtherFearPerks end
 
 local function outdoorsman()
 	local player = getPlayer();
@@ -68,7 +69,7 @@ local function fearOfLocations()
 			player:getTraits():remove("Agoraphobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_agoraphobic"), false, HaloTextHelper.getColorGreen()) end
 		end
-		if not player:HasTrait("Agoraphobic") and fearOfLocationsModData.FearOfOutside <= -SBCounter then
+		if not player:HasTrait("Agoraphobic") and fearOfLocationsModData.FearOfOutside <= -SBCounter and not desensitized(player) then
 			player:getTraits():add("Agoraphobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_agoraphobic"), true, HaloTextHelper.getColorRed()) end
 		end
@@ -83,7 +84,7 @@ local function fearOfLocations()
 			player:getTraits():remove("Claustophobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_claustro"), false, HaloTextHelper.getColorGreen()) end
 		end
-		if not player:HasTrait("Claustophobic") and fearOfLocationsModData.FearOfInside <= -SBCounter then
+		if not player:HasTrait("Claustophobic") and fearOfLocationsModData.FearOfInside <= -SBCounter and not desensitized(player) then
 			player:getTraits():add("Claustophobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_claustro"), true, HaloTextHelper.getColorRed()) end
 		end

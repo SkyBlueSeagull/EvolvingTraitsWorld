@@ -46,6 +46,13 @@ option EvolvingTraitsWorld.BraverySystemKills
 	page = EvolvingTraitsWorldSystems,
 	translation = EvolvingTraitsWorld_BraverySystemKills,
 }
+option EvolvingTraitsWorld.BraverySystemRemovesOtherFearPerks
+{
+	type = boolean,
+	default = false,
+	page = EvolvingTraitsWorldSystems,
+	translation = EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks,
+}
 option EvolvingTraitsWorld.ColdIllnessSystem
 {
 	type = boolean,

@@ -10,7 +10,8 @@ Sandbox_EN.txt
 	changed:
 
 	new:
-
+		Sandbox_EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks = "Bravery System Removes Other Fear Perks",
+        Sandbox_EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks_tooltip = "If enabled, getting desensitized through Bravery system will also remove other fear perks like Pluviophile, Homichlophobia, Agoraphobic, Claustrophobic and prevent you from gaining them.",
 UI_EN.txt
 	changed:
 

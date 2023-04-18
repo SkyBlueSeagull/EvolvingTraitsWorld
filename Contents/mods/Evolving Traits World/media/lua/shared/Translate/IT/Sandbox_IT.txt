@@ -62,6 +62,8 @@ Sandbox_IT = {
 	Sandbox_EvolvingTraitsWorld_BraverySystem = "Sistema di Coraggio",
 	Sandbox_EvolvingTraitsWorld_BraverySystemKills = "Uccisioni per migliorare i tratti sul coraggio",
 	Sandbox_EvolvingTraitsWorld_BraverySystemKills_tooltip = "Qui imposti quante uccisioni ti servono per migliorare al MASSIMO il tuo sistema di coraggio. Le uccisioni in mischia contano due volte per il progresso. La progressione è la seguente: Codardo -> Paura del sangue -> Pacifista -> Drogato di adrenalina -> Coraggioso -> Desensibilizzato<br> Gli importi da raggiungere in ogni livello sono i seguenti:<br>Codardo: 10% delle uccisioni massime<br>Paura del sangue: 20% delle uccisioni massime<br>Pacifista: 30% delle uccisioni massime<br>Drogato di adrenalina: 40% delle uccisioni massime<br>Coraggioso: 60% delle uccisioni massime<br>Desensibilizzato: 100% delle uccisioni massime< br>Esempio: il numero massimo di uccisioni è impostato su 1000. Inizi con Codardo. Hai bisogno di 100 uccisioni per rimuoverlo. Se ottieni 50 uccisioni in mischia, verrà rimosso. Lo stesso vale se ottieni 40 uccisioni corpo a corpo (x2 = 80 uccisioni per contrattacco) e 20 uccisioni con armi da fuoco",
+	Sandbox_EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks = "Il sistema di coraggio rimuove gli altri tratti della paura",
+	Sandbox_EvolvingTraitsWorld_BraverySystemRemovesOtherFearPerks_tooltip = "Se abilitato, essere desensibilizzato rimuoverà anche altri tratti inerenti alla paura attraverso il sistema di coraggio come Pluviofilia, Nebulofobia, Agorafobico, Claustrofobico e ti impedirà di ottenerli.",
 
 	Sandbox_EvolvingTraitsWorld_Brawler = "Attaccabrighe",
 	Sandbox_EvolvingTraitsWorld_BrawlerSkill = "Abilità richiesta per Attaccabrighe",

@@ -4,6 +4,7 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
+local desensitized = function(player) return player:HasTrait("Desensitized") and SBvars.BraverySystemRemovesOtherFearPerks end
 
 local function rainTraits()
 	local player = getPlayer();
@@ -30,7 +31,7 @@ local function rainTraits()
 			if debug() then print("ETW Logger: rainTraits rainDecrease="..rainDecrease..". RainCounter=" .. modData.RainCounter) end
 			modData.RainCounter = math.max(lowerBoundary, modData.RainCounter - rainDecrease);
 		end
-		if not player:HasTrait("Pluviophobia") and modData.RainCounter <= -SBCounter then
+		if not player:HasTrait("Pluviophobia") and modData.RainCounter <= -SBCounter and not desensitized(player) then
 			player:getTraits():add("Pluviophobia");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Pluviophobia"), true, HaloTextHelper.getColorRed()) end
 		elseif player:HasTrait("Pluviophobia") and modData.RainCounter > -SBCounter then
@@ -66,7 +67,7 @@ local function fogTraits()
 		finalFogCounter = math.min(finalFogCounter, upperBoundary);
 		modData.FogCounter = finalFogCounter;
 		if debug() then print("ETW Logger: modData.FogCounter="..modData.FogCounter) end
-		if not player:HasTrait("Homichlophobia") and modData.RainCounter <= -SBCounter then
+		if not player:HasTrait("Homichlophobia") and modData.RainCounter <= -SBCounter and not desensitized(player) then
 			player:getTraits():add("Homichlophobia");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Homichlophobia"), true, HaloTextHelper.getColorRed()) end
 		elseif player:HasTrait("Homichlophobia") and modData.RainCounter > -SBCounter then

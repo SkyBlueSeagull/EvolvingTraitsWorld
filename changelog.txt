@@ -1,7 +1,6 @@
-v.4.2.0_blaze_it
+v.4.3.0
 
 General:
-	- Restoration Expert now has % setting to trigger. [1-100]. Default is 75%. Make sure to change it, if you want it to be 100% (or anything else).
-	- Added Axeman, Burglar and Graceful.
+	- New sandbox option that removes all fear traits when you gain Desensitized (Default - off)
 Fixes:
-	- "Hunter Skill level" sandbox option adjusted to have minimum value of 8.
+	- Fixed melee kills only count once for Bravery system, instead of twice as intended.
