@@ -92,11 +92,17 @@ local function fearOfLocations()
 end
 
 local function initializeEvents(playerIndex, player)
-	Events.EveryOneMinute.Remove(outdoorsman)
+	Events.EveryOneMinute.Remove(outdoorsman);
 	if SBvars.Outdoorsman == true then Events.EveryOneMinute.Add(outdoorsman) end
 	Events.EveryOneMinute.Remove(fearOfLocations);
 	if SBvars.FearOfLocationsSystem == true then Events.EveryOneMinute.Add(fearOfLocations) end
 end
 
+local function clearEvents(character)
+	Events.EveryOneMinute.Remove(outdoorsman);
+	Events.EveryOneMinute.Remove(fearOfLocations);
+end
+
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
+Events.OnCharacterDeath.Add(clearEvents);

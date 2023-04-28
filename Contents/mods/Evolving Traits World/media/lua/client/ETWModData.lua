@@ -42,6 +42,7 @@ local function checkStartingTrait(startingTraits, player, trait)
 end
 
 local function createModData(playerIndex, player)
+	print("ETW Logger: initializing modData");
 	player:getModData().EvolvingTraitsWorld = player:getModData().EvolvingTraitsWorld or {};
 	local modData = player:getModData().EvolvingTraitsWorld
 

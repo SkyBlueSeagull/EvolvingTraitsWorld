@@ -106,5 +106,11 @@ local function initializeTraitsLogic(playerIndex, player)
 	Events.EveryOneMinute.Add(oneMinuteUpdate);
 end
 
+local function clearEvents(character)
+	Events.OnZombieDead.Remove(onZombieKill);
+	Events.EveryOneMinute.Remove(oneMinuteUpdate);
+end
+
 Events.OnCreatePlayer.Remove(initializeTraitsLogic);
 Events.OnCreatePlayer.Add(initializeTraitsLogic);
+Events.OnCharacterDeath.Add(clearEvents);

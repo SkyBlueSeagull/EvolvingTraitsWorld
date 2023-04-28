@@ -455,5 +455,11 @@ local function initializeEvents(playerIndex, player)
 	Events.OnZombieDead.Add(onZombieKill);
 end
 
+local function clearEvents(character)
+	Events.LevelPerk.Remove(traitsGainsBySkill);
+	Events.OnZombieDead.Remove(onZombieKill);
+end
+
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
+Events.OnCharacterDeath.Add(clearEvents);

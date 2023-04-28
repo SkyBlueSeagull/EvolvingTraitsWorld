@@ -182,7 +182,7 @@ end
 local function initializeEvents(playerIndex, player)
 	Events.EveryOneMinute.Remove(coldTraits);
 	if SBvars.ColdIllnessSystem == true and not player:HasTrait("Resilient") then Events.EveryOneMinute.Add(coldTraits) end
-	Events.EveryOneMinute.Remove(foodSicknessTraits)
+	Events.EveryOneMinute.Remove(foodSicknessTraits);
 	if SBvars.FoodSicknessSystem == true and not player:HasTrait("IronGut") then Events.EveryOneMinute.Add(foodSicknessTraits) end
 	Events.EveryTenMinutes.Remove(weightSystem);
 	if SBvars.WeightSystem == true then Events.EveryTenMinutes.Add(weightSystem) end
@@ -190,5 +190,13 @@ local function initializeEvents(playerIndex, player)
 	if SBvars.Asthmatic == true then Events.EveryOneMinute.Add(asthmaticTrait) end
 end
 
+local function clearEvents(character)
+	Events.EveryOneMinute.Remove(coldTraits);
+	Events.EveryOneMinute.Remove(foodSicknessTraits);
+	Events.EveryTenMinutes.Remove(weightSystem);
+	Events.EveryOneMinute.Remove(asthmaticTrait);
+end
+
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
+Events.OnCharacterDeath.Add(clearEvents);

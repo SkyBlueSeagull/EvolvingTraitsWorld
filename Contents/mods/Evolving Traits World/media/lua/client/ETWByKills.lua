@@ -159,5 +159,13 @@ local function initializeKills(playerIndex, player)
 	if SBvars.BraverySystem == true and not player:HasTrait("Desensitized") then Events.OnZombieDead.Add(braverySystem) end
 end
 
+local function clearEvents(character)
+	Events.OnZombieDead.Remove(bloodlustKill);
+	Events.EveryHours.Remove(bloodlustTime)
+	Events.OnWeaponHitCharacter.Remove(eagleEyed);
+	Events.OnZombieDead.Remove(braverySystem);
+end
+
 Events.OnCreatePlayer.Remove(initializeKills);
 Events.OnCreatePlayer.Add(initializeKills);
+Events.OnCharacterDeath.Add(clearEvents);

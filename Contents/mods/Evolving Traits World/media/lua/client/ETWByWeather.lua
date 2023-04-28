@@ -85,11 +85,17 @@ end
 
 local function initializeEvents(playerIndex, player)
 	local activatedMods = getActivatedMods();
-	Events.EveryOneMinute.Remove(rainTraits)
+	Events.EveryOneMinute.Remove(rainTraits);
 	if not activatedMods:contains("EvolvingTraitsWorldDisableRainTraits") and SBvars.RainSystem == true then Events.EveryOneMinute.Add(rainTraits) end
-	Events.EveryOneMinute.Remove(fogTraits)
+	Events.EveryOneMinute.Remove(fogTraits);
 	if not activatedMods:contains("EvolvingTraitsWorldDisableFogTraits") and SBvars.FogSystem == true then Events.EveryOneMinute.Add(fogTraits) end
+end
+
+local function clearEvents(character)
+	Events.EveryOneMinute.Remove(rainTraits);
+	Events.EveryOneMinute.Remove(fogTraits);
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
+Events.OnCharacterDeath.Add(clearEvents);

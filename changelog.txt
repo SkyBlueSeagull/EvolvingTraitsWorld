@@ -1,6 +1,4 @@
-v.4.3.0
+v.4.3.1
 
-General:
-	- New sandbox option that removes all fear traits when you gain Desensitized (Default - off)
 Fixes:
-	- Fixed melee kills only count once for Bravery system, instead of twice as intended.
+	- Fixed error after creating new character in same world after old one dies.
