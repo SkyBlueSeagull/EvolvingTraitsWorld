@@ -168,18 +168,22 @@ end
 
 local function initializeEvents(playerIndex, player)
 	Events.EveryOneMinute.Remove(catEyes);
-	Events.OnCharacterDeath.Remove(catEyes);
 	if SBvars.CatEyes == true and not player:HasTrait("NightVision") then Events.EveryOneMinute.Add(catEyes) end
 	Events.EveryTenMinutes.Remove(sleepSystem);
-	Events.OnCharacterDeath.Remove(sleepSystem);
 	if SBvars.SleepSystem == true then Events.EveryTenMinutes.Add(sleepSystem) end
 	Events.EveryOneMinute.Remove(smoker);
-	Events.OnCharacterDeath.Remove(smoker);
 	if SBvars.Smoker == true then Events.EveryOneMinute.Add(smoker) end
 	Events.EveryDays.Remove(herbalist);
-	Events.OnCharacterDeath.Remove(herbalist);
 	if SBvars.Herbalist == true then Events.EveryDays.Add(herbalist) end
+end
+
+local function clearEvents(character)
+	Events.EveryOneMinute.Remove(catEyes);
+	Events.EveryTenMinutes.Remove(sleepSystem);
+	Events.EveryOneMinute.Remove(smoker);
+	Events.EveryDays.Remove(herbalist);
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
+Events.OnCharacterDeath.Add(clearEvents);

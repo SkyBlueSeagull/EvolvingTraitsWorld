@@ -22,15 +22,41 @@ local function onZombieKill(zombie)
 end
 
 local function checkWeightLimit(player)
-	if not getActivatedMods():contains("ToadTraitsDynamic") and player:HasTrait("Hoarder") then
-		local default = 8;
-		local strength = player:getPerkLevel(Perks.Strength);
-		local hoarderBaseWeight = default + strength * SBvars.HoarderWeight;
-		if player:getMaxWeightBase() ~= hoarderBaseWeight then
-			player:setMaxWeightBase(hoarderBaseWeight);
-			if debug() then print("ETW Logger: Set Hoarder maxWeightBase to"..hoarderBaseWeight) end
+	local traits = {
+		{"Metalstrongback", "StrongBack", 13},
+		{"Metalstrongback2", "StrongBack", 13},
+		{"Strongback", "StrongBack", 10},
+		{"Strongback2", "StrongBack", 10},
+		{"Metalstrongback", nil, 12},
+		{"Metalstrongback2", nil, 12},
+		{"Strongback", nil, 10},
+		{"Strongback2", nil, 10},
+		{"WeakBack", nil, 7},
+		{nil, nil, 8}
+	}
+
+	local maxWeightBase = 8
+	for _, trait in ipairs(traits) do
+		local trait1, trait2, maxWeight = unpack(trait)
+		if (not trait1 or player:HasTrait(trait1)) and (not trait2 or player:HasTrait(trait2)) then
+			maxWeightBase = maxWeight;
+			if debug() then print("ETW Logger: Set maxWeightBase to "..tostring(maxWeight)) end
+			break
 		end
 	end
+
+	if not maxWeightBase then
+		if debug() then print("ETW Logger: maxWeightBase is nul, setting it to 8") end
+		maxWeightBase = 8;
+	end
+
+	if not getActivatedMods():contains("ToadTraitsDynamic") and player:HasTrait("Hoarder") then
+		local strength = player:getPerkLevel(Perks.Strength);
+		maxWeightBase = maxWeightBase + strength * SBvars.HoarderWeight;
+		if debug() then print("ETW Logger: Set Hoarder maxWeightBase to"..maxWeightBase) end
+	end
+
+	player:setMaxWeightBase(maxWeightBase);
 end
 
 local function rainTraits(player, rainIntensity)
@@ -110,6 +136,8 @@ local function clearEvents(character)
 	Events.OnZombieDead.Remove(onZombieKill);
 	Events.EveryOneMinute.Remove(oneMinuteUpdate);
 end
+
+Events.EveryHours.Remove(SOcheckWeight);
 
 Events.OnCreatePlayer.Remove(initializeTraitsLogic);
 Events.OnCreatePlayer.Add(initializeTraitsLogic);
