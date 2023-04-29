@@ -23,37 +23,42 @@ end
 
 local function checkWeightLimit(player)
 	local traits = {
-		{"Metalstrongback", "StrongBack", 13},
-		{"Metalstrongback2", "StrongBack", 13},
-		{"Strongback", "StrongBack", 10},
-		{"Strongback2", "StrongBack", 10},
-		{"Metalstrongback", nil, 12},
-		{"Metalstrongback2", nil, 12},
-		{"Strongback", nil, 10},
-		{"Strongback2", nil, 10},
-		{"WeakBack", nil, 7},
-		{nil, nil, 8}
+		{"Metalstrongback", "StrongBack", 5},
+		{"Metalstrongback2", "StrongBack", 5},
+		{"Strongback", "StrongBack", 2},
+		{"Strongback2", "StrongBack", 2},
+		{"Metalstrongback", nil, 4},
+		{"Metalstrongback2", nil, 4},
+		{"Strongback", nil, 2},
+		{"Strongback2", nil, 2},
+		{"WeakBack", nil, -1},
+		{nil, nil, 0},
 	}
 
-	local maxWeightBase = 8
+	local maxWeightBase = 8;
+	local strength = player:getPerkLevel(Perks.Strength);
+
+	if getActivatedMods():contains("ToadTraits") then
+		if player:HasTrait("packmule") then maxWeightBase = math.floor(SandboxVars.MoreTraits.WeightPackMule + strength / 5) end
+		if player:HasTrait("packmouse") then maxWeightBase = SandboxVars.MoreTraits.WeightPackMouse end
+		if not player:HasTrait("packmule") and not player:HasTrait("packmouse") then maxWeightBase = SandboxVars.MoreTraits.WeightDefault end
+		maxWeightBase = maxWeightBase + SandboxVars.MoreTraits.WeightGlobalMod;
+		if debug() then print("ETW Logger: [ToadTraits present] Set maxWeightBase to "..maxWeightBase) end
+	end
+
 	for _, trait in ipairs(traits) do
 		local trait1, trait2, maxWeight = unpack(trait)
 		if (not trait1 or player:HasTrait(trait1)) and (not trait2 or player:HasTrait(trait2)) then
-			maxWeightBase = maxWeight;
-			if debug() then print("ETW Logger: Set maxWeightBase to "..tostring(maxWeight)) end
+			if not maxWeight then maxWeight = 0 end
+			maxWeightBase = maxWeightBase + maxWeight;
+			if debug() then print("ETW Logger: [SOTO compatibility] Set maxWeightBase to "..tostring(maxWeightBase)) end
 			break
 		end
 	end
 
-	if not maxWeightBase then
-		if debug() then print("ETW Logger: maxWeightBase is nul, setting it to 8") end
-		maxWeightBase = 8;
-	end
-
-	if not getActivatedMods():contains("ToadTraitsDynamic") and player:HasTrait("Hoarder") then
-		local strength = player:getPerkLevel(Perks.Strength);
+	if player:HasTrait("Hoarder") then
 		maxWeightBase = maxWeightBase + strength * SBvars.HoarderWeight;
-		if debug() then print("ETW Logger: Set Hoarder maxWeightBase to"..maxWeightBase) end
+		if debug() then print("ETW Logger: Set Hoarder maxWeightBase to "..maxWeightBase) end
 	end
 
 	player:setMaxWeightBase(maxWeightBase);

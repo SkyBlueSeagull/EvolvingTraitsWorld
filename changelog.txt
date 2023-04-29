@@ -1,7 +1,4 @@
-v.4.3.2
+v.4.3.4
 
 Fixes:
-	- Follow-up fix for error after creating new character in same world after old one dies (missed 1 file)
-	- Fixed carry weight being weird when both SOTO and ETW carry weight perks are present.
-Translations:
-	- Added Chinese and Traditional Chinese thanks to [url=https://steamcommunity.com/profiles/76561198164560009]NEP IS LIFE[/url]
+	- Fixed carry weight being weird when both More Traits, SOTO and ETW carry weight perks are present.

@@ -45,7 +45,7 @@ Currently mod supports following languages:
 [*]Italiano / Italian
 [*]Español / Spanish
 [*]Русский / Russian
-[*]中国人 / Chinese
+[*]簡体中文 / Chinese
 [*]繁體中文 / Traditional Chinese
 [/list]
 
