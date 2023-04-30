@@ -101,8 +101,9 @@ end
 local function clearEvents(character)
 	Events.EveryOneMinute.Remove(outdoorsman);
 	Events.EveryOneMinute.Remove(fearOfLocations);
+	if debug() then print("ETW Logger: clearEvents in ETWByLocation.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);

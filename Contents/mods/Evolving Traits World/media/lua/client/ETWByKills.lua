@@ -164,8 +164,9 @@ local function clearEvents(character)
 	Events.EveryHours.Remove(bloodlustTime)
 	Events.OnWeaponHitCharacter.Remove(eagleEyed);
 	Events.OnZombieDead.Remove(braverySystem);
+	if debug() then print("ETW Logger: clearEvents in ETWByKills.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeKills);
 Events.OnCreatePlayer.Add(initializeKills);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);

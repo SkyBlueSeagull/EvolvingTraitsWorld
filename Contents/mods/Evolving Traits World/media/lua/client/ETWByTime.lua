@@ -182,8 +182,9 @@ local function clearEvents(character)
 	Events.EveryTenMinutes.Remove(sleepSystem);
 	Events.EveryOneMinute.Remove(smoker);
 	Events.EveryDays.Remove(herbalist);
+	if debug() then print("ETW Logger: clearEvents in ETWByTime.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);

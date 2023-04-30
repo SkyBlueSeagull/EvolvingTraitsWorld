@@ -140,10 +140,11 @@ end
 local function clearEvents(character)
 	Events.OnZombieDead.Remove(onZombieKill);
 	Events.EveryOneMinute.Remove(oneMinuteUpdate);
+	if debug() then print("ETW Logger: clearEvents in ETWTraitsLogic.lua") end
 end
 
 Events.EveryHours.Remove(SOcheckWeight);
 
 Events.OnCreatePlayer.Remove(initializeTraitsLogic);
 Events.OnCreatePlayer.Add(initializeTraitsLogic);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);

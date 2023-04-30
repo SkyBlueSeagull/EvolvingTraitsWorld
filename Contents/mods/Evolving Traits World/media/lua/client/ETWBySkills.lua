@@ -458,8 +458,9 @@ end
 local function clearEvents(character)
 	Events.LevelPerk.Remove(traitsGainsBySkill);
 	Events.OnZombieDead.Remove(onZombieKill);
+	if debug() then print("ETW Logger: clearEvents in ETWBySkills.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);

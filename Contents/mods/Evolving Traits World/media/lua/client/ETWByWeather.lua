@@ -94,8 +94,9 @@ end
 local function clearEvents(character)
 	Events.EveryOneMinute.Remove(rainTraits);
 	Events.EveryOneMinute.Remove(fogTraits);
+	if debug() then print("ETW Logger: clearEvents in ETWByWeather.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);

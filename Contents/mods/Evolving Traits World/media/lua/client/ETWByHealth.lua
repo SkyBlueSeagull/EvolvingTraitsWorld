@@ -195,8 +195,9 @@ local function clearEvents(character)
 	Events.EveryOneMinute.Remove(foodSicknessTraits);
 	Events.EveryTenMinutes.Remove(weightSystem);
 	Events.EveryOneMinute.Remove(asthmaticTrait);
+	if debug() then print("ETW Logger: clearEvents in ETWByHealth.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
 Events.OnCreatePlayer.Add(initializeEvents);
-Events.OnCharacterDeath.Add(clearEvents);
+Events.OnPlayerDeath.Add(clearEvents);
