@@ -96,9 +96,10 @@ local function braverySystem(zombie)
 	local braveryKills = SBvars.BraverySystemKills;
 	local killCountModData = player:getModData().KillCount.WeaponCategory;
 	local fireKills = killCountModData["Fire"].count;
+	local firearmsKills = killCountModData["Firearm"].count;
 	local vehiclesKills = killCountModData["Vehicles"].count;
 	local explosivesKills = killCountModData["Explosives"].count;
-	local meleeKills = (totalKills - fireKills - vehiclesKills - explosivesKills) * 2;
+	local meleeKills = totalKills - firearmsKills - fireKills - vehiclesKills - explosivesKills;
 	local traitInfo = {
 		{ trait = "Cowardly", threshold = braveryKills * 0.1, remove = true },
 		{ trait = "Hemophobic", threshold = braveryKills * 0.2, remove = true },
@@ -112,7 +113,7 @@ local function braverySystem(zombie)
 		local threshold = info.threshold
 		local remove = info.remove
 		local add = info.add
-		if (totalKills + meleeKills) >= threshold then
+		if (totalKills + meleeKills) >= threshold then -- melee kills counted double
 			if player:HasTrait(trait) and remove then
 				player:getTraits():remove(trait)
 				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_" .. trait), false, HaloTextHelper.getColorGreen()) end
