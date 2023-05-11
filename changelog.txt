@@ -1,4 +1,4 @@
-v.4.3.5
+v.4.3.6
 
 Fixes:
-	- Replaced all onCharacterDeath with onPlayerDeath (this was clearing all mod events/logic when ANY character dies, instead of doing it when player dies), everything should be working now.
+	- Fixed kills calculation for Bravery system (was counting firearm kills twice)
