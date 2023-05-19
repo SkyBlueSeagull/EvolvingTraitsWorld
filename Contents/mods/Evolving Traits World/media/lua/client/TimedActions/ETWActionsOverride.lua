@@ -56,17 +56,20 @@ function ISFixAction:perform()
 	local player = self.character;
 	local modData = player:getModData().EvolvingTraitsWorld;
 	local vehiclePartCondition = 0;
+	if debug() then print("ETW Logger: caught ISFixAction:perform()") end
 	if self.vehiclePart then
 		local part = self.vehiclePart;
 		vehiclePartCondition = part:getCondition();
 	end
 	original_fix_perform(self);
 	if self.vehiclePart and ((SBvars.Mechanics == true and not player:HasTrait("Mechanics")) or (SBvars.BodyWorkEnthusiast == true and not player:HasTrait("BodyWorkEnthusiast"))) then
+		if debug() then print("ETW Logger: caught ISFixAction:perform() on car part") end
 		modData.VehiclePartRepairs = modData.VehiclePartRepairs + (self.vehiclePart:getCondition() - vehiclePartCondition);
 		if not getActivatedMods():contains("EvolvingTraitsWorldDisableBodyWorkEnthusiast") then ETWActionsOverride.bodyworkEnthusiastCheck() end
 		ETWActionsOverride.mechanicsCheck();
 	end
 	if player:HasTrait("RestorationExpert") then
+		if debug() then print("ETW Logger: caught ISFixAction:perform() with RestorationExpert present") end
 		local chance = SBvars.RestorationExpertChance - 1;
 		if ZombRand(100) <= chance then
 			self.item:setHaveBeenRepaired(self.item:getHaveBeenRepaired() - 1);
