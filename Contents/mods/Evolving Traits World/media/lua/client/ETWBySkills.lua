@@ -291,7 +291,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 			-- Slow Learner
 				if perk == "characterInitialization" or perk == Perks.Maintenance or perk == Perks.Woodwork or perk == Perks.Cooking or perk == Perks.Farming or perk == Perks.Doctor or perk == Perks.Electricity or perk == Perks.MetalWelding or perk == Perks.Mechanics or perk == Perks.Tailoring then
-					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring;
+					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring + cooking;
 					if SBvars.SlowLearner == true and player:HasTrait("SlowLearner") and levels >= SBvars.SlowLearnerSkill then
 						player:getTraits():remove("SlowLearner");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_SlowLearner"), false, HaloTextHelper.getColorGreen()) end
@@ -299,7 +299,7 @@ local function traitsGainsBySkill(player, perk)
 				end
 			-- Fast Learner
 				if perk == "characterInitialization" or perk == Perks.Maintenance or perk == Perks.Woodwork or perk == Perks.Cooking or perk == Perks.Farming or perk == Perks.Doctor or perk == Perks.Electricity or perk == Perks.MetalWelding or perk == Perks.Mechanics or perk == Perks.Tailoring then
-					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring;
+					local levels = maintenance + carpentry + farming + firstAid + electrical + metalworking + mechanics + tailoring + cooking;
 					if SBvars.FastLearner == true and not player:HasTrait("FastLearner") and levels >= SBvars.FastLearnerSkill then
 						player:getTraits():add("FastLearner");
 						if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_FastLearner"), true, HaloTextHelper.getColorGreen()) end

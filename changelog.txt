@@ -1,6 +1,4 @@
-v.4.3.7
+v.4.3.8
 
-General:
-	- Added console prints for ISFixAction:perform(), so now you can check console to see if my scripts pick up you repairing items/cars.
-Translations:
-	- Somehow lost CN and CH translation files, added them back.
+Fixes:
+	- Slow/Fast learner were missing Cooking from unlock calculations
