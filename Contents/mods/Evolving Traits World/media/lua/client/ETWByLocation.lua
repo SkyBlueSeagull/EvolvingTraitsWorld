@@ -4,6 +4,7 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
+local detailedDebug = function() return EvolvingTraitsWorld.settings.GatherDetailedDebug end
 local desensitized = function(player) return player:HasTrait("Desensitized") and SBvars.BraverySystemRemovesOtherFearPerks end
 
 local function outdoorsman()
@@ -26,7 +27,7 @@ local function outdoorsman()
 		totalGain = totalGain * ((SBvars.AffinitySystem and modData.StartingTraits.Outdoorsman) and SBvars.AffinitySystemGainMultiplier or 1);
 		outdoorsmanModData.MinutesSinceOutside = math.max(0, outdoorsmanModData.MinutesSinceOutside - 3);
 		outdoorsmanModData.OutdoorsmanCounter = math.min(outdoorsmanModData.OutdoorsmanCounter + totalGain, SBvars.OutdoorsmanCounter * 10);
-		if debug() then print("ETW Logger: Outdoorsman totalGain=" .. totalGain .. ". OutdoorsmanCounter=" .. outdoorsmanModData.OutdoorsmanCounter) end
+		if debug() then print("ETW Logger | outdoorsman(): totalGain=" .. totalGain .. ". OutdoorsmanCounter=" .. outdoorsmanModData.OutdoorsmanCounter) end
 		if not player:HasTrait("Outdoorsman") and outdoorsmanModData.OutdoorsmanCounter >= SBvars.OutdoorsmanCounter then
 			player:getTraits():add("Outdoorsman");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_outdoorsman"), true, HaloTextHelper.getColorGreen()) end
@@ -36,7 +37,7 @@ local function outdoorsman()
 		totalLose = totalLose / ((SBvars.AffinitySystem and modData.StartingTraits.Outdoorsman) and SBvars.AffinitySystemLoseDivider or 1);
 		outdoorsmanModData.MinutesSinceOutside = math.min(900, outdoorsmanModData.MinutesSinceOutside + 1);
 		outdoorsmanModData.OutdoorsmanCounter = math.max(0, outdoorsmanModData.OutdoorsmanCounter - totalLose);
-		if debug() then print("ETW Logger: Outdoorsman totalLose=" .. totalLose .. ". OutdoorsmanCounter=" .. outdoorsmanModData.OutdoorsmanCounter) end
+		if debug() then print("ETW Logger | outdoorsman(): totalLose=" .. totalLose .. ". OutdoorsmanCounter=" .. outdoorsmanModData.OutdoorsmanCounter) end
 		if player:HasTrait("Outdoorsman") and outdoorsmanModData.OutdoorsmanCounter <= SBvars.OutdoorsmanCounter / 2 then
 			player:getTraits():remove("Outdoorsman");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_outdoorsman"), false, HaloTextHelper.getColorRed()) end
@@ -64,7 +65,7 @@ local function fearOfLocations()
 		resultingCounter = math.min(upperCounterBoundary, resultingCounter);
 		resultingCounter = math.max(lowerCounterBoundary, resultingCounter);
 		fearOfLocationsModData.FearOfOutside = resultingCounter;
-		if debug() then print("ETW Logger: modData.FearOfOutside: " .. fearOfLocationsModData.FearOfOutside) end
+		if debug() then print("ETW Logger | fearOfLocations(): modData.FearOfOutside: " .. fearOfLocationsModData.FearOfOutside) end
 		if player:HasTrait("Agoraphobic") and fearOfLocationsModData.FearOfOutside >= SBCounter then
 			player:getTraits():remove("Agoraphobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_agoraphobic"), false, HaloTextHelper.getColorGreen()) end
@@ -79,7 +80,7 @@ local function fearOfLocations()
 		resultingCounter = math.min(upperCounterBoundary, resultingCounter);
 		resultingCounter = math.max(lowerCounterBoundary, resultingCounter);
 		fearOfLocationsModData.FearOfInside = resultingCounter;
-		if debug() then print("ETW Logger: modData.FearOfInside: " .. fearOfLocationsModData.FearOfInside) end
+		if debug() then print("ETW Logger | fearOfLocations(): modData.FearOfInside: " .. fearOfLocationsModData.FearOfInside) end
 		if player:HasTrait("Claustophobic") and fearOfLocationsModData.FearOfInside >= SBCounter then
 			player:getTraits():remove("Claustophobic");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_claustro"), false, HaloTextHelper.getColorGreen()) end
@@ -101,7 +102,7 @@ end
 local function clearEvents(character)
 	Events.EveryOneMinute.Remove(outdoorsman);
 	Events.EveryOneMinute.Remove(fearOfLocations);
-	if debug() then print("ETW Logger: clearEvents in ETWByLocation.lua") end
+	if detailedDebug() then print("ETW Logger | System: clearEvents in ETWByLocation.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);

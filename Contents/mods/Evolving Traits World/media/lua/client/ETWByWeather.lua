@@ -4,6 +4,7 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
+local detailedDebug = function() return EvolvingTraitsWorld.settings.GatherDetailedDebug end
 local desensitized = function(player) return player:HasTrait("Desensitized") and SBvars.BraverySystemRemovesOtherFearPerks end
 
 local function rainTraits()
@@ -22,13 +23,13 @@ local function rainTraits()
 		if panic <= 25 then
 			rainGain = rainGain / ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophobia) and SBvars.AffinitySystemLoseDivider or 1);
 			rainGain = rainGain * ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophile) and SBvars.AffinitySystemGainMultiplier or 1);
-			if debug() then print("ETW Logger: rainTraits rainGain="..rainGain..". RainCounter=" .. modData.RainCounter) end
+			if debug() then print("ETW Logger | rainTraits(): rainTraits rainGain="..rainGain..". RainCounter=" .. modData.RainCounter) end
 			modData.RainCounter = math.min(upperBoundary, modData.RainCounter + rainGain);
 		else
 			local rainDecrease = rainGain * panic / 100 * SBvars.RainSystemCounterMultiplier;
 			rainDecrease = rainDecrease / ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophile) and SBvars.AffinitySystemLoseDivider or 1);
 			rainDecrease = rainDecrease * ((SBvars.AffinitySystem and modData.StartingTraits.Pluviophobia) and SBvars.AffinitySystemGainMultiplier or 1);
-			if debug() then print("ETW Logger: rainTraits rainDecrease="..rainDecrease..". RainCounter=" .. modData.RainCounter) end
+			if debug() then print("ETW Logger | rainTraits(): rainTraits rainDecrease="..rainDecrease..". RainCounter=" .. modData.RainCounter) end
 			modData.RainCounter = math.max(lowerBoundary, modData.RainCounter - rainDecrease);
 		end
 		if not player:HasTrait("Pluviophobia") and modData.RainCounter <= -SBCounter and not desensitized(player) then
@@ -66,17 +67,17 @@ local function fogTraits()
 		finalFogCounter = math.max(finalFogCounter, lowerBoundary);
 		finalFogCounter = math.min(finalFogCounter, upperBoundary);
 		modData.FogCounter = finalFogCounter;
-		if debug() then print("ETW Logger: modData.FogCounter="..modData.FogCounter) end
-		if not player:HasTrait("Homichlophobia") and modData.RainCounter <= -SBCounter and not desensitized(player) then
+		if debug() then print("ETW Logger | fogTraits(): modData.FogCounter="..modData.FogCounter) end
+		if not player:HasTrait("Homichlophobia") and modData.FogCounter <= -SBCounter and not desensitized(player) then
 			player:getTraits():add("Homichlophobia");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Homichlophobia"), true, HaloTextHelper.getColorRed()) end
-		elseif player:HasTrait("Homichlophobia") and modData.RainCounter > -SBCounter then
+		elseif player:HasTrait("Homichlophobia") and modData.FogCounter > -SBCounter then
 			player:getTraits():remove("Homichlophobia");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Homichlophobia"), false, HaloTextHelper.getColorGreen()) end
-		elseif player:HasTrait("Homichlophile") and modData.RainCounter <= SBCounter then
+		elseif player:HasTrait("Homichlophile") and modData.FogCounter <= SBCounter then
 			player:getTraits():remove("Homichlophile");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Homichlophobia"), false, HaloTextHelper.getColorRed()) end
-		elseif not player:HasTrait("Homichlophile") and modData.RainCounter > SBCounter then
+		elseif not player:HasTrait("Homichlophile") and modData.FogCounter > SBCounter then
 			player:getTraits():add("Homichlophile");
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Homichlophobia"), true, HaloTextHelper.getColorGreen()) end
 		end
@@ -94,7 +95,7 @@ end
 local function clearEvents(character)
 	Events.EveryOneMinute.Remove(rainTraits);
 	Events.EveryOneMinute.Remove(fogTraits);
-	if debug() then print("ETW Logger: clearEvents in ETWByWeather.lua") end
+	if detailedDebug() then print("ETW Logger | System: clearEvents in ETWByWeather.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);

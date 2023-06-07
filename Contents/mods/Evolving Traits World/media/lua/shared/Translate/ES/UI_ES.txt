@@ -44,6 +44,8 @@ UI_ES = {
 
 	UI_EvolvingTraitsWorld_Options_GatherDebug = "Recopilar datos de depuración",
     UI_EvolvingTraitsWorld_Options_GatherDebug_tooltip = "Habilita las impresiones en console.txt. Útil para fines de depuración, también permite encontrar datos sobre contadores internos. Ctrl+F para 'ETW' para encontrar los registradores.",
+	UI_EvolvingTraitsWorld_Options_GatherDetailedDebug = "Recuperar Datos Detallados de Depuracion",
+	UI_EvolvingTraitsWorld_Options_GatherDetailedDebug_tooltip = "permitir imprimir informacion en console.txt. Util solo para propositos de depuracion, no muestra informacion adicional sobre contadores, SOLO util para reportes de bugs o tratar de ver que esta mal. Agrega mucha información innecesaria en la console.txt, asi que reiniciar el juego algunas veces evitara que sea muy grande asi que no (posiblemente) ralentizara el juego. Ctrl+F para 'ETW' para encontrar los registros.",
 	UI_EvolvingTraitsWorld_Options_EnableNotifications = "Habilitar notificaciones de rasgos",
 	UI_EvolvingTraitsWorld_Options_EnableNotifications_tooltip = "Muestra la flecha de color sobre el personaje cada vez que gana o pierde un rasgo.",
 	UI_EvolvingTraitsWorld_Options_EnableBloodLustMoodle = "Habilitar estado de Sed de Sangre",

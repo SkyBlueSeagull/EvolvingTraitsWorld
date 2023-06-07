@@ -1,12 +1,14 @@
 if getActivatedMods():contains('EvolvingTraitsWorld') and getActivatedMods():contains('EvolvingTraitsWorldBeta') then
-	print("ETW Logger: player is trying to use both BETA and main branch");
+	print("ETW Logger | System: player is trying to use both BETA and main branch");
 	error("YOU LOADED MAIN MOD AND BETA BRANCH OF THE MOD AT THE SAME TIME, ENABLE ONLY 1!!!");
 end
 
 require "ETWModOptions";
 
 local SBvars = SandboxVars.EvolvingTraitsWorld;
+local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
+local detailedDebug = function() return EvolvingTraitsWorld.settings.GatherDetailedDebug end
 
 local function checkStartingDTConflictingTrait(startingTraits, player, trait)
 	if player:getModData().DTKillscheck2 == nil then
@@ -42,7 +44,7 @@ local function checkStartingTrait(startingTraits, player, trait)
 end
 
 local function createModData(playerIndex, player)
-	print("ETW Logger: initializing modData");
+	print("ETW Logger | System: initializing modData");
 	player:getModData().EvolvingTraitsWorld = player:getModData().EvolvingTraitsWorld or {};
 	local modData = player:getModData().EvolvingTraitsWorld
 
@@ -75,6 +77,9 @@ local function createModData(playerIndex, player)
 	checkStartingTrait(startingTraits, player, "Pluviophobia");
 	checkStartingTrait(startingTraits, player, "Homichlophobia");
 	checkStartingTrait(startingTraits, player, "Homichlophile");
+
+	modData.DelayedStartingTraitsFilled = modData.DelayedStartingTraitsFilled or false;
+	modData.DelayedTraits = modData.DelayedTraits or {};
 
 	if modData.AsthmaticCounter == nil and startingTraits.Asthmatic == true then -- start at full counter if they start with the trait
 		modData.AsthmaticCounter = SBvars.AsthmaticCounter * 2;

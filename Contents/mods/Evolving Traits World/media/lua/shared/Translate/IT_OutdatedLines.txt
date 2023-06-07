@@ -1,4 +1,4 @@
-New/changed lines since v.4.3.0
+New/changed lines since v.5.0.0
 
 Moodles_EN.txt
 	changed:

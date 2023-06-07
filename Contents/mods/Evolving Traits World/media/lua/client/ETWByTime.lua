@@ -5,6 +5,7 @@ local SBvars = SandboxVars.EvolvingTraitsWorld;
 
 local notification = function() return EvolvingTraitsWorld.settings.EnableNotifications end
 local debug = function() return EvolvingTraitsWorld.settings.GatherDebug end
+local detailedDebug = function() return EvolvingTraitsWorld.settings.GatherDetailedDebug end
 
 local function catEyes()
 	local player = getPlayer();
@@ -30,12 +31,17 @@ local function catEyes()
 				end
 			end
 		end
-		if debug() then print("ETW Logger: Checked squares: "..checkedSquares..", visible squares: "..squaresVisible.." with total darkness level of "..darknessLevel) end
-		if debug() then print("ETW Logger: CatEyesCounter: "..modData.CatEyesCounter) end
+		if detailedDebug() then print("ETW Logger | catEyes(): Checked squares: "..checkedSquares..", visible squares: "..squaresVisible.." with total darkness level of "..darknessLevel) end
+		if debug() then print("ETW Logger | catEyes(): CatEyesCounter: "..modData.CatEyesCounter) end
 		if not player:HasTrait("NightVision") and modData.CatEyesCounter >= SBvars.CatEyesCounter then
-			player:getTraits():add("NightVision");
-			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_NightVision"), true, HaloTextHelper.getColorGreen()) end
-			Events.EveryOneMinute.Remove(catEyes);
+			if not SBvars.DelayedTraitsSystem or (SBvars.DelayedTraitsSystem and ETWCommonFunctions.checkDelayedTraits("NightVision")) then
+				player:getTraits():add("NightVision");
+				if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_NightVision"), true, HaloTextHelper.getColorGreen()) end
+				Events.EveryOneMinute.Remove(catEyes);
+			end
+			if SBvars.DelayedTraitsSystem then
+				ETWCommonFunctions.addTraitToDelayTable(modData, "NightVision", player, true)
+			end
 		end
 	end
 end
@@ -86,7 +92,7 @@ local function sleepSystem()
 		ETWMoodles.sleepHealthMoodleUpdate(nil, nil, true);
 		sleepModData.CurrentlySleeping = false;
 		sleepModData.HoursSinceLastSleep = 0;
-		if debug() then print("ETW Logger: SleepHealthinessBar: ".. sleepModData.SleepHealthinessBar) end
+		if detailedDebug() then print("ETW Logger | sleepSystem(): SleepHealthinessBar: ".. sleepModData.SleepHealthinessBar) end
 	end
 	if not player:isAsleep() then
 		sleepModData.HoursSinceLastSleep = sleepModData.HoursSinceLastSleep + 1 / 6;
@@ -122,7 +128,7 @@ local function sleepSystem()
 			if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_MoreSleep"), true, HaloTextHelper.getColorGreen()) end
 		end
 	end
-	if debug() then print("ETW Logger: modData.SleepHealthinessBar: ".. sleepModData.SleepHealthinessBar) end
+	if detailedDebug() then print("ETW Logger | sleepSystem(): modData.SleepHealthinessBar: ".. sleepModData.SleepHealthinessBar) end
 end
 
 local function smoker()
@@ -131,19 +137,17 @@ local function smoker()
 	local smokerModData = modData.SmokeSystem; -- SmokingAddiction MinutesSinceLastSmoke
 	local timeSinceLastSmoke = player:getTimeSinceLastSmoke() * 60;
 	smokerModData.MinutesSinceLastSmoke = smokerModData.MinutesSinceLastSmoke + 1;
-	if debug() then print("ETW Logger: timeSinceLastSmoke: "..timeSinceLastSmoke) end
-	if debug() then print("ETW Logger: modData.MinutesSinceLastSmoke: ".. smokerModData.MinutesSinceLastSmoke) end
+	if detailedDebug() then print("ETW Logger | smoker(): timeSinceLastSmoke: "..timeSinceLastSmoke..", modData.MinutesSinceLastSmoke: ".. smokerModData.MinutesSinceLastSmoke) end
 	local stats = player:getStats();
 	local stress = stats:getStress(); -- stress is 0-1
 	local panic = stats:getPanic(); -- 0-100
-	local addictionDecay = SBvars.SmokingAddictionDecay * ( 0.0167 / 10 * (1 + stress) * (1 + panic / 100));
+	local addictionDecay = SBvars.SmokingAddictionDecay * (0.0167 / 10) * (1 - stress) * (1 - panic / 100);
 	if SBvars.AffinitySystem and modData.StartingTraits.Smoker then
 		addictionDecay = addictionDecay / SBvars.AffinitySystemLoseDivider;
 	end
 	smokerModData.SmokingAddiction = math.max(0, smokerModData.SmokingAddiction - addictionDecay);
 	ETWMoodles.smokerMoodleUpdate(player, smokerModData.SmokingAddiction);
-	if debug() then print("ETW Logger: smoking addictionDecay: "..addictionDecay) end
-	if debug() then print("ETW Logger: modData.SmokingAddiction: ".. smokerModData.SmokingAddiction) end
+	if debug() then print("ETW Logger | smoker(): smoking addictionDecay: "..addictionDecay..", modData.SmokingAddiction: ".. smokerModData.SmokingAddiction) end
 	if smokerModData.SmokingAddiction >= SBvars.SmokerCounter and not player:HasTrait("Smoker") then
 		player:getTraits():add("Smoker")
 		if notification() == true then HaloTextHelper.addTextWithArrow(player, getText("UI_trait_Smoker"), true, HaloTextHelper.getColorRed()) end
@@ -158,7 +162,7 @@ local function herbalist()
 	local player = getPlayer();
 	local modData = player:getModData().EvolvingTraitsWorld;
 	modData.HerbsPickedUp = math.max(0, modData.HerbsPickedUp - ((SBvars.AffinitySystem and modData.StartingTraits.Herbalist) and 1 / SBvars.AffinitySystemLoseDivider or 1));
-	if debug() then print("ETW Logger: modData.HerbsPickedUp: "..modData.HerbsPickedUp) end
+	if debug() then print("ETW Logger | herbalist(): modData.HerbsPickedUp: "..modData.HerbsPickedUp) end
 	if modData.HerbsPickedUp < SBvars.HerbalistHerbsPicked / 2 and player:HasTrait("Herbalist") then
 		player:getTraits():remove("Herbalist");
 		player:getKnownRecipes():remove("Herbalist");
@@ -170,7 +174,10 @@ local function initializeEvents(playerIndex, player)
 	Events.EveryOneMinute.Remove(catEyes);
 	if SBvars.CatEyes == true and not player:HasTrait("NightVision") then Events.EveryOneMinute.Add(catEyes) end
 	Events.EveryTenMinutes.Remove(sleepSystem);
-	if SBvars.SleepSystem == true then Events.EveryTenMinutes.Add(sleepSystem) end
+	if
+		((not isClient() and not isServer()) and SBvars.SleepSystem == true) or -- single player and SleepSystem is enabled
+		(getServerOptions():getBoolean("SleepNeeded") and SBvars.SleepSystem == true) then -- server and SleepNeeded is enabled and SleepSystem is enabled
+			Events.EveryTenMinutes.Add(sleepSystem) end
 	Events.EveryOneMinute.Remove(smoker);
 	if SBvars.Smoker == true then Events.EveryOneMinute.Add(smoker) end
 	Events.EveryDays.Remove(herbalist);
@@ -182,7 +189,7 @@ local function clearEvents(character)
 	Events.EveryTenMinutes.Remove(sleepSystem);
 	Events.EveryOneMinute.Remove(smoker);
 	Events.EveryDays.Remove(herbalist);
-	if debug() then print("ETW Logger: clearEvents in ETWByTime.lua") end
+	if detailedDebug() then print("ETW Logger | System: clearEvents in ETWByTime.lua") end
 end
 
 Events.OnCreatePlayer.Remove(initializeEvents);
